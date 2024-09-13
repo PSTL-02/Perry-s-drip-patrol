@@ -17,13 +17,15 @@ app.use(cors());
 app.use(express.json());
 
 // import routes
+const listingRoutes = require('./routes/listings')
 
 
 // Attach our route to our app (express)
+app.use('/api/listings/', listingRoutes);
 
 
 // Serve static files from public/uploads
-
+app.use('/public/uploads', express.static('public/uploads'));
 
 
 //log out path and method of each request:
