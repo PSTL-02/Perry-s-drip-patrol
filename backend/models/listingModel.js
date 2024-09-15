@@ -24,12 +24,12 @@ const listingSchema = new Schema ({
         require: true
     },
 
-    // comments: [
-    //     {
-    //         type: Schema, type, objectid,
-    //         ref:'Comment'
-    //     },
-    // ]
+    comments: [
+        {
+            type: Schema. Types. ObjectId,
+            ref:'Comment'
+        },
+    ]
     
 }, {timestamps: true});
 
