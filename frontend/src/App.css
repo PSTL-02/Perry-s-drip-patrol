@@ -27,7 +27,7 @@ nav {
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-
+  /* nav logo */
   .nav-logo {
     width: 15%;
 
@@ -36,7 +36,7 @@ nav {
       height: auto;
     }
   }
-
+  /* nav buttons and icons */
   .nav-content {
     display: flex;
     align-items: center;
@@ -46,7 +46,7 @@ nav {
       font-size: 3rem;
       cursor: pointer;
     }
-
+    
     .primary-button {
       height: 100%;
       background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
