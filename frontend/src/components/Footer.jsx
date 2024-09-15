@@ -5,10 +5,9 @@ const Footer = () => {
   return (
     <footer>
         <div className='footer-logo'>
-            {/* <Link to='/'>
+            <Link to='/'>
                 <img className='nav-logo-image' src='./public/logo.png' alt='platypus gradient logo' />&copy;
-            </Link> */}
-            <img className='nav-logo-image' src='./public/logo.png' alt='platypus gradient logo' />&copy;
+            </Link>
         </div>
         <div className='footer-content'>
             <p>Help & Support</p>
