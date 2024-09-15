@@ -1,7 +1,80 @@
 /* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* roots */
+:root {
+  --background-color: #282828;
+  --accent-purple: #C440B0;
+  --accent-blue: #54D3DE;
+}
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Poppins;
+}
+
+/* nav */
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  /* nav logo */
+  .nav-logo {
+    width: 15%;
+
+    .nav-logo-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+  /* nav buttons and icons */
+  .nav-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .nav-icons {
+      font-size: 3rem;
+      cursor: pointer;
+    }
+    
+    .primary-button {
+      height: 100%;
+      background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
+        radial-gradient(circle at 0 0, #282828 0, #282828 8px, transparent 8px) 100% 100%/12px 12px no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 8px) calc(100% - 24px) no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
+        linear-gradient(90deg, #c440b0 0%, #54D3DE 100%);
+      border-radius: 15px;
+      border: 5px solid;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 1s all ease;
+
+      &:hover {
+        transition: 1s all ease;
+        background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
+        radial-gradient(circle at 0 0, #282828 0, #282828 8px, transparent 8px) 100% 100%/12px 12px no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 8px) calc(100% - 24px) no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
+        linear-gradient(90deg, #54D3DE 0%, #54D3DE 100%);
+      }
+    }
+  }
 }
