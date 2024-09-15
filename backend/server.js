@@ -17,9 +17,12 @@ app.use(cors());
 app.use(express.json());
 
 // import routes
+const userRoutes = require('./routes/user')
 const commentRoutes = require ('./routes/comments');
 
+
 // Attach our route to our app (express)
+app.use ('/api/user', userRoutes);
 app.use('/api/comments', commentRoutes);
 
 // Serve static files from public/uploads
