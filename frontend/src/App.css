@@ -78,3 +78,42 @@ nav {
     }
   }
 }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1F1F1F;
+  color: white;
+  padding: 20px 20px;
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    
+    a{
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-logo img {
+      margin-right: 10px;
+    }
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+      padding: 0 10px;
+    }
+    span {
+      display: inline-block;
+      width: 2px;
+      height: 15px;
+      background-color: white;
+      margin: 0 10px;
+    }
+  }
+}
