@@ -25,6 +25,7 @@ const Navbar = () => {
 
             {/* nav links and icons */}
             <div className='nav-content'>
+                <Link to='/singlelisting'>single</Link>
                 <IoHeartOutline className='nav-icons'/>
                 <TbTags className='nav-icons'/>
                 {user ? (
