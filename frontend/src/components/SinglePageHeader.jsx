@@ -35,6 +35,7 @@ const SinglePageHeader = () => {
 
     return (
         <>
+            {/* Header */}
             <div className='singlepage-header-container'>
                 <div className='singlepage-header-grid-item single-listing-title'>
                     <h2></h2>
@@ -59,8 +60,13 @@ const SinglePageHeader = () => {
                 </div>
                 <button className='primary-button'>Buy Now</button>
             </div>
+
+            {/* description */}
+            <div className='single-listing-description'>
+                <p>Description</p>
+            </div>
         </>
-  )
+    )
 }
 
 export default SinglePageHeader

@@ -25,12 +25,11 @@ const Navbar = () => {
 
             {/* nav links and icons */}
             <div className='nav-content'>
-                <Link to='/singlelisting'>single</Link>
-                <IoHeartOutline className='nav-icons'/>
-                <TbTags className='nav-icons'/>
                 {user ? (
                     <>
                         <span className='username'>{user.username}</span>
+                        <IoHeartOutline className='nav-icons'/>
+                        <TbTags className='nav-icons'/>
                         <button className='primary-button' onClick={handleClick}>Logout</button>
                     </>
                 ) : (
@@ -39,6 +38,7 @@ const Navbar = () => {
                         <Link to='/signup'><button className='primary-button'>Signup</button></Link>
                     </>
                 )}
+                
             </div>
         </nav>
     );
