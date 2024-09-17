@@ -44,13 +44,17 @@ const SinglePageHeader = () => {
             {/* Header */}
             <div className='singlepage-header-container'>
                 <div className='singlepage-header-grid-item single-listing-title'>
-                    <h2>{listing.listing_title}</h2>
-                    <IoHeartOutline/>
-                    <div className='user-profile-picture'>
-                        <img/>
-                        <p>{user.username}</p>
+                    <div className='listing-title-icon'>
+                        <h2>{listing.listing_title}</h2>
+                        <IoHeartOutline/>
                     </div>
-                    <h6>Listed {formatDistanceToNow(new Date(listing.createdAt), {includeSeconds: false, addSuffix: true})}</h6>
+                    <div className='listing-seller-details'>
+                        <div className='user-profile-picture'>
+                            <img/>
+                            <p>{user.username}</p>
+                        </div>
+                        <h6>Listed {formatDistanceToNow(new Date(listing.createdAt), {includeSeconds: false, addSuffix: true})}</h6>
+                    </div>
                 </div>
                 <div className='singlepage-header-grid-item single-listing-details'>
                     <p>Size: {listing.shoe_size}</p>
@@ -64,12 +68,16 @@ const SinglePageHeader = () => {
                 <div className='singlepage-header-grid-item single-listing-image'>
                     <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt={listing.listing_title}/>
                 </div>
-                <button className='primary-button'>Buy Now</button>
+                <div className='singlepage-header-grid-item single-listing-button'>
+                    <button className='primary-button buy-button'>Buy Now</button>
+                </div>
             </div>
 
             {/* description */}
-            <div className='single-listing-description'>
-                <p>Description:<br/>{listing.description}</p>
+            <div className='single-listing-description-container'>
+                <div className='single-listing-description'>
+                    <p>Description:<br/>{listing.description}</p>
+                </div>
             </div>
         </>
     )
