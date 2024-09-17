@@ -106,7 +106,7 @@ const ListingDetails = ({listing}) => {
                         <h3>Edit Your Item</h3>
 
                         {/* Title */}
-                        <div className='filter'>
+                        <div className='edit-filter'>
                             <label>Edit Title:</label>
                             <input
                                 type='text'
@@ -116,7 +116,7 @@ const ListingDetails = ({listing}) => {
                         </div>
 
                         {/* Location */}
-                        <div className='filter'>
+                        <div className='edit-filter'>
                             <label>Edit Location:</label>
                             <input
                                 type='text'
@@ -126,7 +126,7 @@ const ListingDetails = ({listing}) => {
                         </div>
 
                         {/* Size */}
-                        <div className='filter'>
+                        <div className='edit-filter'>
                             <label>Edit Size:</label>
                             <input
                                 type='text'
@@ -136,7 +136,7 @@ const ListingDetails = ({listing}) => {
                         </div>
 
                         {/* Price */}
-                        <div className='filter'>
+                        <div className='edit-filter'>
                             <label>Edit Price:</label>
                             <input
                                 type='text'
@@ -146,7 +146,7 @@ const ListingDetails = ({listing}) => {
                         </div>
 
                         {/* Condition */}
-                        <div className='filter'>
+                        <div className='edit-filter'>
                             <label>Edit Condition:</label>
                             <select type='text' value={editCondition} onChange={(e) => setEditCondition(e.target.value)}>
                             <option value='new'>New</option>
@@ -157,7 +157,7 @@ const ListingDetails = ({listing}) => {
                         </div>
 
                         {/* Image */}
-                        <div className='filter'>
+                        <div className='edit-filter'>
                             <label>Edit Image:</label>
                             <input
                                 type='file'
@@ -167,7 +167,7 @@ const ListingDetails = ({listing}) => {
                         </div>
 
                         {/* Description */}
-                        <div className='filter'>
+                        <div className='edit-filter'>
                             <label>Edit Description:</label>
                             <input
                                 type='text'

@@ -13,7 +13,8 @@ const listingSchema = new Schema ({
     },
     listing_img: {
         type: String,
-        require: true
+        default: null,
+        // require: true
     },
     shoe_size: {
         type: String,
