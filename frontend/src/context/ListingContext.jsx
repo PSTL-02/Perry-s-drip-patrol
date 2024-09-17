@@ -10,7 +10,7 @@ const listingsReducer = (state, action) => {
             }
             case 'CREATE_LISTINGS':
                 return {
-                    listings: [action.payload, ...state.projects]
+                    listings: [action.payload, ...state.listings]
                 }
             case 'DELETE_LISTINGS':
                 return {
