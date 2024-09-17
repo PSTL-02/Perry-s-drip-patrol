@@ -46,10 +46,7 @@ const getListing = async (req, res) => {
 
 // Create Listing
 const createListing = async (req, res) => {
-    const { listing_title, owner_name, shoe_size, price, location, condition, description } = req.body
-
-    console.log('Request Body:', req.body);  // Add this line to log the request body
-    console.log('Image Filename:', req.file ? req.file.filename : null);  // Log the image filename
+    const { listing_title, user_id, shoe_size, price, location, condition, description } = req.body
 
     const imageFilename = req.file ? req.file.filename : null;
 
@@ -57,12 +54,12 @@ const createListing = async (req, res) => {
         const listing = await Listing.create({
             listing_title,
             listing_img: imageFilename,
-            owner_name,
+            user_id,
             shoe_size,
             price,
             location,
             condition,
-            description
+            description,
         })
 
         res.status(200).json(listing)

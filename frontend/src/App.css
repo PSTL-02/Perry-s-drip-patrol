@@ -57,7 +57,6 @@ nav {
         linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
         linear-gradient(90deg, #c440b0 0%, #54D3DE 100%);
       border-radius: 15px;
-      border: 5px solid;
       padding: 20px 30px;
       box-sizing: border-box;
       color: #fff;
@@ -79,18 +78,17 @@ nav {
   }
 }
 
-/* LISTINGS */
+/* LISTINGS START */
 .listings-page {
   width: 100vw;
   padding: 20px;
-  background-color: #373737;
+  background-color: var(--background-color);
 
   .create-listing-search,.listing-buttons {
     display: flex;
     justify-content: end;
     gap: 20px;
     padding-bottom: 20px;
-    /* margin-left: 86%; */
   }
 
   .listing-buttons #allListings, #myListings {
@@ -119,6 +117,28 @@ nav {
     padding-bottom: 30px;
   }
 
+  /* Edit Form start */
+  .edit-project {
+    border-radius: 60px;
+    background-image: linear-gradient(-50deg, rgba(235,137,62,1) 0%, rgba(237,82,85,1) 25%, rgba(215,68,152,1) 50%, rgba(66,92,170,1) 80%, rgba(109,205,232,1) 100%);
+    padding: 5px;
+    width: 100%;
+  }
+  .edit-form {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: var(--background-color);
+  }
+  .edit-form label {
+    color: white;
+}
+
+.edit-form input {
+    height: 30px;
+}
+  /* Edit Form Ends */
+
   /* Listing Details - Start */
   .listing-card {
     display: flex;
@@ -127,65 +147,67 @@ nav {
     background-color: white;
     border-radius: 20px;
 
-  }
+    .listing-image img {
+      width: 250px;
+      height: 250px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
 
-  .listing-image img {
-    width: 250px;
-    height: 250px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-
-  .listing-card-info {
+    .listing-card-info {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-  }
-  .listing-card-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .view-button {
-      position: relative;
-      padding: 5px 30px;
-      background-color: var(--background-color);
-      color: white;
-      z-index: 1;
-      border: none;
-      border-radius: 5px;
-      transition: 0.5s all ease;
-    }
-    
-    .view-button::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      border-radius: 5px;
-      padding: 2px;
-      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
-      -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-      mask-composite: exclude; 
-      cursor: pointer;
-      transition: 0.5s all ease;
     }
 
-    .view-button:hover::before {
-      background: var(--accent-blue);
-    }
+    .listing-card-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .view-button {
+        position: relative;
+        padding: 5px 30px;
+        background-color: var(--background-color);
+        color: white;
+        z-index: 1;
+        border: none;
+        border-radius: 5px;
+        transition: 0.5s all ease;
+      }
+      
+      .view-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 5px;
+        padding: 2px;
+        background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude; 
+        cursor: pointer;
+        transition: 0.5s all ease;
+      }
+
+      .view-button:hover::before {
+        background: var(--accent-blue);
+      }
+    } 
   }
   /* Listing Details - End */
 }
+/* LISTINGS END */
 
+/* FOOTER STARTS */
 footer {
   display: flex;
   justify-content: space-between;
@@ -224,6 +246,7 @@ footer {
     }
   }
 }
+/* FOOTER ENDS */
 
 /* home page landing Start */
 
@@ -231,29 +254,14 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-}
-
-.left-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-right: 40px;
-  text-align: center;
-}
-
-.left-section h1 {
-  font-size: 3rem;
-  color: white;
-  margin-bottom: 20px;
+  padding-top: 30px;
+  background-color:var(--background-color) ;
 }
 
 .buttons {
   display: flex;
   gap: 20px;
 }
-
 
 .primary-button {
   height: 100%;
@@ -265,7 +273,6 @@ footer {
     linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
     linear-gradient(90deg, #c440b0 0%, #54D3DE 100%);
   border-radius: 15px;
-  border: 5px solid;
   padding: 20px 30px;
   box-sizing: border-box;
   color: #fff;
@@ -290,24 +297,41 @@ footer {
   background-color: var(--accent-purple);
 }
 
-.right-section {
+.Landing-section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.large-shoe{
+  display: flex;
+  border-radius: 15px;
+  background-image: url('../public/Adidas-shoe.png' );
+  width: 700px;
+}
+
+.Landing-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  font-size: 1.5rem;
+}
+
+.Landing-text h1{
+  background: -webkit-linear-gradient( 135deg, var(--accent-purple), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.small-shoes {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.large-shoe img {
-  width: 350px;
-  border-radius: 15px;
-}
-
-.small-shoes {
-  display: flex;
-  gap: 20px;
-}
-
 .small-shoes img {
-  width: 150px;
   border-radius: 15px;
 }
 
@@ -315,9 +339,11 @@ footer {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
   display: flex;
   padding: 10px 20px ;
-
+  width: 100%;
   gap: 10px;
   margin-top: 30px;
+  align-items: center;
+  justify-content: center;
 }
 
 .filter {
@@ -329,22 +355,6 @@ footer {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.filter.nike {
-  background-color: #ffffff;
-}
-
-.filter.adidas {
-  background-color: #ffffff;
-}
-
-.filter.reebok {
-  background-color: #ffffff;
-}
-
-.filter.converse {
-  background-color: #ffffff;
 }
 
 .filter:hover {
