@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Footer from './components/Footer';
+import HelpBubble from './components/HelpBubble';
 
 const App = () => {
   const {user} = useAuthContext();
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/login' element={!user ? <Login/> : <Navigate to='/login'/>}/>
           <Route path='/signup' element={!user ? <SignUp/> : <Navigate to='/signup'/>}/>
         </Routes>
+        <HelpBubble/>
         <Footer/>
       </BrowserRouter>
     </>
