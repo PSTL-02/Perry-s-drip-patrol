@@ -7,7 +7,7 @@ const listingSchema = new Schema ({
         type: String,
         require: true
     },
-    owner_name: {
+    user_id: {
         type: String,
         require: true
     },
@@ -16,6 +16,18 @@ const listingSchema = new Schema ({
         require: true
     },
     shoe_size: {
+        type: String,
+        require: true
+    },
+    price: {
+        type: String,
+        require: true
+    },
+    location: {
+        type: String,
+        require: true
+    },
+    condition: {
         type: String,
         require: true
     },
