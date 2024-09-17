@@ -11,6 +11,8 @@ const Listings = () => {
     const {listings, dispatch} = useListingContext()
     const [myListings, setMyListings] = useState(null)
 
+    const [showForm, setShowForm] = useState(false)
+
     useEffect(() => {
         const fetchListings = async () => {
             try {
@@ -26,15 +28,6 @@ const Listings = () => {
         fetchListings();
     }, []);
 
-    // useEffect(() => {
-    //     if(listings) {
-    //         const filteredData = listings.filter((listing) => {
-    //             return listing.user_id.toLowerCase()
-    //         })
-    //         setFilteredListings(filteredData)
-    //     }
-    // }, [listings])
-
     const handleMyListings = ( )=> {
         setMyListings(true)
     }
@@ -43,12 +36,23 @@ const Listings = () => {
         setMyListings(null)
     }
 
+    const handelCreateListing = ( )=> {
+        setShowForm(!showForm)
+    }
+
     return (
         <div className='listings-page'>
+            <div className='create-listing-search'>
+                <button className='primary-button' onClick={handelCreateListing}>Create a listing</button>    
+            </div>
+            
+            {showForm && <ListingForm />}
+
             <div className='listing-buttons'>
-                    <button onClick={handleAllListings}>All Listings</button>
-                    <button onClick={handleMyListings}>My Listings</button>
-                </div>
+                <button id='allListings' onClick={handleAllListings}>All Listings</button>
+                <button id='myListings' onClick={handleMyListings}>My Listings</button>
+            </div>
+            
             <div className='listings'>
                 {myListings ? (listings && listings.map((listing) => {
                     const user = JSON.parse(localStorage.getItem('user'))
@@ -65,7 +69,6 @@ const Listings = () => {
                 }))
                 }
             </div>
-            <ListingForm/>
         </div>
     )
 }

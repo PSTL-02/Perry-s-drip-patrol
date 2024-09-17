@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import Listings from "./Listings";
 
 
 const baseURL = import.meta.env.VITE_API_BASE_URL
@@ -29,6 +30,7 @@ const Home = () => {
           <button className="filter reebok">Reebok</button>
           <button className="filter converse">Converse</button>
         </div>
+        <Listings/>
       </div>
     );
   };

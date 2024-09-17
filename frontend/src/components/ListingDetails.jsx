@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom'
 // Context Import
 import { useListingContext } from '../hooks/useListingContext'
 
+// Icon Import
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+
 const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const ListingDetails = ({listing}) => {
@@ -48,44 +52,6 @@ const ListingDetails = ({listing}) => {
     };
 
     // Handle Submit Edit
-    // const handleSubmitEdit = async () => {
-    //     const updatedListing = {
-    //         listing_title: editTitle,
-    //         shoe_size: editSize,
-    //         location: editLocation,
-    //         price: editPrice,
-    //         condition: editCondition,
-    //         description: editDescription,
-    //         listing_img: editImage
-    //     };
-        
-    //     try {
-    //         if (editImage) {
-    //         const formData = new FormData();
-    //         formData.append('listing_img', editImage);
-
-    //         for (const key in updatedListing) {
-    //             formData.append(key, updatedListing[key]);
-    //         }
-    //         response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, formData, {
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data'
-    //             }
-    //         });
-
-    //     } else {
-    //         response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, updatedListing);
-
-    //         } if (response.status === 200) {
-    //             dispatch({type: 'UPDATE_LISTING', payload: response.data});
-    //             setIsEditing(false)
-    //         }
-
-    //     } catch (error) {
-    //         console.log("Error updating listing", error);
-            
-    //     }
-    // }
     const handleSubmitEdit = async () => {
         const updatedListing = {
             listing_title: editTitle,
@@ -242,8 +208,9 @@ const ListingDetails = ({listing}) => {
                                     <div className='listing-card-buttons'>
                                         <button className='view-button' onClick={handleNavigate}>view</button>
                                         <div className='edit-delete-button'>
-                                            <button className='edit-button' onClick={handleEdit}>Edit</button>
-                                            <button className='delete-button' onClick={handleDelete}>Delete</button>
+                                            <MdEdit className='edit'onClick={handleEdit}/>
+                                            <MdDelete className='delete'onClick={handleDelete}/>
+                                            
                                         </div>
                                     </div>    
                                 </div>
