@@ -48,6 +48,44 @@ const ListingDetails = ({listing}) => {
     };
 
     // Handle Submit Edit
+    // const handleSubmitEdit = async () => {
+    //     const updatedListing = {
+    //         listing_title: editTitle,
+    //         shoe_size: editSize,
+    //         location: editLocation,
+    //         price: editPrice,
+    //         condition: editCondition,
+    //         description: editDescription,
+    //         listing_img: editImage
+    //     };
+        
+    //     try {
+    //         if (editImage) {
+    //         const formData = new FormData();
+    //         formData.append('listing_img', editImage);
+
+    //         for (const key in updatedListing) {
+    //             formData.append(key, updatedListing[key]);
+    //         }
+    //         response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, formData, {
+    //             headers: {
+    //                 'Content-Type': 'multipart/form-data'
+    //             }
+    //         });
+
+    //     } else {
+    //         response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, updatedListing);
+
+    //         } if (response.status === 200) {
+    //             dispatch({type: 'UPDATE_LISTING', payload: response.data});
+    //             setIsEditing(false)
+    //         }
+
+    //     } catch (error) {
+    //         console.log("Error updating listing", error);
+            
+    //     }
+    // }
     const handleSubmitEdit = async () => {
         const updatedListing = {
             listing_title: editTitle,
@@ -58,34 +96,29 @@ const ListingDetails = ({listing}) => {
             description: editDescription,
             listing_img: editImage
         };
-        
+    
+        // Check if a new image file is selected before appending
+        if (editImage) {
+            updatedListing.append('listing_img', editImage);
+        }
+    
         try {
-            if (editImage) {
-            const formData = new FormData();
-            formData.append('listing_img', editImage);
-
-            for (const key in updatedListing) {
-                formData.append(key, updatedListing[key]);
-            }
-            response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, formData, {
+            const response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, updatedListing, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
-        } else {
-            response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, updatedListing);
-
-            } if (response.status === 200) {
-                dispatch({type: 'UPDATE_LISTING', payload: response.data});
-                setIsEditing(false)
+            
+            if (response.status === 200) {
+                dispatch({ type: 'UPDATE_LISTING', payload: response.data });
+                setIsEditing(false);
             }
-
+    
         } catch (error) {
             console.log("Error updating listing", error);
-            
         }
-    }
+    };
+    
 
     // Handle Cancel edit
     const handleCancelEdit = () => {
@@ -103,7 +136,7 @@ const ListingDetails = ({listing}) => {
         <div className='listing-details'>
             {isEditing ? (
                 <div className='edit-listing'>
-                    <div className='edit-form'>
+                    <form className='edit-form'>
                         <h3>Edit Your Item</h3>
 
                         {/* Title */}
@@ -187,30 +220,32 @@ const ListingDetails = ({listing}) => {
                             </div>
                             
                         </div>
-                    </div>
+                    </form>
                 </div>
                 )
                 : // If not editing
                 (
                     <>
                         <div className='listing-card-border'>
-                            <div className='listing-card' onClick={handleNavigate}>
+                            <div className='listing-card'>
                                 <div className='listing-image'>
                                     <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt="Listing" />
                                 </div>
-                                <h3>{listing.price}</h3>
-                                <div className='listing-card-details'>
-                                    <h2>{listing.listing_title}</h2>
-                                    <h3>{listing.shoe_size}</h3>
-                                    <p>{listing.description}</p>
-                                    <p>{listing.location}</p>
+                                <h3 className='shoe-price'>{listing.price}</h3>
+                                <div className='listing-card-info'>
+                                    <div className='listing-card-details'>
+                                        <h2>{listing.listing_title}</h2>
+                                        <p>Size:{listing.shoe_size}</p>
+                                        <p>{listing.description}</p>
+                                        <p>{listing.location}</p>
+                                    </div>
                                     <div className='listing-card-buttons'>
                                         <button className='view-button' onClick={handleNavigate}>view</button>
                                         <div className='edit-delete-button'>
                                             <button className='edit-button' onClick={handleEdit}>Edit</button>
                                             <button className='delete-button' onClick={handleDelete}>Delete</button>
                                         </div>
-                                    </div>
+                                    </div>    
                                 </div>
                             </div>
                         </div>

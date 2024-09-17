@@ -79,6 +79,75 @@ nav {
   }
 }
 
+/* LISTINGS */
+.listings-page {
+  padding: 20px;
+  background-color: #373737;
+}
+.listings {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-bottom: 30px;
+}
+
+/* Listing Details - Card */
+.listing-card {
+  display: flex;
+  width: 480px;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
+
+}
+.listing-image img {
+  width: 250px;
+  height: 250px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.listing-card-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.listing-card-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+/* .listing-card-buttons button {
+  /* display: flex;
+  justify-content: space-between;
+  /* width: 80px;
+  height: 40px; */
+  /* background-color: #1F1F1F;
+  border-radius: 5px;
+  border: 1px solid; */
+  /* padding: 10px; */
+  /* box-sizing: border-box; */
+  /* color: #fff; */
+  /* font-size: 1.1rem; */
+  /* cursor: pointer; */ */
+  /* transition: 1s all ease; */
+
+  /* &:hover {
+    transition: 1s all ease;
+    background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
+    radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
+    radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
+    radial-gradient(circle at 0 0, #282828 0, #282828 8px, transparent 8px) 100% 100%/12px 12px no-repeat,
+    linear-gradient(#282828, #282828) 50% 50%/calc(100% - 8px) calc(100% - 24px) no-repeat,
+    linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
+    linear-gradient(90deg, #54D3DE 0%, #54D3DE 100%);
+  } */
+/* } */ */
+
 footer {
   display: flex;
   justify-content: space-between;

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Footer from './components/Footer';
+import Listings from './pages/Listings';
 
 const App = () => {
   const {user} = useAuthContext();
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path='/login' element={!user ? <Login/> : <Navigate to='/login'/>}/>
           <Route path='/signup' element={!user ? <SignUp/> : <Navigate to='/signup'/>}/>
+          <Route path='/listings' element={<Listings/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
