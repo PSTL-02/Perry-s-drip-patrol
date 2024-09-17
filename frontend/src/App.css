@@ -57,7 +57,6 @@ nav {
         linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
         linear-gradient(90deg, #c440b0 0%, #54D3DE 100%);
       border-radius: 15px;
-      border: 5px solid;
       padding: 20px 30px;
       box-sizing: border-box;
       color: #fff;
@@ -83,7 +82,7 @@ nav {
 .listings-page {
   width: 100vw;
   padding: 20px;
-  background-color: #373737;
+  background-color: var(--background-color);
 
   .create-listing-search,.listing-buttons {
     display: flex;
@@ -255,29 +254,14 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-}
-
-.left-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-right: 40px;
-  text-align: center;
-}
-
-.left-section h1 {
-  font-size: 3rem;
-  color: white;
-  margin-bottom: 20px;
+  padding-top: 30px;
+  background-color:var(--background-color) ;
 }
 
 .buttons {
   display: flex;
   gap: 20px;
 }
-
 
 .primary-button {
   height: 100%;
@@ -289,7 +273,6 @@ footer {
     linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
     linear-gradient(90deg, #c440b0 0%, #54D3DE 100%);
   border-radius: 15px;
-  border: 5px solid;
   padding: 20px 30px;
   box-sizing: border-box;
   color: #fff;
@@ -314,24 +297,41 @@ footer {
   background-color: var(--accent-purple);
 }
 
-.right-section {
+.Landing-section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.large-shoe{
+  display: flex;
+  border-radius: 15px;
+  background-image: url('../public/Adidas-shoe.png' );
+  width: 700px;
+}
+
+.Landing-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  font-size: 1.5rem;
+}
+
+.Landing-text h1{
+  background: -webkit-linear-gradient( 135deg, var(--accent-purple), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.small-shoes {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.large-shoe img {
-  width: 350px;
-  border-radius: 15px;
-}
-
-.small-shoes {
-  display: flex;
-  gap: 20px;
-}
-
 .small-shoes img {
-  width: 150px;
   border-radius: 15px;
 }
 
@@ -339,9 +339,11 @@ footer {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
   display: flex;
   padding: 10px 20px ;
-
+  width: 100%;
   gap: 10px;
   margin-top: 30px;
+  align-items: center;
+  justify-content: center;
 }
 
 .filter {
@@ -353,22 +355,6 @@ footer {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.filter.nike {
-  background-color: #ffffff;
-}
-
-.filter.adidas {
-  background-color: #ffffff;
-}
-
-.filter.reebok {
-  background-color: #ffffff;
-}
-
-.filter.converse {
-  background-color: #ffffff;
 }
 
 .filter:hover {
