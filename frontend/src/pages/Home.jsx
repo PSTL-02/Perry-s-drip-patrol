@@ -23,10 +23,16 @@ const Home = () => {
         </div>
 
         <div className="filter-bar">
-          <button className="filter nike">Nike Airforce</button>
           <button className="filter adidas">Adidas</button>
-          <button className="filter reebok">Reebok</button>
           <button className="filter converse">Converse</button>
+          <button className="filter crocs">Crocs</button>
+          <button className="filter new-balance">New Balance</button>
+          <button className="filter nike">Nike</button>
+          <button className="filter puma">Puma</button>
+          <button className="filter reebok">Reebok</button>
+          <button className="filter timberland">Timberland</button>
+          <button className="filter ugg">Ugg</button>
+          <button className="filter vans">Vans</button>
         </div>
         
       </div>
