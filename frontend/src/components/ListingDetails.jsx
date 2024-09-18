@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { useListingContext } from '../hooks/useListingContext'
 
 // Icon Import
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL
 
@@ -59,21 +59,14 @@ const ListingDetails = ({listing}) => {
             location: editLocation,
             price: editPrice,
             condition: editCondition,
-            description: editDescription,
-            listing_img: editImage
         };
     
-        // Check if a new image file is selected before appending
-        if (editImage) {
-            updatedListing.append('listing_img', editImage);
-        }
-    
         try {
-            const response = await axios.patch(`${baseURL}/api/listings/${listing._id}`, updatedListing, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
+            const response = await axios.patch(`${baseURL}/api/listings/${listing._id}`,
+                updatedListing
+            );
+
+            const updatedData = response.data;
             
             if (response.status === 200) {
                 dispatch({ type: 'UPDATE_LISTING', payload: response.data });
@@ -93,8 +86,6 @@ const ListingDetails = ({listing}) => {
         setEditLocation(listing.location)
         setEditPrice(listing.price)
         setEditCondition(listing.condition)
-        setEditDescription(listing.description)
-        setEditImage(listing.listing_img)
         setIsEditing(false);
     }
 
@@ -105,84 +96,66 @@ const ListingDetails = ({listing}) => {
                     <form className='edit-form'>
                         <h3>Edit Your Item</h3>
 
-                        {/* Title */}
-                        <div className='edit-filter'>
-                            <label>Edit Title:</label>
-                            <input
-                                type='text'
-                                value={editTitle}
-                                onChange={(e) => setEditTitle(e.target.value)}
-                            />
-                        </div>
+                        <div className='filter-form-container'>
+                            {/* Title */}
+                            <div className='edit-filter'>
+                                <label>Title:</label>
+                                <input
+                                    type='text'
+                                    value={editTitle}
+                                    onChange={(e) => setEditTitle(e.target.value)}
+                                />
+                            </div>
 
-                        {/* Location */}
-                        <div className='edit-filter'>
-                            <label>Edit Location:</label>
-                            <input
-                                type='text'
-                                value={editLocation}
-                                onChange={(e) => setEditLocation(e.target.value)}
-                            />
-                        </div>
+                            {/* Location */}
+                            <div className='edit-filter'>
+                                <label>Location:</label>
+                                <input
+                                    type='text'
+                                    value={editLocation}
+                                    onChange={(e) => setEditLocation(e.target.value)}
+                                />
+                            </div>
 
-                        {/* Size */}
-                        <div className='edit-filter'>
-                            <label>Edit Size:</label>
-                            <input
-                                type='text'
-                                value={editSize}
-                                onChange={(e) => setEditSize(e.target.value)}
-                            />
-                        </div>
+                            {/* Size */}
+                            <div className='edit-filter'>
+                                <label>Size:</label>
+                                <input
+                                    type='text'
+                                    value={editSize}
+                                    onChange={(e) => setEditSize(e.target.value)}
+                                />
+                            </div>
 
-                        {/* Price */}
-                        <div className='edit-filter'>
-                            <label>Edit Price:</label>
-                            <input
-                                type='text'
-                                value={editPrice}
-                                onChange={(e) => setEditPrice(e.target.value)}
-                            />
-                        </div>
+                            {/* Price */}
+                            <div className='edit-filter'>
+                                <label>Price:</label>
+                                <input
+                                    type='text'
+                                    value={editPrice}
+                                    onChange={(e) => setEditPrice(e.target.value)}
+                                />
+                            </div>
 
-                        {/* Condition */}
-                        <div className='edit-filter'>
-                            <label>Edit Condition:</label>
-                            <select type='text' value={editCondition} onChange={(e) => setEditCondition(e.target.value)}>
-                            <option value='new'>New</option>
-                            <option value='used_like_new'>Used - Like New</option>
-                            <option value='used_good'>Used - Good</option>
-                            <option value='used_fair'>Used - Fair</option>
-                            </select>
-                        </div>
-
-                        {/* Image */}
-                        <div className='edit-filter'>
-                            <label>Edit Image:</label>
-                            <input
-                                type='file'
-                                accept='image/*'
-                                onChange={(e) => setEditImage(e.target.files[0])}
-                            />
-                        </div>
-
-                        {/* Description */}
-                        <div className='edit-filter'>
-                            <label>Edit Description:</label>
-                            <input
-                                type='text'
-                                value={editDescription}
-                                onChange={(e) => setEditDescription(e.target.value)}
-                            />
+                            {/* Condition */}
+                            <div className='edit-filter'>
+                                <label>Condition:</label>
+                                <select type='text' value={editCondition} onChange={(e) => setEditCondition(e.target.value)}>
+                                <option value='new'>New</option>
+                                <option value='used_like_new'>Used - Like New</option>
+                                <option value='used_good'>Used - Good</option>
+                                <option value='used_fair'>Used - Fair</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div className='edit-form-buttons'>
                             <div className='save-cancel-buttons'>
-                                <button onClick={handleSubmitEdit}>Save Changes</button>
-                                <button onClick={handleCancelEdit}>Cancel Changes</button>
+                                <button className='save-button' onClick={handleSubmitEdit}>Save Changes</button>
+                                <button className='cancel-button' onClick={handleCancelEdit}>Cancel Changes</button>
                             </div>
                             <div className='delete-listing-button'>
-                                <button onClick={handleDelete}>Delete Listing</button>
+                                <button className='delete-button' onClick={handleDelete}>Delete Listing</button>
                             </div>
                             
                         </div>
@@ -197,22 +170,25 @@ const ListingDetails = ({listing}) => {
                                 <div className='listing-image'>
                                     <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt="Listing" />
                                 </div>
-                                <h3 className='shoe-price'>{listing.price}</h3>
                                 <div className='listing-card-info'>
                                     <div className='listing-card-details'>
+                                        <h3 className='shoe-price'>{listing.price}</h3>
                                         <h2>{listing.listing_title}</h2>
                                         <p>Size:{listing.shoe_size}</p>
-                                        <p>{listing.description}</p>
                                         <p>{listing.location}</p>
                                     </div>
+
                                     <div className='listing-card-buttons'>
                                         <button className='view-button' onClick={handleNavigate}>view</button>
-                                        <div className='edit-delete-button'>
-                                            <MdEdit className='edit'onClick={handleEdit}/>
-                                            <MdDelete className='delete'onClick={handleDelete}/>
-                                            
-                                        </div>
-                                    </div>    
+                                        {listing.user_id === user_id && (
+                                            <>
+                                                <div className='edit-delete-button'>
+                                                    <FaEdit className='edit-icon'onClick={handleEdit}/>
+                                                    <FaRegTrashAlt className='delete-icon'onClick={handleDelete}/>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
