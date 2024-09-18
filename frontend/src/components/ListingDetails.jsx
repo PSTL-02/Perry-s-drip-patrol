@@ -98,7 +98,7 @@ const ListingDetails = ({listing}) => {
 
                         <div className='filter-form-container'>
                             {/* Title */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Title:</label>
                                 <input
                                     type='text'
@@ -108,7 +108,7 @@ const ListingDetails = ({listing}) => {
                             </div>
 
                             {/* Location */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Location:</label>
                                 <input
                                     type='text'
@@ -118,7 +118,7 @@ const ListingDetails = ({listing}) => {
                             </div>
 
                             {/* Brand */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label htmlFor="brand">Brand:<span>*</span></label>
                                 <select type='text' onChange={(e) => setEditBrand(e.target.value)} value={editBrand} required>
                                     <option value=''>Please Select shoe Brand</option>
@@ -130,7 +130,7 @@ const ListingDetails = ({listing}) => {
                             </div>
 
                             {/* Size */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Size:</label>
                                 <div className='size-filter'>
                                     <input
@@ -147,7 +147,7 @@ const ListingDetails = ({listing}) => {
                             </div>
 
                             {/* Price */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Price:</label>
                                 <input
                                     type='text'
@@ -157,13 +157,13 @@ const ListingDetails = ({listing}) => {
                             </div>
 
                             {/* Condition */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Condition:</label>
                                 <select type='text' value={editCondition} onChange={(e) => setEditCondition(e.target.value)}>
                                 <option value='new'>New</option>
-                                <option value='used_like_new'>Used - Like New</option>
-                                <option value='used_good'>Used - Good</option>
-                                <option value='used_fair'>Used - Fair</option>
+                                <option value='used-like-new'>Used - Like New</option>
+                                <option value='used-good'>Used - Good</option>
+                                <option value='used-fair'>Used - Fair</option>
                                 </select>
                             </div>
                         </div>
