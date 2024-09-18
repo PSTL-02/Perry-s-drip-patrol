@@ -23,7 +23,7 @@ const App = () => {
           {/* signup */}
           <Route path='/signup' element={!user ? <SignUp/> : <Navigate to='/'/>}/>
           {/* single page */}
-          <Route path='/:id' element={!user ? <SingleListing/> : <Navigate to='login'/>}/>
+          <Route path='/:id' element={user ? <SingleListing/> : <Navigate to='/login'/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

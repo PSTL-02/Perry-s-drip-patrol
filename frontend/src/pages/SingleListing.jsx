@@ -11,7 +11,7 @@ const SingleListing = () => {
   return (
     <>
         {/* back button */}
-        <button className='primary-button' onClick={() => navigate(-1)}>
+        <button className='primary-button back-button' onClick={() => navigate(-1)}>
             <IoIosArrowBack />
             Back
         </button>
