@@ -8,6 +8,7 @@ const ListingForm = ({closeMethod}) => {
     const { dispatch } = useListingContext()
 
     const [title, setTitle] = useState('')
+    const [brand, setBrand] = useState('')
     const [size, setSize] = useState('')
     const [location, setLocation] = useState('')
     const [price, setPrice] = useState('')
@@ -20,7 +21,7 @@ const ListingForm = ({closeMethod}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!title || !size || !location || !price || !condition || !listingImage) {
+        if (!title || !brand || !size || !location || !price || !condition || !listingImage) {
             setError('* Please fill in all required fields.');
             return;
         }
@@ -29,6 +30,7 @@ const ListingForm = ({closeMethod}) => {
 
         const formData = new FormData()
         formData.append('listing_title', title)
+        formData.append('shoe_brand', brand)
         formData.append('shoe_size', size)
         formData.append('location', location)
         formData.append('price', price)
@@ -39,6 +41,7 @@ const ListingForm = ({closeMethod}) => {
         try {
             const response = await axios.post(`${baseURL}/api/listings`, formData);
             setTitle('')
+            setBrand('')
             setSize('')
             setLocation('')
             setPrice('')
@@ -86,6 +89,18 @@ const ListingForm = ({closeMethod}) => {
                     />
                 </div>
 
+                {/* Brand */}
+                <div className='filter'>
+                    <label htmlFor="brand">Brand:<span>*</span></label>
+                    <select type='text' onChange={(e) => setBrand(e.target.value)} value={brand} required>
+                        <option value=''>Please Select shoe Brand</option>
+                        <option value='adidas'>Adidas</option>
+                        <option value='converse'>Converse</option>
+                        <option value='new-balance'>New Balance</option>
+                        <option value='nike'>Nike</option>
+                    </select>
+                </div>
+
                 {/* size */}
                 <div className='filter'>
                     <label htmlFor="size">Size:<span>*</span></label>
@@ -95,6 +110,11 @@ const ListingForm = ({closeMethod}) => {
                         value={size}
                         required
                     />
+                    <select type='text' onChange={(e) => setSize(e.target.value)} value={size} required>
+                        <option value='us'>US</option>
+                        <option value='uk'>UK</option>
+                        <option value='euro'>EURO</option>
+                    </select>
                 </div>
 
                 {/* Price */}
@@ -114,9 +134,9 @@ const ListingForm = ({closeMethod}) => {
                     <select type='text' onChange={(e) => setCondition(e.target.value)} value={condition} required>
                         <option value=''>Please Select shoe condition</option>
                         <option value='new'>New</option>
-                        <option value='used_like_new'>Used - Like New</option>
-                        <option value='used_good'>Used - Good</option>
-                        <option value='used_fair'>Used - Fair</option>
+                        <option value='used-like-new'>Used - Like New</option>
+                        <option value='used-good'>Used - Good</option>
+                        <option value='used-fair'>Used - Fair</option>
                     </select>
                 </div>
 
