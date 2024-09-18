@@ -46,7 +46,7 @@ const getListing = async (req, res) => {
 
 // Create Listing
 const createListing = async (req, res) => {
-    const { listing_title, user_id, shoe_size, price, location, condition, description } = req.body
+    const { listing_title, user_id, shoe_brand, shoe_size, price, location, condition, description } = req.body
 
     const imageFilename = req.file ? req.file.filename : null;
 
@@ -55,6 +55,7 @@ const createListing = async (req, res) => {
             listing_title,
             listing_img: imageFilename,
             user_id,
+            shoe_brand,
             shoe_size,
             price,
             location,
