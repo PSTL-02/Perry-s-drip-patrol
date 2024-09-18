@@ -118,25 +118,140 @@ nav {
   }
 
   /* Edit Form start */
-  .edit-project {
-    border-radius: 60px;
-    background-image: linear-gradient(-50deg, rgba(235,137,62,1) 0%, rgba(237,82,85,1) 25%, rgba(215,68,152,1) 50%, rgba(66,92,170,1) 80%, rgba(109,205,232,1) 100%);
-    padding: 5px;
+  .edit-listing{
+    border-radius: 15px;
+    /* background-image: linear-gradient(-50deg, rgba(235,137,62,1) 0%, rgba(237,82,85,1) 25%, rgba(215,68,152,1) 50%, rgba(66,92,170,1) 80%, rgba(109,205,232,1) 100%); */
+    background-color: black;
+    padding: 0px;
     width: 100%;
   }
   .edit-form {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
-    background-color: var(--background-color);
+    border-radius: 15px;
+    /* background-color: var(--background-color); */
+    padding: 15px;
+
+    h3 {
+      font-size: 1.5em;
+      color: var(--accent-purple);
+    }
+  }
+
+  .filter-form-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .edit-filter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
   .edit-form label {
+    width: 50%;
+    font-size: 15px;
     color: white;
-}
+  }
 
-.edit-form input {
+  .edit-form input {
     height: 30px;
-}
+    width: 100%;
+  }
+  /* Form Buttons Starts - save/cancel/delete */
+  .edit-form-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .save-cancel-buttons {
+      display: flex;
+      gap: 10px;
+
+      .save-button {
+        position: relative;
+        padding: 5px 10px;
+        background-color: var(--background-color);
+        color: white;
+        z-index: 1;
+        border: none;
+        border-radius: 5px;
+        transition: 0.5s all ease;
+      }
+      
+      .save-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 5px;
+        padding: 2px;
+        background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude; 
+        cursor: pointer;
+        transition: 0.5s all ease;
+      }
+  
+      .save-button:hover::before {
+        background: var(--accent-blue);
+      }
+
+      .cancel-button {
+        position: relative;
+        padding: 5px 10px;
+        background-color: var(--background-color);
+        color: white;
+        z-index: 1;
+        border: none;
+        border-radius: 5px;
+        transition: 0.5s all ease;
+      }
+      
+      .cancel-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 5px;
+        padding: 2px;
+        background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude; 
+        cursor: pointer;
+        transition: 0.5s all ease;
+      }
+  
+      .cancel-button:hover::before {
+        background: var(--accent-blue);
+      }
+    }
+    .delete-button {
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      background-color: var(--background-color);
+      color: white;
+      border: 2px solid red;
+      border-radius: 5px;
+    }
+  }
+  /* Form Buttons Ends */
   /* Edit Form Ends */
 
   /* Listing Details - Start */
@@ -155,17 +270,23 @@ nav {
     }
 
     .listing-card-info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      .listing-card-details {
+        width: 50%;
+      }
     }
+    
 
+    /* Card Buttons */
     .listing-card-buttons {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      align-items: center;
 
       .view-button {
         position: relative;

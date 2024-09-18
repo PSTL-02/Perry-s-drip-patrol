@@ -12,7 +12,7 @@ const listingsReducer = (state, action) => {
                 return {
                     listings: [action.payload, ...state.listings]
                 }
-            case 'DELETE_LISTINGS':
+            case 'DELETE_LISTING':
                 return {
                     listings: state.listings.filter((listing) => listing._id !== action.payload._id)
                 }
