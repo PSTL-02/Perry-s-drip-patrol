@@ -59,7 +59,6 @@ const ListingDetails = ({listing}) => {
             location: editLocation,
             price: editPrice,
             condition: editCondition,
-            description: editDescription,
         };
     
         try {
@@ -87,7 +86,6 @@ const ListingDetails = ({listing}) => {
         setEditLocation(listing.location)
         setEditPrice(listing.price)
         setEditCondition(listing.condition)
-        setEditDescription(listing.description)
         setIsEditing(false);
     }
 
@@ -149,16 +147,6 @@ const ListingDetails = ({listing}) => {
                                 <option value='used_fair'>Used - Fair</option>
                                 </select>
                             </div>
-
-                            {/* Description */}
-                            <div className='edit-filter'>
-                                <label>Description:</label>
-                                <input
-                                    type='text'
-                                    value={editDescription}
-                                    onChange={(e) => setEditDescription(e.target.value)}
-                                />
-                            </div>
                         </div>
 
                         <div className='edit-form-buttons'>
@@ -187,16 +175,20 @@ const ListingDetails = ({listing}) => {
                                         <h3 className='shoe-price'>{listing.price}</h3>
                                         <h2>{listing.listing_title}</h2>
                                         <p>Size:{listing.shoe_size}</p>
-                                        {/* <p>{listing.description}</p> */}
                                         <p>{listing.location}</p>
                                     </div>
+
                                     <div className='listing-card-buttons'>
                                         <button className='view-button' onClick={handleNavigate}>view</button>
-                                        <div className='edit-delete-button'>
-                                            <FaEdit className='edit-icon'onClick={handleEdit}/>
-                                            <FaRegTrashAlt className='delete-icon'onClick={handleDelete}/>
-                                        </div>
-                                    </div>    
+                                        {listing.user_id === user_id && (
+                                            <>
+                                                <div className='edit-delete-button'>
+                                                    <FaEdit className='edit-icon'onClick={handleEdit}/>
+                                                    <FaRegTrashAlt className='delete-icon'onClick={handleDelete}/>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>

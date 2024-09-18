@@ -284,7 +284,10 @@ nav {
       justify-content: space-between;
       padding: 1rem;
       .listing-card-details {
-        width: 50%;
+        width: 100%;
+        h2 {
+          font-size: 1.5rem;
+        }
       }
     }
     
