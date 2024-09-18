@@ -18,8 +18,7 @@ const ListingDetails = ({listing}) => {
     const [editLocation, setEditLocation] = useState(listing.location);
     const [editPrice, setEditPrice] = useState(listing.price);
     const [editCondition, setEditCondition] = useState(listing.condition);
-    const [editDescription, setEditDescription] = useState(listing.description);
-    const [editImage, setEditImage] = useState(null);
+    const [editBrand, setEditBrand] = useState(listing.shoe_brand);
 
     const { dispatch } = useListingContext();
     const navigate = useNavigate();
@@ -55,6 +54,7 @@ const ListingDetails = ({listing}) => {
     const handleSubmitEdit = async () => {
         const updatedListing = {
             listing_title: editTitle,
+            shoe_brand: editBrand,
             shoe_size: editSize,
             location: editLocation,
             price: editPrice,
@@ -117,14 +117,33 @@ const ListingDetails = ({listing}) => {
                                 />
                             </div>
 
+                            {/* Brand */}
+                            <div className='edit-filter'>
+                                <label htmlFor="brand">Brand:<span>*</span></label>
+                                <select type='text' onChange={(e) => setEditBrand(e.target.value)} value={editBrand} required>
+                                    <option value=''>Please Select shoe Brand</option>
+                                    <option value='adidas'>Adidas</option>
+                                    <option value='converse'>Converse</option>
+                                    <option value='new-balance'>New Balance</option>
+                                    <option value='nike'>Nike</option>
+                                </select>
+                            </div>
+
                             {/* Size */}
                             <div className='edit-filter'>
                                 <label>Size:</label>
-                                <input
-                                    type='text'
-                                    value={editSize}
-                                    onChange={(e) => setEditSize(e.target.value)}
-                                />
+                                <div className='size-filter'>
+                                    <input
+                                        type='text'
+                                        value={editSize}
+                                        onChange={(e) => setEditSize(e.target.value)}
+                                    />
+                                    <select type='text' onChange={(e) => setEditSize(e.target.value)} value={editSize} required>
+                                        <option value='us'>US</option>
+                                        <option value='uk'>UK</option>
+                                        <option value='euro'>EURO</option>
+                                    </select>
+                                </div>
                             </div>
 
                             {/* Price */}
@@ -172,9 +191,10 @@ const ListingDetails = ({listing}) => {
                                 </div>
                                 <div className='listing-card-info'>
                                     <div className='listing-card-details'>
-                                        <h3 className='shoe-price'>{listing.price}</h3>
+                                        <h3 className='shoe-price'>${listing.price}</h3>
                                         <h2>{listing.listing_title}</h2>
-                                        <p>Size:{listing.shoe_size}</p>
+                                        <p>Size: {listing.shoe_size}{listing.shoe_brand}</p>
+                                        <p>Brand: {listing.shoe_brand}</p>
                                         <p>{listing.location}</p>
                                     </div>
 
