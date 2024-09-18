@@ -216,6 +216,10 @@ nav {
 /* LISTINGS END */
 
 /* home page landing Start */
+.home-outer{
+  height: 100%;
+  margin-bottom: 200px;
+}
 
 .home-container {
   display: flex;
