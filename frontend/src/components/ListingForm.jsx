@@ -63,105 +63,111 @@ const ListingForm = ({closeMethod}) => {
     }
 
     return (
-        <div className='form-box'>
-            <form onSubmit={handleSubmit}>
+        <div className='listing-form-box'>
+            <form className='listing-form' onSubmit={handleSubmit}>
                 <h3>Create Listing</h3>
 
-                {/* Title */}
-                <div className='filter'>
-                    <label htmlFor="title">Title:<span>*</span></label>
-                    <input
-                        type='text'
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                        required
-                    />
-                </div>
-                
-                {/* Location */}
-                <div className='filter'>
-                    <label htmlFor="location">Location:<span>*</span></label>
-                    <input
-                        type='text'
-                        onChange={(e) => setLocation(e.target.value)}
-                        value={location}
-                        required
-                    />
+                <div className='filter-form-container'>
+                    {/* Title */}
+                    <div className='form-filter'>
+                        <label htmlFor="title">Title:<span>*</span></label>
+                        <input
+                            type='text'
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
+                            required
+                        />
+                    </div>
+                    
+                    {/* Location */}
+                    <div className='form-filter'>
+                        <label htmlFor="location">Location:<span>*</span></label>
+                        <input
+                            type='text'
+                            onChange={(e) => setLocation(e.target.value)}
+                            value={location}
+                            required
+                        />
+                    </div>
+
+                    {/* Brand */}
+                    <div className='form-filter'>
+                        <label htmlFor="brand">Brand:<span>*</span></label>
+                        <select type='text' onChange={(e) => setBrand(e.target.value)} value={brand} required>
+                            <option value=''>Please Select shoe Brand</option>
+                            <option value='adidas'>Adidas</option>
+                            <option value='converse'>Converse</option>
+                            <option value='new-balance'>New Balance</option>
+                            <option value='nike'>Nike</option>
+                        </select>
+                    </div>
+
+                    {/* size */}
+                    <div className='form-filter'>
+                        <label htmlFor="size">Size:<span>*</span></label>
+                        <div className='size-filter'>
+                            <input
+                                type='text'
+                                onChange={(e) => setSize(e.target.value)}
+                                value={size}
+                                required
+                            />
+                            <select type='text' onChange={(e) => setSize(e.target.value)} value={size} required>
+                                <option value='us'>US</option>
+                                <option value='uk'>UK</option>
+                                <option value='euro'>EURO</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Price */}
+                    <div className='form-filter'>
+                        <label htmlFor="price">Price:<span>*</span></label>
+                        <input
+                            type='text'
+                            onChange={(e) => setPrice(e.target.value)}
+                            value={price}
+                            required
+                        />
+                    </div>
+
+                    {/* Condition */}
+                    <div className='form-filter'>
+                        <label htmlFor="condition">Condition:<span>*</span></label>
+                        <select type='text' onChange={(e) => setCondition(e.target.value)} value={condition} required>
+                            <option value=''>Please Select shoe condition</option>
+                            <option value='new'>New</option>
+                            <option value='used-like-new'>Used - Like New</option>
+                            <option value='used-good'>Used - Good</option>
+                            <option value='used-fair'>Used - Fair</option>
+                        </select>
+                    </div>
+
+                    {/* Description */}
+                    <div className='form-filter'>
+                        <label htmlFor="description">Description:<span>*</span></label>
+                        <input className='description'
+                            type='text'
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
+                            required
+                        />
+                    </div>
+
+                    {/* Image */}
+                    <div className='form-filter'>
+                        <label htmlFor="image">Image:<span>*</span></label>
+                        <input id='imageFilter'
+                            type='file'
+                            accept='image/*'
+                            onChange={(e) => setListingImage(e.target.files[0])} required/>
+                    </div>                    
                 </div>
 
-                {/* Brand */}
-                <div className='filter'>
-                    <label htmlFor="brand">Brand:<span>*</span></label>
-                    <select type='text' onChange={(e) => setBrand(e.target.value)} value={brand} required>
-                        <option value=''>Please Select shoe Brand</option>
-                        <option value='adidas'>Adidas</option>
-                        <option value='converse'>Converse</option>
-                        <option value='new-balance'>New Balance</option>
-                        <option value='nike'>Nike</option>
-                    </select>
+                <div className='form-buttons'>
+                    <button className='cancel-button' type='button' onClick={() => closeMethod()}>Cancel</button>
+                    <button className='post-button' type='submit'>Post Item</button>
                 </div>
-
-                {/* size */}
-                <div className='filter'>
-                    <label htmlFor="size">Size:<span>*</span></label>
-                    <input
-                        type='text'
-                        onChange={(e) => setSize(e.target.value)}
-                        value={size}
-                        required
-                    />
-                    <select type='text' onChange={(e) => setSize(e.target.value)} value={size} required>
-                        <option value='us'>US</option>
-                        <option value='uk'>UK</option>
-                        <option value='euro'>EURO</option>
-                    </select>
-                </div>
-
-                {/* Price */}
-                <div className='filter'>
-                    <label htmlFor="price">Price:<span>*</span></label>
-                    <input
-                        type='text'
-                        onChange={(e) => setPrice(e.target.value)}
-                        value={price}
-                        required
-                    />
-                </div>
-
-                {/* Condition */}
-                <div className='filter'>
-                    <label htmlFor="condition">Condition:<span>*</span></label>
-                    <select type='text' onChange={(e) => setCondition(e.target.value)} value={condition} required>
-                        <option value=''>Please Select shoe condition</option>
-                        <option value='new'>New</option>
-                        <option value='used-like-new'>Used - Like New</option>
-                        <option value='used-good'>Used - Good</option>
-                        <option value='used-fair'>Used - Fair</option>
-                    </select>
-                </div>
-
-                {/* Image */}
-                <div className='filter'>
-                    <label htmlFor="image">Image:<span>*</span></label>
-                    <input
-                        type='file'
-                        accept='image/*'
-                        onChange={(e) => setListingImage(e.target.files[0])} required/>
-                </div>
-
-                {/* Description */}
-                <div className='filter'>
-                    <label htmlFor="description">Description:<span>*</span></label>
-                    <input
-                        type='text'
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description}
-                        required
-                    />
-                </div>
-
-                <button type='button' onClick={() => closeMethod()}>Cancel</button>
-                <button type='submit'>Post Item</button>
 
                 {error && <div className='error'>{error}</div>}
             </form>
