@@ -9,6 +9,14 @@ const commentSchema = new Schema({
     user_id: {
         type: String,
         required: true
+    },
+    seller_id: {
+        type: String,
+        required: true
+    },
+    item_id: {
+        type: String,
+        required: true
     }
 }, {timestamps: true});
 

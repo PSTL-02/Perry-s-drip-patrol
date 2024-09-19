@@ -27,26 +27,26 @@ const getListing = async (req, res) => {
     }
 
     try {
-        const listing = await Listing.findById(id).populate({
-            path: 'comments',
-            model: 'Comment'
-        });
+        const listing = await Listing.findById(id).populate('comments');
+        // const listing = await Listing.findById(id).populate({
+        //     path: 'comments',
+        //     model: 'Comment'
+        // });
         
-        if(!listing) {
-            return res.status(404).json({error: 'No such Listing: Listing does not exist'});
+        if (!listing) {
+            return res.status(404).json({ message: 'Listing not found' });
         }
 
         res.status(200).json(listing);
 
     } catch (error) {
-        console.log(error);
-        res.status(500).json({error: 'Internal server error'})
+        res.status(500).json({ error: error.message });
     }
 };
 
 // Create Listing
 const createListing = async (req, res) => {
-    const { listing_title, user_id, shoe_size, price, location, condition, description } = req.body
+    const { listing_title, owner_name, shoe_size, description } = req.body
 
     const imageFilename = req.file ? req.file.filename : null;
 
@@ -54,11 +54,8 @@ const createListing = async (req, res) => {
         const listing = await Listing.create({
             listing_title,
             listing_img: imageFilename,
-            user_id,
+            owner_name,
             shoe_size,
-            price,
-            location,
-            condition,
             description,
         })
 
