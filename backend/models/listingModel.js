@@ -6,7 +6,7 @@ const listingSchema = new Schema({
         type: String,
         required: true
     },
-    user_id: {  // ID of the seller who created the listing
+    user_id: {
         type: String,
         required: true
     },

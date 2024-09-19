@@ -27,11 +27,11 @@ const getListing = async (req, res) => {
     }
 
     try {
-        const listing = await Listing.findById(id).populate('comments');
-        // const listing = await Listing.findById(id).populate({
-        //     path: 'comments',
-        //     model: 'Comment'
-        // });
+        // const listing = await Listing.findById(id).populate('comments');
+        const listing = await Listing.findById(id).populate({
+            path: 'comments',
+            model: 'Comment'
+        });
         
         if (!listing) {
             return res.status(404).json({ message: 'Listing not found' });

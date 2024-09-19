@@ -1,84 +1,106 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext'; // Assuming you have an AuthContext to manage user auth state
+import { AuthContext } from '../context/AuthContext';
+
+const baseURL = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
 
 const ChatSection = ({ listingId }) => {
-    const [comments, setComments] = useState([]); // Ensure comments start as an array
-    const [newComment, setNewComment] = useState('');
-    const { user } = useContext(AuthContext); // Get the logged-in user from context
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { user } = useContext(AuthContext);
 
-    useEffect(() => {
-        // Fetch comments when the component mounts
-        const fetchComments = async () => {
-            try {
-                const response = await axios.get(`/api/comments/listings/${listingId}`);
-                
-                // Ensure response.data is an array
-                if (Array.isArray(response.data)) {
-                    setComments(response.data);
-                } else {
-                    setComments([]); // If the response is not an array, set comments to an empty array
-                }
-            } catch (error) {
-                console.error('Failed to fetch comments:', error);
-                setComments([]); // Handle errors by setting comments to an empty array
-            }
-        };
-        fetchComments();
-    }, [listingId]);
+  useEffect(() => {
+    if (!listingId) {
+      console.warn('Listing ID is not defined');
+      return;
+    }
 
-    const handleCommentSubmit = async (e) => {
-        e.preventDefault();
-
-        if (!user) {
-            alert('You must be logged in to comment.');
-            return;
-        }
-
-        try {
-            const response = await axios.post(`/api/comments/listings/${listingId}/comments`, {
-                text: newComment,
-                user_id: user._id,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${user.token}`, // Send the JWT token in the header
-                },
-            });
-
-            // Clear the input and update comments
-            setNewComment('');
-            setComments([...comments, response.data]);
-        } catch (error) {
-            console.error('Failed to post comment:', error);
-        }
+    const fetchComments = async () => {
+      try {
+        const url = `${baseURL}/api/listings/${listingId}/comments`;
+        console.log('Fetching comments from URL:', url);
+        const response = await axios.get(url);
+        console.log('Comments fetched:', response.data);
+        setComments(response.data);
+      } catch (err) {
+        console.error('Error fetching comments:', err.response?.data || err.message);
+        setError('Failed to load comments. Please try again later.');
+      }
     };
 
-    return (
-        <div className="chat-section">
-            <h2>Comments</h2>
-            <div className="comments-list">
-                {comments.map((comment) => (
-                    <div key={comment._id} className="comment">
-                        <p>{comment.text}</p>
-                        <small>{new Date(comment.createdAt).toLocaleString()}</small>
-                    </div>
-                ))}
-            </div>
+    fetchComments();
+  }, [listingId]);
 
-            {/* Only show the comment form to logged-in users */}
-            {user && (
-                <form onSubmit={handleCommentSubmit} className="chat-form">
-                    <textarea
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                        placeholder="Type your message here..."
-                        required
-                    />
-                    <button type="submit">Send</button>
-                </form>
-            )}
-        </div>
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!newComment.trim()) {
+      setError('Comment cannot be empty.');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+
+    try {
+      const url = `${baseURL}/api/listings/${listingId}/comments`;
+      console.log('Posting comment to URL:', url);
+      const response = await axios.post(url, {
+        text: newComment,
+        user_id: user.username,
+      });
+
+      console.log('Comment posted:', response.data);
+      setComments((prevComments) => [...prevComments, response.data]);
+      setNewComment('');
+    } catch (err) {
+      console.error('Error posting comment:', err.response?.data || err.message);
+      setError('Failed to post comment. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="chat-section">
+      <h3>Comments</h3>
+      {error && <p className="error-message">{error}</p>}
+
+      <div className="comments-list">
+        {comments.length > 0 ? (
+          comments.map((comment) => (
+            <div key={comment._id} className="comment-item">
+              <strong>{comment.user_id}:</strong> {comment.text}
+              <p className="comment-time">
+                {new Date(comment.createdAt).toLocaleString()}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>No comments yet. Be the first to comment!</p>
+        )}
+      </div>
+
+      {user ? (
+        <form className="comment-form" onSubmit={handleSubmit}>
+          <textarea
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder="Write a comment..."
+            rows="4"
+            disabled={loading}
+          ></textarea>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Posting...' : 'Post Comment'}
+          </button>
+        </form>
+      ) : (
+        <p>Please log in to post a comment.</p>
+      )}
+    </div>
+  );
 };
 
 export default ChatSection;
