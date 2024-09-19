@@ -95,10 +95,16 @@ const ListingForm = ({closeMethod}) => {
                         <label htmlFor="brand">Brand:<span>*</span></label>
                         <select type='text' onChange={(e) => setBrand(e.target.value)} value={brand} required>
                             <option value=''>Please Select shoe Brand</option>
-                            <option value='adidas'>Adidas</option>
-                            <option value='converse'>Converse</option>
-                            <option value='new-balance'>New Balance</option>
-                            <option value='nike'>Nike</option>
+                            <option value='Adidas'>Adidas</option>
+                            <option value='Converse'>Converse</option>
+                            <option value='Crocs'>Crocs</option>
+                            <option value='New Balance'>New Balance</option>
+                            <option value='Nike'>Nike</option>
+                            <option value='Puma'>Puma</option>
+                            <option value='Reebok'>Reebok</option>
+                            <option value='Timberland'>Timberland</option>
+                            <option value='Ugg'>Ugg</option>
+                            <option value='Vans'>Vans</option>
                         </select>
                     </div>
 
@@ -113,9 +119,9 @@ const ListingForm = ({closeMethod}) => {
                                 required
                             />
                             <select type='text' onChange={(e) => setSize(e.target.value)} value={size} required>
-                                <option value='us'>US</option>
-                                <option value='uk'>UK</option>
-                                <option value='euro'>EURO</option>
+                                <option value='US'>US</option>
+                                <option value='UK'>UK</option>
+                                <option value='EURO'>EURO</option>
                             </select>
                         </div>
                     </div>
