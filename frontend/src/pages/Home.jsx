@@ -93,25 +93,28 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Create Listing Button */}
-        <div className='create-listing-search'>
-          <button className='primary-button' onClick={handleCreateListing}>
-            Create a listing
-          </button>
+        <div className='listings-page'>
+          {/* Create Listing Button */}
+          <div className='create-listing-search'>
+            <button className='primary-button' onClick={handleCreateListing}>
+              Create a listing
+            </button>
+          </div>
+
+          {showForm && <ListingForm closeMethod={() => setShowForm(false)} />}
+
+          {/* Listings Display */}
+          <div className='listings'>
+            {filteredListings.length > 0 ? (
+              filteredListings.map((listing) => (
+                <ListingDetails key={listing._id} listing={listing} />
+              ))
+            ) : (
+              <p>No listings available.</p>
+            )}
+          </div>
         </div>
 
-        {showForm && <ListingForm closeMethod={() => setShowForm(false)} />}
-
-        {/* Listings Display */}
-        <div className='listings'>
-          {filteredListings.length > 0 ? (
-            filteredListings.map((listing) => (
-              <ListingDetails key={listing._id} listing={listing} />
-            ))
-          ) : (
-            <p>No listings available.</p>
-          )}
-        </div>
       </div>
     </div>
   );
