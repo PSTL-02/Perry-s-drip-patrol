@@ -15,6 +15,7 @@ const ListingDetails = ({listing}) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editTitle, setEditTitle] = useState(listing.listing_title);
     const [editSize, setEditSize] = useState(listing.shoe_size);
+    const [editCountrySize, setEditCountrySize] = useState(listing.country_size);
     const [editLocation, setEditLocation] = useState(listing.location);
     const [editPrice, setEditPrice] = useState(listing.price);
     const [editCondition, setEditCondition] = useState(listing.condition);
@@ -56,6 +57,7 @@ const ListingDetails = ({listing}) => {
             listing_title: editTitle,
             shoe_brand: editBrand,
             shoe_size: editSize,
+            country_size: editCountrySize,
             location: editLocation,
             price: editPrice,
             condition: editCondition,
@@ -83,6 +85,7 @@ const ListingDetails = ({listing}) => {
     const handleCancelEdit = () => {
         setEditTitle(listing.listing_title)
         setEditSize(listing.shoe_size)
+        setEditCountrySize(listing.country_size)
         setEditLocation(listing.location)
         setEditPrice(listing.price)
         setEditCondition(listing.condition)
@@ -121,11 +124,16 @@ const ListingDetails = ({listing}) => {
                             <div className='form-filter'>
                                 <label htmlFor="brand">Brand:<span>*</span></label>
                                 <select type='text' onChange={(e) => setEditBrand(e.target.value)} value={editBrand} required>
-                                    <option value=''>Please Select shoe Brand</option>
-                                    <option value='adidas'>Adidas</option>
-                                    <option value='converse'>Converse</option>
-                                    <option value='new-balance'>New Balance</option>
-                                    <option value='nike'>Nike</option>
+                                    <option value='Adidas'>Adidas</option>
+                                    <option value='Converse'>Converse</option>
+                                    <option value='Crocs'>Crocs</option>
+                                    <option value='New Balance'>New Balance</option>
+                                    <option value='Nike'>Nike</option>
+                                    <option value='Puma'>Puma</option>
+                                    <option value='Reebok'>Reebok</option>
+                                    <option value='Timberland'>Timberland</option>
+                                    <option value='Ugg'>Ugg</option>
+                                    <option value='Vans'>Vans</option>
                                 </select>
                             </div>
 
@@ -138,10 +146,10 @@ const ListingDetails = ({listing}) => {
                                         value={editSize}
                                         onChange={(e) => setEditSize(e.target.value)}
                                     />
-                                    <select type='text' onChange={(e) => setEditSize(e.target.value)} value={editSize} required>
-                                        <option value='us'>US</option>
-                                        <option value='uk'>UK</option>
-                                        <option value='euro'>EURO</option>
+                                    <select type='text' onChange={(e) => setEditCountrySize(e.target.value)} value={editCountrySize} required>
+                                        <option value='US'>US</option>
+                                        <option value='UK'>UK</option>
+                                        <option value='EURO'>EURO</option>
                                     </select>
                                 </div>
                             </div>
@@ -193,7 +201,7 @@ const ListingDetails = ({listing}) => {
                                     <div className='listing-card-details'>
                                         <h3 className='shoe-price'>${listing.price}</h3>
                                         <h2>{listing.listing_title}</h2>
-                                        <p>Size: {listing.shoe_size}{listing.shoe_brand}</p>
+                                        <p>Size: {listing.shoe_size}{listing.country_size}</p>
                                         <p>Brand: {listing.shoe_brand}</p>
                                         <p>{listing.location}</p>
                                     </div>

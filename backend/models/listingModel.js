@@ -24,6 +24,10 @@ const listingSchema = new Schema ({
         type: String,
         require: true
     },
+    country_size: {
+        type: String,
+        require: true
+    },
     price: {
         type: String,
         require: true
