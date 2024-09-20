@@ -128,8 +128,9 @@ nav {
   /* Listing & Edit Form start */
   .listing-form-box, .edit-listing {
     border-radius: 15px;
-    padding: 0px;
+    padding: 10px;
     width: 100%;
+    margin-bottom: 30px;
     background-color: var(--background-color);
     position: relative;
     z-index: 1;
@@ -158,11 +159,16 @@ nav {
     height: 100%;
     border-radius: 15px;
     padding: 15px;
+  }
 
-    h3 {
-      font-size: 1.5em;
-      color: var(--accent-purple);
-    }
+  .listing-form h3 {
+    font-size: 3rem;
+    color: var(--accent-purple);
+  }
+
+  .edit-form h3 {
+    font-size: 1.5em;
+    color: var(--accent-purple);
   }
 
   .filter-form-container {
