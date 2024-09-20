@@ -201,7 +201,7 @@ const ListingDetails = ({listing}) => {
                                     <div className='listing-card-details'>
                                         <h3 className='shoe-price'>${listing.price}</h3>
                                         <h2>{listing.listing_title}</h2>
-                                        <p>Size: {listing.shoe_size}{listing.country_size}</p>
+                                        <p>Size: {listing.shoe_size} {listing.country_size}</p>
                                         <p>Brand: {listing.shoe_brand}</p>
                                         <p>{listing.location}</p>
                                     </div>
