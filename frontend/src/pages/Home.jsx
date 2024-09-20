@@ -21,21 +21,20 @@ const Home = () => {
         const response = await axios.get(`${baseURL}/api/listings`);
         setShoes(response.data);
         setFilteredShoes(response.data);
+        dispatch({type: 'SET_LISTINGS', payload: response.data});
       } catch (error) {
         console.error('Error fetching shoes:', error);
       }
     };
 
     fetchShoes();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
-    const filtered = selectedBrand === 'All'
-      ? shoes
-      : shoes.filter(shoe => shoe.shoe_brand && shoe.shoe_brand === selectedBrand);
-    console.log(filtered)
-    setFilteredShoes(filtered);
-  }, [selectedBrand, shoes]);
+    setFilteredShoes(selectedBrand === 'All'
+        ? listings
+        : listings.filter(shoe => shoe.shoe_brand === selectedBrand));
+  }, [selectedBrand, listings]);
 
   const handleBrandChange = (brand) => {
     setSelectedBrand(brand);

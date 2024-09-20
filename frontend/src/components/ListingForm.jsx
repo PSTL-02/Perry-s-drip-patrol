@@ -5,18 +5,19 @@ import axios from 'axios'
 const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const ListingForm = ({closeMethod}) => {
-    const { dispatch } = useListingContext()
+    const { dispatch } = useListingContext();
 
-    const [title, setTitle] = useState('')
-    const [brand, setBrand] = useState('')
-    const [size, setSize] = useState('')
-    const [location, setLocation] = useState('')
-    const [price, setPrice] = useState('')
-    const [condition, setCondition] = useState('')
-    const [description, setDescription] = useState('')
-    const [listingImage, setListingImage] = useState(null)
+    const [title, setTitle] = useState('');
+    const [brand, setBrand] = useState('');
+    const [size, setSize] = useState('');
+    const [countrySize, setCountrySize] = useState('');
+    const [location, setLocation] = useState('');
+    const [price, setPrice] = useState('');
+    const [condition, setCondition] = useState('');
+    const [description, setDescription] = useState('');
+    const [listingImage, setListingImage] = useState(null);
 
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,41 +27,43 @@ const ListingForm = ({closeMethod}) => {
             return;
         }
 
-        const user = JSON.parse(localStorage.getItem('user'))
+        const user = JSON.parse(localStorage.getItem('user'));
 
-        const formData = new FormData()
-        formData.append('listing_title', title)
-        formData.append('shoe_brand', brand)
-        formData.append('shoe_size', size)
-        formData.append('location', location)
-        formData.append('price', price)
-        formData.append('condition', condition)
-        formData.append('description', description)
-        formData.append('listing_img', listingImage)
+        const formData = new FormData();
+        formData.append('listing_title', title);
+        formData.append('shoe_brand', brand);
+        formData.append('shoe_size', size);
+        formData.append('country_size', countrySize);
+        formData.append('location', location);
+        formData.append('price', price);
+        formData.append('condition', condition);
+        formData.append('description', description);
+        formData.append('listing_img', listingImage);
 
         try {
             const response = await axios.post(`${baseURL}/api/listings`, formData);
-            setTitle('')
-            setBrand('')
-            setSize('')
-            setLocation('')
-            setPrice('')
-            setCondition('')
-            setDescription('')
-            setListingImage(null)
+            dispatch({type: 'CREATE_LISTINGS', payload: response.data});
 
-            setError(null)
+            setTitle('');
+            setBrand('');
+            setSize('');
+            setCountrySize('US');
+            setLocation('');
+            setPrice('');
+            setCondition('');
+            setDescription('');
+            setListingImage(null);
 
-            dispatch({type: 'CREATE_LISTINGS', payload: response.data})
+            setError(null);
 
             if (typeof closeMethod === 'function') {
-                closeMethod()
+                closeMethod();
             }
 
         } catch (error) {
-            setError('An error occurred when posting the listing. Please try again.')
+            setError('An error occurred when posting the listing. Please try again.');
         }
-    }
+    };
 
     return (
         <div className='listing-form-box'>
@@ -78,7 +81,7 @@ const ListingForm = ({closeMethod}) => {
                             required
                         />
                     </div>
-                    
+
                     {/* Location */}
                     <div className='form-filter'>
                         <label htmlFor="location">Location:<span>*</span></label>
@@ -108,7 +111,7 @@ const ListingForm = ({closeMethod}) => {
                         </select>
                     </div>
 
-                    {/* size */}
+                    {/* Size */}
                     <div className='form-filter'>
                         <label htmlFor="size">Size:<span>*</span></label>
                         <div className='size-filter'>
@@ -118,7 +121,7 @@ const ListingForm = ({closeMethod}) => {
                                 value={size}
                                 required
                             />
-                            <select type='text' onChange={(e) => setSize(e.target.value)} value={size} required>
+                            <select type='text' onChange={(e) => setCountrySize(e.target.value)} value={countrySize} required>
                                 <option value='US'>US</option>
                                 <option value='UK'>UK</option>
                                 <option value='EURO'>EURO</option>
@@ -166,8 +169,8 @@ const ListingForm = ({closeMethod}) => {
                         <input id='imageFilter'
                             type='file'
                             accept='image/*'
-                            onChange={(e) => setListingImage(e.target.files[0])} required/>
-                    </div>                    
+                            onChange={(e) => setListingImage(e.target.files[0])} required />
+                    </div>
                 </div>
 
                 <div className='form-buttons'>
@@ -178,7 +181,7 @@ const ListingForm = ({closeMethod}) => {
                 {error && <div className='error'>{error}</div>}
             </form>
         </div>
-    )
-}
+    );
+};
 
 export default ListingForm

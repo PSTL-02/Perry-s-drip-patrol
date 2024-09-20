@@ -37,9 +37,10 @@ const ListingDetails = ({listing}) => {
     const handleDelete = async () => {
         try {
             const response = await axios.delete(`${baseURL}/api/listings/${listing._id}`)
-            const json = await response.data
+            // const json = await response.data
             if(response.status === 200) {
-                dispatch({type: 'DELETE_LISTING', payload: json})
+                // dispatch({type: 'DELETE_LISTING', payload: json});
+                dispatch({type: 'DELETE_LISTING', payload: listing});
             }
         } catch (error) {
             console.log('Error deleting listing', error);
