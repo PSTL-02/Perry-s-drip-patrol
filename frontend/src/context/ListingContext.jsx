@@ -38,7 +38,7 @@ const listingsReducer = (state, action) => {
 
 export const ListingsContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(listingsReducer, {
-        listings: null
+        listings: []
     })
 
     return (
