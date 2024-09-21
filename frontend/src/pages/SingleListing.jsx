@@ -1,14 +1,13 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+// icons
 import { IoIosArrowBack } from 'react-icons/io';
+// components
 import SinglePageHeader from '../components/SinglePageHeader';
-// import ChatSection from '../components/ChatSection';
+import ChatSection from '../components/ChatSection';
 
 const SingleListing = () => {
-  const navigate = useNavigate();
-  const { id } = useParams(); // Get the listingId from the URL
-
-  // console.log('listingId from URL params:', id); // Log to make sure you're getting the correct id
+  const navigate = useNavigate()
 
   return (
     <>
@@ -21,8 +20,8 @@ const SingleListing = () => {
       {/* single page header */}
       <SinglePageHeader />
 
-      {/* chat */}
-      {/* <ChatSection listingId={id} /> */}
+      {/* chat section */}
+      <ChatSection/>
     </>
   );
 };

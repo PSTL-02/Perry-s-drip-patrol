@@ -76,7 +76,7 @@ const SinglePageHeader = () => {
             {/* description */}
             <div className='single-listing-description-container'>
                 <div className='single-listing-description'>
-                    <p>Description:<br/>{listing.description}</p>
+                    <p>Description:<br/><br/>{listing.description}</p>
                 </div>
             </div>
         </>

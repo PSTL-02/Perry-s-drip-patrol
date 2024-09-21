@@ -1,105 +1,105 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';
+import { useListingContext } from '../hooks/useListingContext';
+import {formatDistanceToNow} from 'date-fns';
+// icons
+import { IoPaperPlaneOutline } from "react-icons/io5";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '');
+const ChatSection = () => {
+  const { dispatch } = useListingContext();
+  const { id } = useParams();
 
-const ChatSection = ({ listingId }) => {
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const { user } = useContext(AuthContext);
+  const [listing, setListing] = useState(null);
+  const [commentText, setCommentText] = useState('');
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  const user_id = user?.username;
+
+  // fetch listing by id
   useEffect(() => {
-    if (!listingId) {
-      console.warn('Listing ID is not defined');
-      return;
-    }
-
-    const fetchComments = async () => {
+    const fetchListing = async () => {
       try {
-        const url = `${baseURL}/api/listings/${listingId}/comments`;
-        console.log('Fetching comments from URL:', url);
-        const response = await axios.get(url);
-        console.log('Comments fetched:', response.data);
-        setComments(response.data);
-      } catch (err) {
-        console.error('Error fetching comments:', err.response?.data || err.message);
-        setError('Failed to load comments. Please try again later.');
+        const response = await axios.get(`http://localhost:4000/api/listings/${id}`);
+        setListing(response.data);
+      } catch (error) {
+        console.error('Error fetching listing:', error);
       }
     };
 
-    fetchComments();
-  }, [listingId]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!newComment.trim()) {
-      setError('Comment cannot be empty.');
-      return;
+    if (id) {
+      fetchListing();
     }
+  }, [id]);
 
-    setLoading(true);
-    setError('');
-
+  const handleAddComment = async () => {
     try {
-      const url = `${baseURL}/api/listings/${listingId}/comments`;
-      console.log('Posting comment to URL:', url);
-      const response = await axios.post(url, {
-        text: newComment,
-        user_id: user.username,
-      });
+      if (!listing?._id) {
+        console.error('Listing ID is missing');
+        return;
+      }
 
-      console.log('Comment posted:', response.data);
-      setComments((prevComments) => [...prevComments, response.data]);
-      setNewComment('');
-    } catch (err) {
-      console.error('Error posting comment:', err.response?.data || err.message);
-      setError('Failed to post comment. Please try again later.');
-    } finally {
-      setLoading(false);
+      const response = await axios.post(
+        `http://localhost:4000/api/comments/listings/${listing._id}/comments`,
+        {
+          text: commentText,
+          user_id: user_id,
+        }
+      );
+
+      if (response.status === 201) {
+        const newComment = response.data;
+        const updatedComments = [...(listing?.comments || []), newComment];
+        const updatedListing = { ...listing, comments: updatedComments };
+
+        setListing(updatedListing);
+        dispatch({ type: 'UPDATE_LISTING', payload: updatedListing });
+        setCommentText('');
+      }
+    } catch (error) {
+      console.error('Error Adding Comment: ', error);
     }
   };
 
   return (
-    <div className="chat-section">
-      <h3>Comments</h3>
-      {error && <p className="error-message">{error}</p>}
+    <>
+      {/* chat section */}
+      <div className="chat-section">
+        <h2>Chat with the seller</h2>
+        {/* comments coontainer */}
+        <div className="comments">
+          {listing?.comments?.length > 0 ? (
+            listing.comments.map((comment) => (
+              <div key={comment._id} className="comment">
+              {/* individual comment */}
+                <div className='comment-user-details'>
+                    <h5>{comment.user_id}</h5>
+                </div>
+                <div className='comment-details'>
+                    <p>{comment.text}</p>
+                    <span className='comment-date'>Sent {formatDistanceToNow(new Date(comment.createdAt), {includeSeconds: false, addSuffix: true})}</span>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className='empty-comments-alert'>Be the first to comment!</p>
+          )}
+        </div>
 
-      <div className="comments-list">
-        {comments.length > 0 ? (
-          comments.map((comment) => (
-            <div key={comment._id} className="comment-item">
-              <strong>{comment.user_id}:</strong> {comment.text}
-              <p className="comment-time">
-                {new Date(comment.createdAt).toLocaleString()}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>No comments yet. Be the first to comment!</p>
-        )}
-      </div>
-
-      {user ? (
-        <form className="comment-form" onSubmit={handleSubmit}>
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Write a comment..."
-            rows="4"
-            disabled={loading}
-          ></textarea>
-          <button type="submit" disabled={loading}>
-            {loading ? 'Posting...' : 'Post Comment'}
+        {/* add comment */}
+        <div className="add-comment">
+          <input
+            type="text"
+            placeholder="Add a comment..."
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+          />
+          <button className='submit-comment' onClick={handleAddComment}>
+            <IoPaperPlaneOutline />
           </button>
-        </form>
-      ) : (
-        <p>Please log in to post a comment.</p>
-      )}
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 
