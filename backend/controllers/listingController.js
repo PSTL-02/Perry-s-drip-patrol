@@ -46,7 +46,7 @@ const getListing = async (req, res) => {
 
 // Create Listing
 const createListing = async (req, res) => {
-    const { listing_title, owner_name, shoe_size, description } = req.body
+    const { listing_title, shoe_size, description, user_id } = req.body
 
     const imageFilename = req.file ? req.file.filename : null;
 
@@ -54,9 +54,9 @@ const createListing = async (req, res) => {
         const listing = await Listing.create({
             listing_title,
             listing_img: imageFilename,
-            owner_name,
             shoe_size,
             description,
+            user_id,
         })
 
         res.status(200).json(listing)

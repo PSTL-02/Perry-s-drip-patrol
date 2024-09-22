@@ -34,6 +34,10 @@ const listingSchema = new Schema({
         type: String,
         required: true
     },
+    user_id: {
+        type: String,
+        required: true
+    },
     comments: [
         {
             type: Schema.Types.ObjectId,
