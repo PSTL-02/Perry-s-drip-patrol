@@ -17,24 +17,24 @@ const SignUp = () => {
 
   return (
     <>
+      <div className="user-form">
+        <form className='signup' onSubmit={handleSubmit}>
+          <h3> Sign Up </h3>
 
-      <form className='signup' onSubmit={handleSubmit}>
-        <h3> Sign Up </h3>
+          <label> Username: </label>
+          <input type='username'onChange={(e) => setUsername(e.target.value)} value={username}/>
 
-        <label> Username: </label>
-        <input type='username'onChange={(e) => setUsername(e.target.value)} value={username}/>
+          <label> Email: </label>
+          <input type='email'onChange={(e) => setEmail(e.target.value)} value={email}/>
 
-        <label> Email: </label>
-        <input type='email'onChange={(e) => setEmail(e.target.value)} value={email}/>
+          <label> Password: </label>
+          <input type='password' autoComplete='password' onChange={(e) => setPassword(e.target.value)} value={password}/>
 
-        <label> Password: </label>
-        <input type='password' autoComplete='password' onChange={(e) => setPassword(e.target.value)} value={password}/>
+          <button disabled={isLoading} className="primary-button"> Sign Up </button>
+          {error && <div className='error'> {error} </div>}
 
-        <button disabled={isLoading} className="primary-button"> Sign Up </button>
-        {error && <div className='error'> {error} </div>}
-
-    </form>
-
+        </form>
+      </div>
     </>
   )
 }

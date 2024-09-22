@@ -1,6 +1,9 @@
-import { Children, createContext, useReducer } from 'react'
+import axios from 'axios'
+import { Children, createContext, useEffect, useReducer } from 'react'
 
 export const ListingsContext = createContext()
+
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const listingsReducer = (state, action) => {
     switch (action.type) {
@@ -10,9 +13,9 @@ const listingsReducer = (state, action) => {
             }
             case 'CREATE_LISTINGS':
                 return {
-                    listings: [action.payload, ...state.projects]
+                    listings: [action.payload, ...state.listings]
                 }
-            case 'DELETE_LISTINGS':
+            case 'DELETE_LISTING':
                 return {
                     listings: state.listings.filter((listing) => listing._id !== action.payload._id)
                 }
@@ -38,8 +41,21 @@ const listingsReducer = (state, action) => {
 
 export const ListingsContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(listingsReducer, {
-        listings: null
+        listings: []
     })
+
+    useEffect(() => {
+        const fetchListings = async () => {
+            try {
+                const response = await axios.get(`${baseURL}/api/listings`);
+                dispatch({type: 'SET_LISTINGS', payload: response.data})
+            } catch (error) {
+                console.log('Error fetching listings:', error);
+                
+            }
+        };
+        fetchListings();
+     }, []);
 
     return (
         <ListingsContext.Provider value={({...state,dispatch})}>
