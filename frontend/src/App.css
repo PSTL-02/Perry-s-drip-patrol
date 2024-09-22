@@ -667,23 +667,62 @@ nav {
     .empty-comments-alert{
       text-align: center;
     }
-    .comment{
+    .comment {
       display: flex;
+      align-items: center;
       flex-direction: column;
-      max-width: 50%;
-      min-width: 20vw;
-      .comment-details{
+      margin: 10px 0;
+      gap: .5rem;
+      .comment-user-details{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .comment-details {
         display: flex;
         flex-direction: column;
-        background-color: #54D3DE;
-        padding: 2rem;
+        justify-content: space-between;
+        max-width: 60%;
+        min-width: 30%;
+        min-height: 10vh;
+        padding: 10px;
+        border-radius: 5px;
         .comment-date{
           font-size: .7rem;
           text-align: end;
         }
       }
     }
+    /* SELLER */
+    .seller {
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: start;
+      .comment-title{
+        color: var(--accent-purple);
+      }
+      .comment-details {
+        background-color: var(--accent-purple);
+      }
+    }
+    /* BUYER */
+    .buyer {
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: end;
+      .comment-title{
+        color: var(--accent-blue);
+      }
+      .comment-details {
+        background-color: var(--accent-blue);
+        p {
+          text-align: start;
+        }
+      }
+    }
   }
+  /* CREATE COMMENT FIELD */
   .add-comment{
     position: sticky;
     display: flex;
