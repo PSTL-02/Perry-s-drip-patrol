@@ -125,50 +125,166 @@ nav {
     padding-bottom: 30px;
   }
 
-  /* Edit Form start */
-  .edit-listing{
+  /* Listing & Edit Form start */
+  .listing-form-box, .edit-listing {
     border-radius: 15px;
-    /* background-image: linear-gradient(-50deg, rgba(235,137,62,1) 0%, rgba(237,82,85,1) 25%, rgba(215,68,152,1) 50%, rgba(66,92,170,1) 80%, rgba(109,205,232,1) 100%); */
-    background-color: black;
-    padding: 0px;
+    padding: 10px;
     width: 100%;
+    margin-bottom: 30px;
+    background-color: var(--background-color);
+    position: relative;
+    z-index: 1;
   }
-  .edit-form {
+
+  .listing-form-box::before, .edit-listing::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border-radius: 15px;
+    padding: 3px;
+    background: linear-gradient(to bottom, var(--accent-purple), var(--accent-blue));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude; 
+    transition: 0.5s all ease;
+  }
+  .listing-form, .edit-form{
     width: 100%;
     height: 100%;
     border-radius: 15px;
-    /* background-color: var(--background-color); */
     padding: 15px;
+  }
 
-    h3 {
-      font-size: 1.5em;
-      color: var(--accent-purple);
-    }
+  .listing-form h3 {
+    font-size: 3rem;
+    color: var(--accent-purple);
+  }
+
+  .edit-form h3 {
+    font-size: 1.5em;
+    color: var(--accent-purple);
   }
 
   .filter-form-container {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 10px;
+    padding-bottom: 20px;
+
   }
 
-  .edit-filter {
+  .form-filter {
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    .description {
+      height: 150px;
+    }
+    #imageFilter {
+      color: white;
+    }
   }
-  .edit-form label {
-    width: 50%;
+  .size-filter {
+    display: flex;
+    gap: 2px;
+  }
+  .form-filter label, input{
+    width: 100%;
+    height: 30px;
+    padding: 2px;
     font-size: 15px;
     color: white;
   }
 
-  .edit-form input {
+  .form-filter input, select {
     height: 30px;
-    width: 100%;
+    color: black;
   }
-  /* Form Buttons Starts - save/cancel/delete */
+  /* Listing Form Button Starts - cancel/post */
+  .form-buttons {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+
+    .cancel-button {
+      position: relative;
+      padding: 5px 10px;
+      background-color: var(--background-color);
+      color: white;
+      z-index: 1;
+      border: none;
+      border-radius: 5px;
+      transition: 0.5s all ease;
+    }
+    
+    .cancel-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      border-radius: 5px;
+      padding: 2px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude; 
+      cursor: pointer;
+      transition: 0.5s all ease;
+    }
+
+    .cancel-button:hover::before {
+      background: var(--accent-blue);
+    }
+
+    .post-button {
+      position: relative;
+      padding: 5px 10px;
+      background-color: var(--background-color);
+      color: white;
+      z-index: 1;
+      border: none;
+      border-radius: 5px;
+      transition: 0.5s all ease;
+    }
+    
+    .post-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      border-radius: 5px;
+      padding: 2px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude; 
+      cursor: pointer;
+      transition: 0.5s all ease;
+    }
+
+    .post-button:hover::before {
+      background: var(--accent-blue);
+    }
+  }
+  /* Edit Form Buttons Starts - save/cancel/delete */
   .edit-form-buttons {
     width: 100%;
     display: flex;

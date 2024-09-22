@@ -15,11 +15,11 @@ const ListingDetails = ({listing}) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editTitle, setEditTitle] = useState(listing.listing_title);
     const [editSize, setEditSize] = useState(listing.shoe_size);
+    const [editCountrySize, setEditCountrySize] = useState(listing.country_size);
     const [editLocation, setEditLocation] = useState(listing.location);
     const [editPrice, setEditPrice] = useState(listing.price);
     const [editCondition, setEditCondition] = useState(listing.condition);
-    const [editDescription, setEditDescription] = useState(listing.description);
-    const [editImage, setEditImage] = useState(null);
+    const [editBrand, setEditBrand] = useState(listing.shoe_brand);
 
     const { dispatch } = useListingContext();
     const navigate = useNavigate();
@@ -37,9 +37,10 @@ const ListingDetails = ({listing}) => {
     const handleDelete = async () => {
         try {
             const response = await axios.delete(`${baseURL}/api/listings/${listing._id}`)
-            const json = await response.data
+            // const json = await response.data
             if(response.status === 200) {
-                dispatch({type: 'DELETE_LISTING', payload: json})
+                // dispatch({type: 'DELETE_LISTING', payload: json});
+                dispatch({type: 'DELETE_LISTING', payload: listing});
             }
         } catch (error) {
             console.log('Error deleting listing', error);
@@ -55,7 +56,9 @@ const ListingDetails = ({listing}) => {
     const handleSubmitEdit = async () => {
         const updatedListing = {
             listing_title: editTitle,
+            shoe_brand: editBrand,
             shoe_size: editSize,
+            country_size: editCountrySize,
             location: editLocation,
             price: editPrice,
             condition: editCondition,
@@ -83,6 +86,7 @@ const ListingDetails = ({listing}) => {
     const handleCancelEdit = () => {
         setEditTitle(listing.listing_title)
         setEditSize(listing.shoe_size)
+        setEditCountrySize(listing.country_size)
         setEditLocation(listing.location)
         setEditPrice(listing.price)
         setEditCondition(listing.condition)
@@ -98,7 +102,7 @@ const ListingDetails = ({listing}) => {
 
                         <div className='filter-form-container'>
                             {/* Title */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Title:</label>
                                 <input
                                     type='text'
@@ -108,7 +112,7 @@ const ListingDetails = ({listing}) => {
                             </div>
 
                             {/* Location */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Location:</label>
                                 <input
                                     type='text'
@@ -117,18 +121,42 @@ const ListingDetails = ({listing}) => {
                                 />
                             </div>
 
+                            {/* Brand */}
+                            <div className='form-filter'>
+                                <label htmlFor="brand">Brand:<span>*</span></label>
+                                <select type='text' onChange={(e) => setEditBrand(e.target.value)} value={editBrand} required>
+                                    <option value='Adidas'>Adidas</option>
+                                    <option value='Converse'>Converse</option>
+                                    <option value='Crocs'>Crocs</option>
+                                    <option value='New Balance'>New Balance</option>
+                                    <option value='Nike'>Nike</option>
+                                    <option value='Puma'>Puma</option>
+                                    <option value='Reebok'>Reebok</option>
+                                    <option value='Timberland'>Timberland</option>
+                                    <option value='Ugg'>Ugg</option>
+                                    <option value='Vans'>Vans</option>
+                                </select>
+                            </div>
+
                             {/* Size */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Size:</label>
-                                <input
-                                    type='text'
-                                    value={editSize}
-                                    onChange={(e) => setEditSize(e.target.value)}
-                                />
+                                <div className='size-filter'>
+                                    <input
+                                        type='text'
+                                        value={editSize}
+                                        onChange={(e) => setEditSize(e.target.value)}
+                                    />
+                                    <select type='text' onChange={(e) => setEditCountrySize(e.target.value)} value={editCountrySize} required>
+                                        <option value='US'>US</option>
+                                        <option value='UK'>UK</option>
+                                        <option value='EURO'>EURO</option>
+                                    </select>
+                                </div>
                             </div>
 
                             {/* Price */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Price:</label>
                                 <input
                                     type='text'
@@ -138,13 +166,13 @@ const ListingDetails = ({listing}) => {
                             </div>
 
                             {/* Condition */}
-                            <div className='edit-filter'>
+                            <div className='form-filter'>
                                 <label>Condition:</label>
                                 <select type='text' value={editCondition} onChange={(e) => setEditCondition(e.target.value)}>
                                 <option value='new'>New</option>
-                                <option value='used_like_new'>Used - Like New</option>
-                                <option value='used_good'>Used - Good</option>
-                                <option value='used_fair'>Used - Fair</option>
+                                <option value='used-like-new'>Used - Like New</option>
+                                <option value='used-good'>Used - Good</option>
+                                <option value='used-fair'>Used - Fair</option>
                                 </select>
                             </div>
                         </div>
@@ -172,9 +200,10 @@ const ListingDetails = ({listing}) => {
                                 </div>
                                 <div className='listing-card-info'>
                                     <div className='listing-card-details'>
-                                        <h3 className='shoe-price'>{listing.price}</h3>
+                                        <h3 className='shoe-price'>${listing.price}</h3>
                                         <h2>{listing.listing_title}</h2>
-                                        <p>Size:{listing.shoe_size}</p>
+                                        <p>Size: {listing.shoe_size} {listing.country_size}</p>
+                                        <p>Brand: {listing.shoe_brand}</p>
                                         <p>{listing.location}</p>
                                     </div>
 
