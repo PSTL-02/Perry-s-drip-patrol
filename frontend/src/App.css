@@ -471,6 +471,7 @@ nav {
 
 .buttons {
   display: flex;
+  margin-top: 20px;
   gap: 20px;
 }
 
@@ -524,7 +525,7 @@ nav {
 .Landing-text{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 30px;
   font-size: 1.5rem;
@@ -555,6 +556,7 @@ nav {
   margin-top: 30px;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .filter {
@@ -1000,3 +1002,37 @@ footer {
   }
 }
 /* FOOTER ENDS */
+
+
+/* RESPONSIVE START */
+
+@media screen and (max-width: 600px) {
+.Landing-section{
+  flex-direction: column;
+}
+.large-shoe{
+  width: 100%;
+}
+.small-shoes{
+  display: none;
+}
+.filter-bar{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.listings-page{
+  .listing-card-border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .listings{
+    grid-template-columns: repeat(1,1fr);
+  }
+}
+
+  
+
+}
+
+/* RESPONSIVE END */

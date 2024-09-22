@@ -59,6 +59,8 @@ const Home = () => {
 
   const filteredListings = getFilteredListings();
 
+
+
   return (
     <div className="home-outer">
       <div className="home-container">
@@ -67,7 +69,7 @@ const Home = () => {
             <div className="Landing-text">
               <h1>The Platypus shoe <br /> marketplace for <br /> Kiwis</h1>
               <div className="buttons">
-                <button className="primary-button">Start browsing</button>
+                <button className="primary-button" onClick={() => window.scrollTo({ top: 652, behavior: "smooth" })} >Start browsing</button>
               </div>
             </div>
           </div>
@@ -80,7 +82,7 @@ const Home = () => {
 
         {/* Filter Bar */}
         <div className="filter-bar">
-          {['All', 'Adidas', 'Converse', 'Crocs', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Timberland', 'Ugg', 'Vans'].map(brand => (
+          {['All', 'Adidas', 'Converse', 'Crocs', 'Jordan', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Timberland', 'Ugg', 'Vans'].map(brand => (
             <button 
               key={brand}
               className={`filter ${selectedBrand === brand ? 'active' : ''}`} 
