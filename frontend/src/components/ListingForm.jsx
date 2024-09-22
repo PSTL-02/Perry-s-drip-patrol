@@ -28,6 +28,7 @@ const ListingForm = ({closeMethod}) => {
         }
 
         const user = JSON.parse(localStorage.getItem('user'));
+        const user_id = user.username;
 
         const formData = new FormData();
         formData.append('listing_title', title);
@@ -39,6 +40,7 @@ const ListingForm = ({closeMethod}) => {
         formData.append('condition', condition);
         formData.append('description', description);
         formData.append('listing_img', listingImage);
+        formData.append('user_id', user_id)
 
         try {
             const response = await axios.post(`${baseURL}/api/listings`, formData);

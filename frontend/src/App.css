@@ -763,6 +763,134 @@ nav {
   padding: 2rem;
 }
 
+/* COMMENT SECTION STARTS */
+.chat-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+  width: 100%;
+  overflow-y: auto;
+  background-color: white;
+  padding: 2rem;
+  h2{
+    text-align: center;
+    background: linear-gradient(to bottom right, var(--accent-purple) 10%, var(--accent-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .comments{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .empty-comments-alert{
+      text-align: center;
+    }
+    .comment {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin: 10px 0;
+      gap: .5rem;
+      .comment-user-details{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        img{
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          background-color: #C440B0;
+        }
+      }
+      .comment-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 60%;
+        min-width: 30%;
+        min-height: 10vh;
+        padding: 1.2rem;
+        border-radius: 5px;
+        background-color: white;
+        .comment-date{
+          font-size: .7rem;
+          text-align: end;
+        }
+      }
+    }
+    /* SELLER */
+    .seller {
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: start;
+      .comment-title{
+        color: var(--accent-purple);
+      }
+      .comment-details {
+        background-color: var(--accent-purple);
+        background: 
+        linear-gradient(135deg, transparent 20px, var(--accent-purple) 20px) left no-repeat, 
+        linear-gradient(-45deg, transparent 20px, var(--accent-purple) 20px) bottom right no-repeat;
+        background-size: 50% 100%;
+      }
+    }
+    /* BUYER */
+    .buyer {
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: end;
+      .comment-title{
+        color: var(--accent-blue);
+      }
+      .comment-details {
+        background-color: var(--accent-blue);
+        background: 
+        linear-gradient(45deg, transparent 20px, var(--accent-blue) 20px) left no-repeat, 
+        linear-gradient(-135deg, transparent 20px, var(--accent-blue) 20px) top right no-repeat;
+        background-size: 51% 100%;
+        p {
+          text-align: start;
+        }
+      }
+    }
+  }
+  /* CREATE COMMENT FIELD */
+  .add-comment{
+    position: sticky;
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    align-items: center;
+    margin-top: 5rem;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    input{
+      border: none;
+      width: 95%;
+      height: 10vh;
+      padding: 0 2rem;
+      border-radius: 40px;
+      font-size: 1rem;
+    }
+    .submit-comment{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 10%;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      border: none;
+      font-size: 3rem;
+      cursor: pointer;
+    }
+  }
+}
+/* COMMENT SECTION ENDS */
+
 /* FOOTER STARTS */
 footer {
   display: flex;
@@ -771,7 +899,6 @@ footer {
   background-color: #1F1F1F;
   color: white;
   padding: 20px 20px;
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;

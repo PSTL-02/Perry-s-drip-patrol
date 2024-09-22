@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // Context Import
 import { useListingContext } from '../hooks/useListingContext'
@@ -25,7 +25,7 @@ const ListingDetails = ({listing}) => {
     const navigate = useNavigate();
 
     const user = JSON.parse(localStorage.getItem('user'));
-    const user_id = user ? user.name: null;
+    const user_id = user ? user._id : null;
 
     // Handle Navigate
     const handleNavigate = () => {
@@ -69,7 +69,7 @@ const ListingDetails = ({listing}) => {
                 updatedListing
             );
 
-            const updatedData = response.data;
+            // const updatedData = response.data;
             
             if (response.status === 200) {
                 dispatch({ type: 'UPDATE_LISTING', payload: response.data });

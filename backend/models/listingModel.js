@@ -1,20 +1,18 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const Schema = mongoose.Schema
-
-const listingSchema = new Schema ({
+const listingSchema = new Schema({
     listing_title: {
         type: String,
-        require: true
+        required: true
     },
     user_id: {
         type: String,
-        require: true
+        required: true
     },
     listing_img: {
         type: String,
         default: null,
-        // require: true
     },
     shoe_brand: {
         type: String,
@@ -22,7 +20,7 @@ const listingSchema = new Schema ({
     },
     shoe_size: {
         type: String,
-        require: true
+        required: true
     },
     country_size: {
         type: String,
@@ -30,28 +28,30 @@ const listingSchema = new Schema ({
     },
     price: {
         type: String,
-        require: true
+        required: true
     },
     location: {
         type: String,
-        require: true
+        required: true
     },
     condition: {
         type: String,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
-
+    user_id: {
+        type: String,
+        required: true
+    },
     comments: [
         {
-            type: Schema. Types. ObjectId,
-            ref:'Comment'
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
         },
     ]
-    
-}, {timestamps: true});
+}, { timestamps: true });
 
-module.exports = mongoose.model('Listing', listingSchema)
+module.exports = mongoose.model('Listing', listingSchema);

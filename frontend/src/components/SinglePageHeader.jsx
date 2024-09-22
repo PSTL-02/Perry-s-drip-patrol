@@ -17,7 +17,8 @@ const SinglePageHeader = () => {
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
 
-    const { user } = useAuthContext();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const user_id = user ? user.username : null;
 
     useEffect(() => {
         axios.get(`${baseURL}/api/listings/${id}`)
@@ -51,7 +52,7 @@ const SinglePageHeader = () => {
                     <div className='listing-seller-details'>
                         <div className='user-profile-picture'>
                             <img/>
-                            <p>{user.username}</p>
+                            <p>{listing.user_id}</p>
                         </div>
                         <h6>Listed {formatDistanceToNow(new Date(listing.createdAt), {includeSeconds: false, addSuffix: true})}</h6>
                     </div>
@@ -76,7 +77,7 @@ const SinglePageHeader = () => {
             {/* description */}
             <div className='single-listing-description-container'>
                 <div className='single-listing-description'>
-                    <p>Description:<br/>{listing.description}</p>
+                    <p>Description:<br/><br/>{listing.description}</p>
                 </div>
             </div>
         </>
