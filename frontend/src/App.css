@@ -659,6 +659,9 @@ nav {
   padding: 2rem;
   h2{
     text-align: center;
+    background: linear-gradient(to bottom right, var(--accent-purple) 10%, var(--accent-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .comments{
     display: flex;
@@ -678,6 +681,12 @@ nav {
         align-items: center;
         justify-content: center;
         gap: 1rem;
+        img{
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          background-color: #C440B0;
+        }
       }
       .comment-details {
         display: flex;
@@ -686,8 +695,9 @@ nav {
         max-width: 60%;
         min-width: 30%;
         min-height: 10vh;
-        padding: 10px;
+        padding: 1.2rem;
         border-radius: 5px;
+        background-color: white;
         .comment-date{
           font-size: .7rem;
           text-align: end;
@@ -704,6 +714,10 @@ nav {
       }
       .comment-details {
         background-color: var(--accent-purple);
+        background: 
+        linear-gradient(135deg, transparent 20px, var(--accent-purple) 20px) left no-repeat, 
+        linear-gradient(-45deg, transparent 20px, var(--accent-purple) 20px) bottom right no-repeat;
+        background-size: 50% 100%;
       }
     }
     /* BUYER */
@@ -716,6 +730,10 @@ nav {
       }
       .comment-details {
         background-color: var(--accent-blue);
+        background: 
+        linear-gradient(45deg, transparent 20px, var(--accent-blue) 20px) left no-repeat, 
+        linear-gradient(-135deg, transparent 20px, var(--accent-blue) 20px) top right no-repeat;
+        background-size: 51% 100%;
         p {
           text-align: start;
         }

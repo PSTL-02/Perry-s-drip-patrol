@@ -65,13 +65,14 @@ const ChatSection = () => {
     <>
       {/* chat section */}
       <div className="chat-section">
-        <h2>Chat with the seller</h2>
+      <h2>{listing && listing.user_id === user_id ? 'Chat with the buyer' : 'Chat with the seller'}</h2>
         {/* comments container */}
         <div className="comments">
           {listing?.comments?.length > 0 ? (
             listing.comments.map((comment) => (
               <div className={`comment ${comment.user_id === listing.user_id ? 'seller' : 'buyer'}`} key={comment._id}>
                 <div className='comment-user-details'>
+                  <img/>
                   <p>{comment.user_id}</p>
                   <p className={`comment-title ${comment.user_id === listing.user_id ? 'seller' : 'buyer'}`} key={comment._id}>
                     {comment.user_id === listing.user_id ? '(Seller)' : '(Buyer)'}
