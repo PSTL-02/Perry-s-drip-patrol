@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Footer from './components/Footer';
+import HelpBubble from './components/HelpBubble';
 import SingleListing from './pages/SingleListing';
 import Home from './pages/Home';
 
@@ -25,6 +26,7 @@ const App = () => {
           {/* single page */}
           <Route path='/:id' element={user ? <SingleListing/> : <Navigate to='/login'/>}/>
         </Routes>
+        <HelpBubble/>
         <Footer/>
       </BrowserRouter>
     </>
