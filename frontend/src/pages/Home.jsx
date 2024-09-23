@@ -111,7 +111,7 @@ const Home = () => {
                 <ListingDetails key={listing._id} listing={listing} />
               ))
             ) : (
-              <p>No listings available.</p>
+              <p className='no-listing'>No listings available.</p>
             )}
           </div>
         </div>

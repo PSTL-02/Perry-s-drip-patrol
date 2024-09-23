@@ -22,7 +22,7 @@ const SignUp = () => {
           <h3> Sign Up </h3>
 
           <label> Username: </label>
-          <input type='username'onChange={(e) => setUsername(e.target.value)} value={username}/>
+          <input type='username'onChange={(e) => setUsername(e.target.value)} value={username} maxLength={10}/>
 
           <label> Email: </label>
           <input type='email'onChange={(e) => setEmail(e.target.value)} value={email}/>

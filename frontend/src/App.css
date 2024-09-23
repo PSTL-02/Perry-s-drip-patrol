@@ -647,6 +647,14 @@ nav {
   background-color: var(--accent-purple);
   color: white;
 }
+
+.no-listing{
+  color: #ffffff;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: center
+}
 /* home page landing end */
 
 /* LOGIN/SIGNUP START  */
