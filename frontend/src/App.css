@@ -88,7 +88,7 @@ nav {
 
 /* LISTINGS START */
 .listings-page {
-  width: 100vw;
+  width: 100%;
   padding: 1rem 1rem 0 1rem;
   background-color: var(--background-color);
 
@@ -96,7 +96,7 @@ nav {
     display: flex;
     justify-content: end;
     gap: 20px;
-    padding-bottom: 20px;
+    padding: 1rem;
   }
 
   .listing-buttons #allListings, #myListings {
@@ -121,8 +121,8 @@ nav {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    /* padding-bottom: 30px; */
+    gap: 2rem;
+    padding: 1rem;
   }
 
   /* Listing & Edit Form start */
@@ -391,7 +391,6 @@ nav {
   }
   .listing-card {
     display: flex;
-    width: 480px;
     height: 250px;
     background-color: white;
     border-radius: 20px;
@@ -401,6 +400,8 @@ nav {
       height: 250px;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
+      object-fit: cover;
+      object-position: bottom;
     }
 
     .shoe-price {
@@ -822,6 +823,8 @@ nav {
 .single-listing-image img{
   width: 100%;
   border-radius: 15px;
+  object-fit: cover;
+  object-position: bottom;
 }
 
 .single-listing-button{
