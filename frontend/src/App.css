@@ -89,7 +89,7 @@ nav {
 /* LISTINGS START */
 .listings-page {
   width: 100vw;
-  padding: 20px;
+  padding: 1rem 1rem 0 1rem;
   background-color: var(--background-color);
 
   .create-listing-search,.listing-buttons {
@@ -121,8 +121,8 @@ nav {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding-bottom: 30px;
+    gap: 10px;
+    /* padding-bottom: 30px; */
   }
 
   /* Listing & Edit Form start */
@@ -379,6 +379,16 @@ nav {
   /* Edit Form Ends */
 
   /* Listing Details - Start */
+  .listing-card-border {
+    border-radius: 25px;
+    border: 4px solid transparent;
+    transition: 0.5s all ease;
+  }
+  .listing-card-border:hover {
+    border-radius: 25px;
+    border: 4px solid var(--accent-blue);
+    transition: 0.5s all ease;
+  }
   .listing-card {
     display: flex;
     width: 480px;
@@ -393,6 +403,41 @@ nav {
       border-bottom-left-radius: 20px;
     }
 
+    .shoe-price {
+      position: absolute;
+      padding: 5px 30px;
+      width: 100px;
+      height: 50px;
+      background-color: var(--background-color);
+      color: white;
+      z-index: 1;
+      border: none;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .shoe-price::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 4px;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude; 
+      cursor: pointer;
+    }
+
     .listing-card-info {
       width: 100%;
       display: flex;
@@ -401,6 +446,12 @@ nav {
       padding: 1rem;
       .listing-card-details {
         width: 100%;
+        height: 90%;
+        display: flex;
+        align-self: flex-start;
+        flex-direction: column;
+        justify-content: space-between;
+
         h2 {
           font-size: 1.5rem;
         }
@@ -410,6 +461,7 @@ nav {
 
     /* Card Buttons */
     .listing-card-buttons {
+      margin-top: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -448,6 +500,22 @@ nav {
 
       .view-button:hover::before {
         background: var(--accent-blue);
+      }
+
+      .edit-delete-button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.5em;
+
+        .edit-icon:hover {
+          color: var(--accent-blue);
+          transition: 0.5s all ease;
+        }
+        .delete-icon:hover {
+          color: var(--accent-blue);
+          transition: 0.5s all ease;
+        }
       }
     } 
   }
