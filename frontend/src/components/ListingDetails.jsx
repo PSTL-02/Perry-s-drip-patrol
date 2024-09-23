@@ -25,7 +25,7 @@ const ListingDetails = ({listing}) => {
     const navigate = useNavigate();
 
     const user = JSON.parse(localStorage.getItem('user'));
-    const user_id = user ? user._id : null;
+    const user_id = user ? user.username : null;
 
     // Handle Navigate
     const handleNavigate = () => {
@@ -37,9 +37,7 @@ const ListingDetails = ({listing}) => {
     const handleDelete = async () => {
         try {
             const response = await axios.delete(`${baseURL}/api/listings/${listing._id}`)
-            // const json = await response.data
             if(response.status === 200) {
-                // dispatch({type: 'DELETE_LISTING', payload: json});
                 dispatch({type: 'DELETE_LISTING', payload: listing});
             }
         } catch (error) {
@@ -68,8 +66,6 @@ const ListingDetails = ({listing}) => {
             const response = await axios.patch(`${baseURL}/api/listings/${listing._id}`,
                 updatedListing
             );
-
-            // const updatedData = response.data;
             
             if (response.status === 200) {
                 dispatch({ type: 'UPDATE_LISTING', payload: response.data });
@@ -128,6 +124,7 @@ const ListingDetails = ({listing}) => {
                                     <option value='Adidas'>Adidas</option>
                                     <option value='Converse'>Converse</option>
                                     <option value='Crocs'>Crocs</option>
+                                    <option value='Jordan'>Jordan</option>
                                     <option value='New Balance'>New Balance</option>
                                     <option value='Nike'>Nike</option>
                                     <option value='Puma'>Puma</option>
@@ -198,9 +195,9 @@ const ListingDetails = ({listing}) => {
                                 <div className='listing-image'>
                                     <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt="Listing" />
                                 </div>
+                                <h3 className='shoe-price'>${listing.price}</h3>
                                 <div className='listing-card-info'>
                                     <div className='listing-card-details'>
-                                        <h3 className='shoe-price'>${listing.price}</h3>
                                         <h2>{listing.listing_title}</h2>
                                         <p>Size: {listing.shoe_size} {listing.country_size}</p>
                                         <p>Brand: {listing.shoe_brand}</p>

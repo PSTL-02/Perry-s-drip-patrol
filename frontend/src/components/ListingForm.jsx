@@ -43,7 +43,11 @@ const ListingForm = ({closeMethod}) => {
         formData.append('user_id', user_id)
 
         try {
-            const response = await axios.post(`${baseURL}/api/listings`, formData);
+            const response = await axios.post(`${baseURL}/api/listings`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
             dispatch({type: 'CREATE_LISTINGS', payload: response.data});
 
             setTitle('');
@@ -103,6 +107,7 @@ const ListingForm = ({closeMethod}) => {
                             <option value='Adidas'>Adidas</option>
                             <option value='Converse'>Converse</option>
                             <option value='Crocs'>Crocs</option>
+                            <option value='Jordan'>Jordan</option>
                             <option value='New Balance'>New Balance</option>
                             <option value='Nike'>Nike</option>
                             <option value='Puma'>Puma</option>
