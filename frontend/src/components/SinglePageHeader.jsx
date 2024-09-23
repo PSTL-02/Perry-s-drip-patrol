@@ -6,7 +6,7 @@ import {formatDistanceToNow} from 'date-fns';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 // icons
-import { IoHeartOutline } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa6";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL
 
@@ -47,7 +47,7 @@ const SinglePageHeader = () => {
                 <div className='singlepage-header-grid-item single-listing-title'>
                     <div className='listing-title-icon'>
                         <h2>{listing.listing_title}</h2>
-                        <IoHeartOutline/>
+                        <FaHeart/>
                     </div>
                     <div className='listing-seller-details'>
                         <div className='user-profile-picture'>

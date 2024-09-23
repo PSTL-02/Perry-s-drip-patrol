@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 // icons
-import { IoHeartOutline } from "react-icons/io5";
-import { TbTags } from "react-icons/tb";
+import { FaHeart } from "react-icons/fa6";
+import { FaTags } from "react-icons/fa";
 
 const Navbar = () => {
     const { logout } = useLogout();
@@ -28,8 +28,8 @@ const Navbar = () => {
                 {user ? (
                     <>
                         <span className='username'>{user.username}</span>
-                        <IoHeartOutline className='nav-icons'/>
-                        <TbTags className='nav-icons'/>
+                        <FaHeart className='nav-icons'/>
+                        <FaTags className='nav-icons'/>
                         <button className='primary-button' onClick={handleClick}>Logout</button>
                     </>
                 ) : (
