@@ -638,6 +638,11 @@ nav {
   transition: background-color 0.2s;
 }
 
+.filter-bar button.active {
+  background-color: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
 .filter:hover {
   background-color: var(--accent-purple);
   color: white;
