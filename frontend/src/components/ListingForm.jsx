@@ -10,11 +10,12 @@ const ListingForm = ({closeMethod}) => {
     const [title, setTitle] = useState('');
     const [brand, setBrand] = useState('');
     const [size, setSize] = useState('');
-    const [countrySize, setCountrySize] = useState('');
+    const [countrySize, setCountrySize] = useState('US');
     const [location, setLocation] = useState('');
     const [price, setPrice] = useState('');
     const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
     const [listingImage, setListingImage] = useState(null);
 
     const [error, setError] = useState(null);
@@ -22,7 +23,7 @@ const ListingForm = ({closeMethod}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!title || !brand || !size || !location || !price || !condition || !listingImage) {
+        if (!title || !brand || !size || !location || !price || !condition || !listingImage || !category) {
             setError('* Please fill in all required fields.');
             return;
         }
@@ -33,6 +34,7 @@ const ListingForm = ({closeMethod}) => {
         const formData = new FormData();
         formData.append('listing_title', title);
         formData.append('shoe_brand', brand);
+        formData.append('gender_category', category);
         formData.append('shoe_size', size);
         formData.append('country_size', countrySize);
         formData.append('location', location);
@@ -58,6 +60,7 @@ const ListingForm = ({closeMethod}) => {
             setPrice('');
             setCondition('');
             setDescription('');
+            setCategory('');
             setListingImage(null);
 
             setError(null);
@@ -168,6 +171,18 @@ const ListingForm = ({closeMethod}) => {
                             value={description}
                             required
                         />
+                    </div>
+
+                    {/* Category */}
+                    <div className='form-filter'>
+                        <label htmlFor="category">Category:<span>*</span></label>
+                        <select type='text' onChange={(e) => setCategory(e.target.value)} value={category} required>
+                            <option value=''>Please Select Category</option>
+                            <option value='Kids'>Kids</option>
+                            <option value='Mens'>Mens</option>
+                            <option value='Womans'>Womans</option>
+                            <option value='Unisex'>Unisex</option>
+                        </select>
                     </div>
 
                     {/* Image */}

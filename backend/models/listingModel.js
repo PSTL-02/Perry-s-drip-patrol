@@ -14,6 +14,10 @@ const listingSchema = new Schema({
         type: String,
         default: null,
     },
+    gender_category: {
+        type: String,
+        required: true
+    },
     shoe_brand: {
         type: String,
         require: true
