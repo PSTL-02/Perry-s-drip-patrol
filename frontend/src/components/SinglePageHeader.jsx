@@ -58,7 +58,9 @@ const SinglePageHeader = () => {
                     </div>
                 </div>
                 <div className='singlepage-header-grid-item single-listing-details'>
-                    <p>Size: {listing.shoe_size}</p>
+                    <p>Size: {listing.shoe_size} {listing.country_size}</p>
+                    <p>Brand: {listing.shoe_brand}</p>
+                    <p>Category: {listing.gender_category}</p>
                     <p>Condition: {listing.condition}</p>
                     <p>Location: {listing.location}</p>
                 </div>
