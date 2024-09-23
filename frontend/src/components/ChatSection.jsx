@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useListingContext } from '../hooks/useListingContext';
 import { formatDistanceToNow } from 'date-fns';
 // icons
-import { IoPaperPlaneOutline } from "react-icons/io5";
+import { FaPaperPlane } from "react-icons/fa6";
 
 const ChatSection = () => {
   const { dispatch } = useListingContext();
@@ -96,11 +96,12 @@ const ChatSection = () => {
           <input
             type="text"
             placeholder="Add a comment..."
+            maxLength="100"
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
           />
           <button className='submit-comment' onClick={handleAddComment}>
-            <IoPaperPlaneOutline />
+            <FaPaperPlane />
           </button>
         </div>
       </div>

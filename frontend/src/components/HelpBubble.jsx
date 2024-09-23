@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // icons
-import { LuBadgeHelp } from "react-icons/lu";
+import { IoHelpCircle } from "react-icons/io5";
 
 const BubbleTransition = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -19,7 +19,7 @@ const BubbleTransition = () => {
                     visibility: isHovered ? 'hidden' : 'visible',
                     transition: 'opacity 0.5s ease, visibility 0.5s ease'
                 }}>
-                <p><LuBadgeHelp /></p>
+                <p><IoHelpCircle /></p>
             </div>
             
             <div className="help-bubble-open" 
