@@ -51,7 +51,9 @@ const SinglePageHeader = () => {
                     </div>
                     <div className='listing-seller-details'>
                         <div className='user-profile-picture'>
-                            <img/>
+                            <div className='profile-avatar'>
+                                <span>{listing.user_id.charAt(0).toUpperCase()}</span> 
+                            </div>
                             <p>{listing.user_id}</p>
                         </div>
                         <h6>Listed {formatDistanceToNow(new Date(listing.createdAt), {includeSeconds: false, addSuffix: true})}</h6>
