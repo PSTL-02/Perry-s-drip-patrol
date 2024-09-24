@@ -1275,15 +1275,15 @@ footer {
     width: 100%;
   }
 
-.small-shoes{
-  display: none;
-}
-.filter-bar{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-}
+  .small-shoes{
+    display: none;
+  }
+  .filter-bar{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+  }
 
-.listings-page{
+  .listings-page{
   
   .search-create-listing {
     .search-bar {
@@ -1341,7 +1341,7 @@ footer {
       grid-template-columns: repeat(1, 1fr);
     }
   }
-
+}
 }
 
 /* RESPONSIVE END */
