@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // icons
 import { IoIosArrowBack } from 'react-icons/io';
@@ -8,6 +8,11 @@ import ChatSection from '../components/ChatSection';
 
 const SingleListing = () => {
   const navigate = useNavigate()
+
+    // return to the top of the page
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <>

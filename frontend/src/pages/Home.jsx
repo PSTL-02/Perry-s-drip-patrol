@@ -59,7 +59,9 @@ const Home = () => {
 
   const filteredListings = getFilteredListings();
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="home-outer">

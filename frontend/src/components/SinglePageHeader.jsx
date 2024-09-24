@@ -54,32 +54,47 @@ const SinglePageHeader = () => {
                             <img/>
                             <p>{listing.user_id}</p>
                         </div>
-                        <h6>Listed {formatDistanceToNow(new Date(listing.createdAt), {includeSeconds: false, addSuffix: true})}</h6>
+                        <h5>Listed {formatDistanceToNow(new Date(listing.createdAt), {includeSeconds: false, addSuffix: true})}</h5>
                     </div>
                 </div>
+                {/* desc */}
+                <div className='singlepage-header-grid-item single-listing-description'>
+                    <h4>Description:</h4>
+                    <p>{listing.description}</p>
+                </div>
+
                 <div className='singlepage-header-grid-item single-listing-details'>
-                    <p>Size: {listing.shoe_size} {listing.country_size}</p>
-                    <p>Brand: {listing.shoe_brand}</p>
-                    <p>Category: {listing.gender_category}</p>
-                    <p>Condition: {listing.condition}</p>
-                    <p>Location: {listing.location}</p>
+                    <div className='single-listing-details-category'>
+                        <h4>Size:</h4>
+                        <p>{listing.shoe_size} {listing.country_size}</p>
+                    </div>
+                    <div className='single-listing-details-category'>
+                        <h4>Brand: </h4>
+                        <p>{listing.shoe_brand}</p>
+                    </div>
+                    <div className='single-listing-details-category'>
+                        <h4>Category: </h4>
+                        <p>{listing.gender_category}</p>
+                    </div>
+                    <div className='single-listing-details-category'>
+                        <h4>Condition: </h4>
+                        <p>{listing.condition}</p>
+                    </div>
+                    <div className='single-listing-details-category'>
+                        <h4>Location: </h4>
+                        <p>{listing.location}</p>
+                    </div>
                 </div>
                 <div className='singlepage-header-grid-item single-listing-price'>
-                    <p>Asking price:</p>
+                    <h4>Asking price:</h4>
                     <h3>${listing.price}</h3>
                 </div>
+
                 <div className='singlepage-header-grid-item single-listing-image'>
                     <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt={listing.listing_title}/>
                 </div>
                 <div className='singlepage-header-grid-item single-listing-button'>
                     <button className='primary-button buy-button'>Buy Now</button>
-                </div>
-            </div>
-
-            {/* description */}
-            <div className='single-listing-description-container'>
-                <div className='single-listing-description'>
-                    <p>Description:<br/><br/>{listing.description}</p>
                 </div>
             </div>
         </>
