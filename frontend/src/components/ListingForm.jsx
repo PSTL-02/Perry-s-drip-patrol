@@ -87,6 +87,7 @@ const ListingForm = ({closeMethod}) => {
                             type='text'
                             onChange={(e) => setTitle(e.target.value)}
                             value={title}
+                            maxLength={20}
                             required
                         />
                     </div>
@@ -98,6 +99,8 @@ const ListingForm = ({closeMethod}) => {
                             type='text'
                             onChange={(e) => setLocation(e.target.value)}
                             value={location}
+                            maxLength={30}
+                            placeholder='Wellington'
                             required
                         />
                     </div>
@@ -129,6 +132,7 @@ const ListingForm = ({closeMethod}) => {
                                 type='text'
                                 onChange={(e) => setSize(e.target.value)}
                                 value={size}
+                                maxLength={3}
                                 required
                             />
                             <select type='text' onChange={(e) => setCountrySize(e.target.value)} value={countrySize} required>
@@ -146,6 +150,8 @@ const ListingForm = ({closeMethod}) => {
                             type='text'
                             onChange={(e) => setPrice(e.target.value)}
                             value={price}
+                            maxLength={5}
+                            placeholder='00.00'
                             required
                         />
                     </div>
@@ -169,6 +175,7 @@ const ListingForm = ({closeMethod}) => {
                             type='text'
                             onChange={(e) => setDescription(e.target.value)}
                             value={description}
+                            maxLength={100}
                             required
                         />
                     </div>
@@ -183,16 +190,15 @@ const ListingForm = ({closeMethod}) => {
                             <option value='Womans'>Womans</option>
                             <option value='Unisex'>Unisex</option>
                         </select>
-                    </div>
 
-                    {/* Image */}
-                    <div className='form-filter'>
-                        <label htmlFor="image">Image:<span>*</span></label>
+                        {/* Image */}
                         <input id='imageFilter'
                             type='file'
                             accept='image/*'
-                            onChange={(e) => setListingImage(e.target.files[0])} required />
+                            onChange={(e) => setListingImage(e.target.files[0])} required 
+                        />
                     </div>
+
                 </div>
 
                 <div className='form-buttons'>

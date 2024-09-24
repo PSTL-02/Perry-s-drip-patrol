@@ -72,10 +72,10 @@ nav {
       color: #fff;
       font-size: 1.1rem;
       cursor: pointer;
-      transition: 1s all ease;
+      transition: 0.5s all ease;
 
       &:hover {
-        transition: 1s all ease;
+        transition: 0.5s all ease;
         background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
           radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
           radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
@@ -94,21 +94,38 @@ nav {
   padding: 1rem 1rem 0 1rem;
   background-color: var(--background-color);
 
-  .create-listing-search,
-  .listing-buttons {
+  .search-create-listing,.listing-buttons {
     display: flex;
     justify-content: end;
-    gap: 20px;
+    gap: 2%;
     padding: 1rem;
+
+    .search-bar {
+      width: 17.5%;
+      display: inline-flex;
+      align-items: center;
+
+      input {
+        color: black;
+        border: none;
+        border-radius: 30px;
+        padding: 25px;
+        &:focus {
+          border: 2px solid var(--accent-blue);
+          outline: 2px solid white;
+        }
+      }
+    }
   }
 
-  .listing-buttons #allListings,
-  #myListings {
+
+  .listing-buttons #allListings, #myListings {
     padding: 10px;
     border-radius: 5px;
     border: 2px solid transparent;
-
+    transition: 0.5s all ease;
     &:hover {
+      transition: 0.5s all ease;
       border: 2px solid white;
       cursor: pointer;
     }
@@ -136,7 +153,7 @@ nav {
     border-radius: 15px;
     padding: 10px;
     width: 100%;
-    margin-bottom: 30px;
+    padding: 1rem;
     background-color: var(--background-color);
     position: relative;
     z-index: 1;
@@ -150,6 +167,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
+    margin: 1rem;
     z-index: -1;
     border-radius: 15px;
     padding: 3px;
@@ -162,12 +180,16 @@ nav {
     transition: 0.5s all ease;
   }
 
-  .listing-form,
-  .edit-form {
+  .listing-form, .edit-form{
     width: 100%;
     height: 100%;
     border-radius: 15px;
     padding: 15px;
+
+    input, select{
+      border-radius: 4px;
+      border: none;
+    }
   }
 
   .listing-form h3 {
@@ -183,10 +205,15 @@ nav {
   .filter-form-container {
     width: 100%;
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .edit-filter-form-container {
+    width: 100%;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    padding-bottom: 20px;
-
   }
 
   .form-filter {
@@ -199,6 +226,7 @@ nav {
     }
 
     #imageFilter {
+      margin-top: 10px;
       color: white;
     }
   }
@@ -206,6 +234,14 @@ nav {
   .size-filter {
     display: flex;
     gap: 2px;
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    select {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
   .form-filter label,
@@ -228,8 +264,10 @@ nav {
     display: flex;
     justify-content: end;
     gap: 10px;
+    margin-top: 1rem;
 
     .cancel-button {
+      font-size: 1.5rem;
       position: relative;
       padding: 5px 10px;
       background-color: var(--background-color);
@@ -262,9 +300,11 @@ nav {
 
     .cancel-button:hover::before {
       background: var(--accent-blue);
+      transition: 0.5s all ease;
     }
 
     .post-button {
+      font-size: 1.5rem;
       position: relative;
       padding: 5px 10px;
       background-color: var(--background-color);
@@ -297,6 +337,7 @@ nav {
 
     .post-button:hover::before {
       background: var(--accent-blue);
+      transition: 0.5s all ease;
     }
   }
 
@@ -306,44 +347,23 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 1rem;
 
-    .save-cancel-buttons {
+    .delete-cancel-buttons {
       display: flex;
       gap: 10px;
 
-      .save-button {
-        position: relative;
+      .delete-button {
+        display: flex;
+        align-items: center;
         padding: 5px 10px;
         background-color: var(--background-color);
         color: white;
-        z-index: 1;
-        border: none;
+        border: 2px solid red;
         border-radius: 5px;
-        transition: 0.5s all ease;
-      }
-
-      .save-button::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        border-radius: 5px;
-        padding: 2px;
-        background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: destination-out;
-        mask-composite: exclude;
-        cursor: pointer;
-        transition: 0.5s all ease;
-      }
-
-      .save-button:hover::before {
-        background: var(--accent-blue);
+        &:hover {
+          background-color: red;
+        }
       }
 
       .cancel-button {
@@ -356,7 +376,7 @@ nav {
         border-radius: 5px;
         transition: 0.5s all ease;
       }
-
+      
       .cancel-button::before {
         content: "";
         position: absolute;
@@ -368,31 +388,60 @@ nav {
         border-radius: 5px;
         padding: 2px;
         background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
           linear-gradient(#fff 0 0);
         -webkit-mask-composite: destination-out;
-        mask-composite: exclude;
+        mask-composite: exclude; 
         cursor: pointer;
         transition: 0.5s all ease;
       }
 
       .cancel-button:hover::before {
         background: var(--accent-blue);
+        transition: 0.5s all ease;
       }
     }
 
-    .delete-button {
+    .save-listing-button {
       display: flex;
-      align-items: center;
-      padding: 5px 10px;
-      background-color: var(--background-color);
-      color: white;
-      border: 2px solid red;
-      border-radius: 5px;
+      .save-button {
+        position: relative;
+        padding: 5px 10px;
+        background-color: var(--background-color);
+        color: white;
+        z-index: 1;
+        border: none;
+        border-radius: 5px;
+        transition: 0.5s all ease;
+      }
+      
+      .save-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 5px;
+        padding: 2px;
+        background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude; 
+        cursor: pointer;
+        transition: 0.5s all ease;
+      }
+      
+      .save-button:hover::before {
+        background: var(--accent-blue);
+        transition: 0.5s all ease;
+      }
     }
   }
-
   /* Form Buttons Ends */
   /* Edit Form Ends */
 
@@ -522,6 +571,7 @@ nav {
 
       .view-button:hover::before {
         background: var(--accent-blue);
+        transition: 0.5s all ease;
       }
 
       .edit-delete-button {
@@ -529,6 +579,7 @@ nav {
         align-items: center;
         gap: 10px;
         font-size: 1.5em;
+        transition: 0.5s all ease;
 
         .edit-icon:hover {
           color: var(--accent-blue);
@@ -583,11 +634,11 @@ nav {
   color: #fff;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: 1s all ease;
+  transition: 0.5s all ease;
 }
 
 .primary-button:hover {
-  transition: 1s all ease;
+  transition: 0.5s all ease;
   background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
     radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
     radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
@@ -693,81 +744,93 @@ nav {
 
 }
 
-.login {
-  margin-top: 100px;
-  width: 300px;
-  height: 330px;
-  display: flex;
-  flex-direction: column;
-  border-image: linear-gradient(to top, #54D3DE 0%, #C440B0 100%) 1;
-  border-width: 4px;
-  border-style: solid;
-  padding: 20px;
-
-  /* form title */
-  h3 {
-    font-size: 1.5rem;
-    color: #ffffff;
-  }
-
-  /* form labels and inputs */
-  label {
-    margin: 4px 0px;
-    font-weight: bold;
-    color: #ffffff;
-  }
-
-  input {
-    border-radius: 5px;
-    border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
-  }
-
-  button {
-    width: 100%;
-    height: 70px;
-    margin-top: 20px;
-  }
-
-}
-
-.signup {
+.Signup-login-border {
   margin-top: 100px;
   width: 300px;
   height: 400px;
   display: flex;
   flex-direction: column;
-  border-image: linear-gradient(to top, #54D3DE 0%, #C440B0 100%) 1;
-  border-width: 4px;
-  border-style: solid;
-  padding: 20px;
-
-  /* form title */
-  h3 {
-    font-size: 1.5rem;
-    color: #ffffff;
-  }
-
-  /* form labels and inputs */
-  label {
-    margin: 4px 0px;
-    font-weight: bold;
-    color: #ffffff;
-  }
-
-  input {
-    border-radius: 5px;
-    border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
-  }
-
-  button {
-    width: 100%;
-    height: 70px;
-    margin-top: 20px;
-  }
+  background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
+        radial-gradient(circle at 0 0, #282828 0, #282828 8px, transparent 8px) 100% 100%/12px 12px no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 8px) calc(100% - 24px) no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
+        linear-gradient(90deg, #54D3DE 0%, #c440b0 100%);
+  border-radius: 15px;
 }
 
+
+.login {
+    margin-top: 30px;
+    width: 300px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    /* form title */
+    h3 {
+        font-size: 1.5rem;
+        color: #ffffff;
+    }
+
+    /* form labels and inputs */
+    label {
+        margin: 4px 0px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    input {
+        border-radius: 5px;
+        border: 1px solid rgb(0, 0, 0);
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        height:70px;
+        margin-top: 20px;
+    }
+}
+
+.signup{
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    /* form title */
+    h3 {
+        font-size: 1.5rem;
+        color: #ffffff;
+    }
+  
+    /* form labels and inputs */
+    label {
+        margin: 4px 0px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    input {
+        border-radius: 5px;
+        border: 1px solid rgb(0, 0, 0);
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        height:70px;
+        margin-top: 20px;
+    }
+}
+
+.error{
+color: red;
+}
 /* LOGIN/SIGNUP END  */
 
 /* SINGLE PAGE */
@@ -878,7 +941,6 @@ nav {
 
   .single-listing-image:hover img {
     transform: scale(1.5);
-    /* Adjust scale for zoom level */
     cursor: zoom-in;
   }
 
@@ -1213,6 +1275,52 @@ footer {
     width: 100%;
   }
 
+.small-shoes{
+  display: none;
+}
+.filter-bar{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.listings-page{
+  
+  .search-create-listing {
+    .search-bar {
+      width: 57%;
+    }
+  }
+
+  .listing-form {
+
+    h3 {
+      font-size: 2rem;
+    }
+
+    .filter-form-container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  
+    .form-buttons {
+      .cancel-button, .post-button {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .listing-card-border{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .listings{
+    grid-template-columns: repeat(1,1fr);
+  }
+
   .small-shoes {
     display: none;
   }
@@ -1233,8 +1341,6 @@ footer {
       grid-template-columns: repeat(1, 1fr);
     }
   }
-
-
 
 }
 

@@ -46,9 +46,10 @@ const SinglePageHeader = () => {
         <>
             {/* Header */}
             <div className='singlepage-header-container'>
+      
                 {/* image */}
                 <div className='single-listing-image'>
-                    <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt={listing.listing_title}/>
+                  <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt={listing.listing_title}/>
                 </div>
 
                 {/* listing details */}
@@ -93,7 +94,9 @@ const SinglePageHeader = () => {
                             {/* listing seller */}
                             <div className='listing-seller-details'>
                                 <div className='user-profile-picture'>
-                                    <img/>
+                                    <div className='profile-avatar'>
+                                        <span>{listing.user_id.charAt(0).toUpperCase()}</span> 
+                                    </div>
                                     <p>{listing.user_id}</p>
                                 </div>
                                 <h5>Listed {formatDistanceToNow(new Date(listing.createdAt), {includeSeconds: false, addSuffix: true})}</h5>

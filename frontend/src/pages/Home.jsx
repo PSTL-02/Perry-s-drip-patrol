@@ -10,6 +10,7 @@ const Home = () => {
   const [shoes, setShoes] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
   
   const { listings, dispatch } = useListingContext();
   const [myListings, setMyListings] = useState(false);
@@ -44,6 +45,10 @@ const Home = () => {
     setShowForm(!showForm);
   };
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
+
   const getFilteredListings = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const user_id = user?.email || user?.username;
@@ -52,6 +57,15 @@ const Home = () => {
 
     if (myListings && user_id) {
       filtered = filtered.filter(listing => listing.user_id === user_id);
+    }
+
+    if (searchTerm) {
+      filtered = filtered.filter(listing =>
+        listing.listing_title.toLowerCase().includes(searchTerm) ||
+        listing.location.toLowerCase().includes(searchTerm) ||
+        listing.shoe_brand.toLowerCase().includes(searchTerm) ||
+        listing.gender_category.toLowerCase().includes(searchTerm)
+      );
     }
 
     return filtered;
@@ -99,7 +113,17 @@ const Home = () => {
 
         <div className='listings-page'>
           {/* Create Listing Button */}
-          <div className='create-listing-search'>
+          <div className='search-create-listing'>
+            <div className='search-bar'>
+              <input
+                type='text'
+                name='search'
+                id='search'
+                placeholder='Search...'
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+            </div>
             <button className='primary-button' onClick={handleCreateListing}>
               Create a listing
             </button>
