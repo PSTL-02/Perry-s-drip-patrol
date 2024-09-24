@@ -141,7 +141,6 @@ nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    padding: 1rem;
   }
 
   /* Listing & Edit Form start */
@@ -1201,7 +1200,7 @@ footer {
   }
 
   .listing-form {
-
+      
     h3 {
       font-size: 2rem;
     }
