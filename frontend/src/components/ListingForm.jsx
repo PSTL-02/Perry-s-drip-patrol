@@ -132,7 +132,7 @@ const ListingForm = ({closeMethod}) => {
                                 type='text'
                                 onChange={(e) => setSize(e.target.value)}
                                 value={size}
-                                maxLength={2}
+                                maxLength={3}
                                 required
                             />
                             <select type='text' onChange={(e) => setCountrySize(e.target.value)} value={countrySize} required>
@@ -190,16 +190,15 @@ const ListingForm = ({closeMethod}) => {
                             <option value='Womans'>Womans</option>
                             <option value='Unisex'>Unisex</option>
                         </select>
-                    </div>
 
-                    {/* Image */}
-                    <div className='form-filter'>
-                        <label htmlFor="image">Image:<span>*</span></label>
+                        {/* Image */}
                         <input id='imageFilter'
                             type='file'
                             accept='image/*'
-                            onChange={(e) => setListingImage(e.target.files[0])} required />
+                            onChange={(e) => setListingImage(e.target.files[0])} required 
+                        />
                     </div>
+
                 </div>
 
                 <div className='form-buttons'>

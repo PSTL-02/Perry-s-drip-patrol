@@ -149,7 +149,7 @@ nav {
     border-radius: 15px;
     padding: 10px;
     width: 100%;
-    margin-bottom: 30px;
+    padding: 1rem;
     background-color: var(--background-color);
     position: relative;
     z-index: 1;
@@ -162,6 +162,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
+    margin: 1rem;
     z-index: -1;
     border-radius: 15px;
     padding: 3px;
@@ -173,11 +174,17 @@ nav {
     mask-composite: exclude; 
     transition: 0.5s all ease;
   }
+  
   .listing-form, .edit-form{
     width: 100%;
     height: 100%;
     border-radius: 15px;
     padding: 15px;
+
+    input, select{
+      border-radius: 4px;
+      border: none;
+    }
   }
 
   .listing-form h3 {
@@ -193,10 +200,15 @@ nav {
   .filter-form-container {
     width: 100%;
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .edit-filter-form-container {
+    width: 100%;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    padding-bottom: 20px;
-
   }
 
   .form-filter {
@@ -208,12 +220,21 @@ nav {
       height: 150px;
     }
     #imageFilter {
+      margin-top: 10px;
       color: white;
     }
   }
   .size-filter {
     display: flex;
     gap: 2px;
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    select {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
   .form-filter label, input{
     width: 100%;
@@ -232,8 +253,10 @@ nav {
     display: flex;
     justify-content: end;
     gap: 10px;
+    margin-top: 1rem;
 
     .cancel-button {
+      font-size: 1.5rem;
       position: relative;
       padding: 5px 10px;
       background-color: var(--background-color);
@@ -270,6 +293,7 @@ nav {
     }
 
     .post-button {
+      font-size: 1.5rem;
       position: relative;
       padding: 5px 10px;
       background-color: var(--background-color);
@@ -311,45 +335,23 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 1rem;
 
-    .save-cancel-buttons {
+    .delete-cancel-buttons {
       display: flex;
       gap: 10px;
 
-      .save-button {
-        position: relative;
+      .delete-button {
+        display: flex;
+        align-items: center;
         padding: 5px 10px;
         background-color: var(--background-color);
         color: white;
-        z-index: 1;
-        border: none;
+        border: 2px solid red;
         border-radius: 5px;
-        transition: 0.5s all ease;
-      }
-      
-      .save-button::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        border-radius: 5px;
-        padding: 2px;
-        background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
-        -webkit-mask: 
-          linear-gradient(#fff 0 0) content-box, 
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: destination-out;
-        mask-composite: exclude; 
-        cursor: pointer;
-        transition: 0.5s all ease;
-      }
-  
-      .save-button:hover::before {
-        background: var(--accent-blue);
-        transition: 0.5s all ease;
+        &:hover {
+          background-color: red;
+        }
       }
 
       .cancel-button {
@@ -388,14 +390,44 @@ nav {
         transition: 0.5s all ease;
       }
     }
-    .delete-button {
+
+    .save-listing-button {
       display: flex;
-      align-items: center;
-      padding: 5px 10px;
-      background-color: var(--background-color);
-      color: white;
-      border: 2px solid red;
-      border-radius: 5px;
+      .save-button {
+        position: relative;
+        padding: 5px 10px;
+        background-color: var(--background-color);
+        color: white;
+        z-index: 1;
+        border: none;
+        border-radius: 5px;
+        transition: 0.5s all ease;
+      }
+      
+      .save-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 5px;
+        padding: 2px;
+        background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude; 
+        cursor: pointer;
+        transition: 0.5s all ease;
+      }
+  
+      .save-button:hover::before {
+        background: var(--accent-blue);
+        transition: 0.5s all ease;
+      }
     }
   }
   /* Form Buttons Ends */
@@ -1159,12 +1191,41 @@ footer {
   display: grid;
   grid-template-columns: repeat(3,1fr);
 }
+
 .listings-page{
+  
+  .search-create-listing {
+    .search-bar {
+      width: 57%;
+    }
+  }
+
+  .listing-form {
+
+    h3 {
+      font-size: 2rem;
+    }
+
+    .filter-form-container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  
+    .form-buttons {
+      .cancel-button, .post-button {
+        font-size: 1rem;
+      }
+    }
+  }
+
   .listing-card-border{
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .listings{
     grid-template-columns: repeat(1,1fr);
   }
