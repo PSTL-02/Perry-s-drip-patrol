@@ -919,6 +919,7 @@ nav {
     right: 10%;
     padding: 30px;
   }
+
   /* HELP BUBBLE ENDS*/
 }
 
@@ -1059,11 +1060,13 @@ nav {
           align-items: flex-start;
           width: 50%;
           gap: 1rem;
-          .user-profile-picture{
+
+          .user-profile-picture {
             display: flex;
             align-items: center;
             gap: 1rem;
-            .profile-avatar{
+
+            .profile-avatar {
               display: flex;
               align-items: center;
               justify-content: center;
@@ -1302,57 +1305,9 @@ footer {
   }
 
   .listing-form {
-      
+
     h3 {
       font-size: 2rem;
-    }
-  .small-shoes {
-    display: none;
-  }
-
-  .filter-bar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .listings-page {
-
-    .search-create-listing {
-      .search-bar {
-        width: 57%;
-      }
-    }
-
-    .listing-form {
-
-      h3 {
-        font-size: 2rem;
-      }
-
-      .filter-form-container {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .form-buttons {
-
-        .cancel-button,
-        .post-button {
-          font-size: 1rem;
-        }
-      }
-    }
-
-    .listing-card-border {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .listings {
-      grid-template-columns: repeat(1, 1fr);
     }
 
     .small-shoes {
@@ -1365,6 +1320,35 @@ footer {
     }
 
     .listings-page {
+
+      .search-create-listing {
+        .search-bar {
+          width: 57%;
+        }
+      }
+
+      .listing-form {
+
+        h3 {
+          font-size: 2rem;
+        }
+
+        .filter-form-container {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .form-buttons {
+
+          .cancel-button,
+          .post-button {
+            font-size: 1rem;
+          }
+        }
+      }
+
       .listing-card-border {
         display: flex;
         align-items: center;
@@ -1373,6 +1357,27 @@ footer {
 
       .listings {
         grid-template-columns: repeat(1, 1fr);
+      }
+
+      .small-shoes {
+        display: none;
+      }
+
+      .filter-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .listings-page {
+        .listing-card-border {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .listings {
+          grid-template-columns: repeat(1, 1fr);
+        }
       }
     }
   }
