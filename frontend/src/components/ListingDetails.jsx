@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -91,6 +91,11 @@ const ListingDetails = ({listing}) => {
         setEditCategory(listing.gender_category)
         setIsEditing(false);
     }
+
+    // return to the top of the page
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className='listing-details'>

@@ -73,7 +73,10 @@ const Home = () => {
 
   const filteredListings = getFilteredListings();
 
-
+  // return to the top of the page
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="home-outer">
