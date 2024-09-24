@@ -70,10 +70,10 @@ nav {
       color: #fff;
       font-size: 1.1rem;
       cursor: pointer;
-      transition: 1s all ease;
+      transition: 0.5s all ease;
 
       &:hover {
-        transition: 1s all ease;
+        transition: 0.5s all ease;
         background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
         radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
         radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
@@ -103,7 +103,9 @@ nav {
     padding: 10px;
     border-radius: 5px;
     border: 2px solid transparent;
+    transition: 0.5s all ease;
     &:hover {
+      transition: 0.5s all ease;
       border: 2px solid white;
       cursor: pointer;
     }
@@ -247,6 +249,7 @@ nav {
 
     .cancel-button:hover::before {
       background: var(--accent-blue);
+      transition: 0.5s all ease;
     }
 
     .post-button {
@@ -282,6 +285,7 @@ nav {
 
     .post-button:hover::before {
       background: var(--accent-blue);
+      transition: 0.5s all ease;
     }
   }
   /* Edit Form Buttons Starts - save/cancel/delete */
@@ -328,6 +332,7 @@ nav {
   
       .save-button:hover::before {
         background: var(--accent-blue);
+        transition: 0.5s all ease;
       }
 
       .cancel-button {
@@ -363,6 +368,7 @@ nav {
   
       .cancel-button:hover::before {
         background: var(--accent-blue);
+        transition: 0.5s all ease;
       }
     }
     .delete-button {
@@ -501,6 +507,7 @@ nav {
 
       .view-button:hover::before {
         background: var(--accent-blue);
+        transition: 0.5s all ease;
       }
 
       .edit-delete-button {
@@ -508,6 +515,7 @@ nav {
         align-items: center;
         gap: 10px;
         font-size: 1.5em;
+        transition: 0.5s all ease;
 
         .edit-icon:hover {
           color: var(--accent-blue);
@@ -559,11 +567,11 @@ nav {
   color: #fff;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: 1s all ease;
+  transition: 0.5s all ease;
 }
 
 .primary-button:hover {
-  transition: 1s all ease;
+  transition: 0.5s all ease;
   background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
     radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
     radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
@@ -668,15 +676,29 @@ nav {
   
 }
 
+.Signup-login-border {
+  margin-top: 100px;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 100% 100%, #282828 0, #282828 8px, transparent 8px) 0% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 0 100%, #282828 0, #282828 8px, transparent 8px) 100% 0%/12px 12px no-repeat,
+        radial-gradient(circle at 100% 0, #282828 0, #282828 8px, transparent 8px) 0% 100%/12px 12px no-repeat,
+        radial-gradient(circle at 0 0, #282828 0, #282828 8px, transparent 8px) 100% 100%/12px 12px no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 8px) calc(100% - 24px) no-repeat,
+        linear-gradient(#282828, #282828) 50% 50%/calc(100% - 24px) calc(100% - 8px) no-repeat,
+        linear-gradient(90deg, #54D3DE 0%, #c440b0 100%);
+  border-radius: 15px;
+}
+
+
 .login {
-    margin-top: 100px;
+    margin-top: 30px;
     width: 300px;
     height: 330px;
     display: flex;
     flex-direction: column;
-    border-image: linear-gradient(to top, #54D3DE 0%, #C440B0 100%) 1;
-    border-width: 4px;
-    border-style: solid;
     padding: 20px;
 
     /* form title */
@@ -707,14 +729,10 @@ nav {
 }
 
 .signup{
-  margin-top: 100px;
     width: 300px;
     height: 400px;
     display: flex;
     flex-direction: column;
-    border-image: linear-gradient(to top, #54D3DE 0%, #C440B0 100%) 1;
-    border-width: 4px;
-    border-style: solid;
     padding: 20px;
 
     /* form title */
@@ -742,6 +760,11 @@ nav {
         margin-top: 20px;
     }
 }
+
+.error{
+color: red;
+}
+
 /* LOGIN/SIGNUP END  */
 
 /* single page */
