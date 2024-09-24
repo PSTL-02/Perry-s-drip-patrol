@@ -99,7 +99,7 @@ const ListingDetails = ({listing}) => {
                     <form className='edit-form'>
                         <h3>Edit Your Item</h3>
 
-                        <div className='filter-form-container'>
+                        <div className='edit-filter-form-container'>
                             {/* Title */}
                             <div className='form-filter'>
                                 <label>Title:</label>
@@ -147,7 +147,7 @@ const ListingDetails = ({listing}) => {
                                     <input
                                         type='text'
                                         value={editSize}
-                                        maxLength={2}
+                                        maxLength={3}
                                         onChange={(e) => setEditSize(e.target.value)}
                                     />
                                     <select type='text' onChange={(e) => setEditCountrySize(e.target.value)} value={editCountrySize} required>
@@ -194,12 +194,12 @@ const ListingDetails = ({listing}) => {
                         </div>
 
                         <div className='edit-form-buttons'>
-                            <div className='save-cancel-buttons'>
-                                <button className='save-button' onClick={handleSubmitEdit}>Save Changes</button>
+                            <div className='delete-cancel-buttons'>
+                                <button className='delete-button' onClick={handleDelete}>Delete Listing</button>
                                 <button className='cancel-button' onClick={handleCancelEdit}>Cancel Changes</button>
                             </div>
-                            <div className='delete-listing-button'>
-                                <button className='delete-button' onClick={handleDelete}>Delete Listing</button>
+                            <div className='save-listing-button'>
+                                <button className='save-button' onClick={handleSubmitEdit}>Save Changes</button>
                             </div>
                             
                         </div>
