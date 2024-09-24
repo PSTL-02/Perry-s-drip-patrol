@@ -72,7 +72,9 @@ const ChatSection = () => {
             listing.comments.map((comment) => (
               <div className={`comment ${comment.user_id === listing.user_id ? 'seller' : 'buyer'}`} key={comment._id}>
                 <div className='comment-user-details'>
-                  <img/>
+                  <div className='profile-avatar'>
+                    <span>{listing.user_id.charAt(0).toUpperCase()}</span> 
+                  </div>
                   <p>{comment.user_id}</p>
                   <p className={`comment-title ${comment.user_id === listing.user_id ? 'seller' : 'buyer'}`} key={comment._id}>
                     {comment.user_id === listing.user_id ? '(Seller)' : '(Buyer)'}

@@ -788,11 +788,26 @@ nav {
 .single-listing-title svg{
   font-size: 2rem;
 }
-
 .listing-seller-details{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+.user-profile-picture{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.profile-avatar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--accent-purple);
+  color: white;
+  font-size: 1.5rem;
 }
 
 .single-listing-details{

@@ -22,7 +22,7 @@ const userSchema = new Schema({
         enum: ['buyer', 'seller'],
         default: 'buyer'
     }
-})
+});
 
 userSchema.statics.signup = async function (username, email, password) {
     if(!username || !email || !password) {
