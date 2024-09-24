@@ -40,6 +40,8 @@ const SinglePageHeader = () => {
         return <div>Listing not found</div>
     }
 
+    // image zoom on hover
+
     return (
         <>
             {/* Header */}
@@ -47,11 +49,11 @@ const SinglePageHeader = () => {
                 {/* image */}
                 <div className='single-listing-image'>
                     <img src={`${baseURL}/public/uploads/${listing.listing_img}`} alt={listing.listing_title}/>
-                    <h3 className='shoe-price'>${listing.price}</h3>
                 </div>
 
                 {/* listing details */}
                 <div className='single-listing-details-container'>
+                    <h3 className='shoe-price'>${listing.price}</h3>
                     <div className='single-listing-title'>
                         {/* title */}
                         <div className='listing-title-icon'>

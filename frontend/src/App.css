@@ -847,6 +847,7 @@ nav {
     right: 10%;
     padding: 30px;
   }
+
   /* HELP BUBBLE ENDS*/
 }
 
@@ -862,14 +863,31 @@ nav {
   /* listing image */
   .single-listing-image {
     width: 60%;
+    position: relative;
+    overflow: hidden;
+  }
 
-    img {
-      height: 100%;
-      width: 100%;
-      border-radius: 15px;
-      object-fit: cover;
-      object-position: center;
-    }
+  .single-listing-image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .single-listing-image:hover img {
+    transform: scale(1.5);
+    /* Adjust scale for zoom level */
+    cursor: zoom-in;
+  }
+
+  /* listing details container */
+  .single-listing-details-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 2rem;
 
     .shoe-price {
       top: 15.5rem;
@@ -909,14 +927,6 @@ nav {
       mask-composite: exclude;
       cursor: pointer;
     }
-  }
-
-  /* listing details container */
-  .single-listing-details-container {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    gap: 2rem;
 
     .single-listing-title {
       display: flex;
