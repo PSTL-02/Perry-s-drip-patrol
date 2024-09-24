@@ -17,18 +17,20 @@ const Login = () => {
     return (
         <>
         <div className="user-form">
-            <form className="login" onSubmit={handleSubmit}>
-                <h3> Log In </h3>
+            <div className="Signup-login-border">
+                <form className="login" onSubmit={handleSubmit}>
+                    <h3> Log In </h3>
 
-                <label> Username or Email: </label>
-                <input type="text" onChange={(e) => setIdentifier(e.target.value)} value={identifier}/>
+                    <label> Username or Email: </label>
+                    <input type="text" onChange={(e) => setIdentifier(e.target.value)} value={identifier}/>
 
-                <label> Password: </label>
-                <input type="password" autoComplete='password' onChange={(e) => setPassword(e.target.value)} value={password}/>
+                    <label> Password: </label>
+                    <input type="password" autoComplete='password' onChange={(e) => setPassword(e.target.value)} value={password}/>
 
-                <button disabled={isLoading} className="primary-button"> Log In </button>
-                {error && <div className="error"> {error} </div>}
-            </form>
+                    <button disabled={isLoading} className="primary-button"> Log In </button>
+                    {error && <div className="error"> {error} </div>}
+                </form>
+            </div>
         </div>
         </>
     )
