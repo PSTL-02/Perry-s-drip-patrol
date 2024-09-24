@@ -92,11 +92,28 @@ nav {
   padding: 1rem 1rem 0 1rem;
   background-color: var(--background-color);
 
-  .create-listing-search,.listing-buttons {
+  .search-create-listing,.listing-buttons {
     display: flex;
     justify-content: end;
-    gap: 20px;
+    gap: 2%;
     padding: 1rem;
+
+    .search-bar {
+      width: 17.5%;
+      display: inline-flex;
+      align-items: center;
+
+      input {
+        color: black;
+        border: none;
+        border-radius: 30px;
+        padding: 25px;
+        &:focus {
+          border: 2px solid var(--accent-blue);
+          outline: 2px solid white;
+        }
+      }
+    }
   }
 
   .listing-buttons #allListings, #myListings {
