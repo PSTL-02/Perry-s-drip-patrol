@@ -51,7 +51,6 @@ app.get('/', (req, res) => {
 
 // Listen to changes
 app.listen(port, () => {
-    console.log(`Express server is running on http://localhost:${port}`);
 });
 
 mongoose.connect(mongoURI)

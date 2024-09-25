@@ -38,7 +38,6 @@ const Navbar = () => {
                         <Link to='/signup'><button className='primary-button'>Signup</button></Link>
                     </>
                 )}
-                
             </div>
         </nav>
     );

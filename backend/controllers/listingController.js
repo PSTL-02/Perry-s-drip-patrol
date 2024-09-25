@@ -13,7 +13,6 @@ const getListings = async(req, res) => {
         res.status(200).json(listings);
 
     } catch (error) {
-        console.log(error);
         res.status(500).json({error: 'Internal server error'})
     }
 };
@@ -27,7 +26,6 @@ const getListing = async (req, res) => {
     }
 
     try {
-        // const listing = await Listing.findById(id).populate('comments');
         const listing = await Listing.findById(id).populate({
             path: 'comments',
             model: 'Comment'

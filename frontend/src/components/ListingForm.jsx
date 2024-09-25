@@ -150,7 +150,6 @@ const ListingForm = ({closeMethod}) => {
                             type='text'
                             onChange={(e) => setPrice(e.target.value)}
                             value={price}
-                            maxLength={5}
                             placeholder='00.00'
                             required
                         />

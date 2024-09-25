@@ -3,7 +3,6 @@ const User = require('../models/userModel');
 
 const jwt = require('jsonwebtoken');
 
-
 // Login Function
 const loginUser = async (req,res) => {
     const {identifier, password} = req.body
@@ -34,8 +33,6 @@ const signupUser = async (req,res) => {
     } catch (error) {
         res.status(400).json({error: error.message});
     }
-
-    // res.json({mssg: 'signup user'})
 }
 
 // Create a JWT
