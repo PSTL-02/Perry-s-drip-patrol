@@ -1,9 +1,8 @@
-import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import {formatDistanceToNow} from 'date-fns';
-import { useAuthContext } from '../hooks/useAuthContext';
+import ChatSection from './ChatSection';
 
 // icons
 import { FaHeart } from "react-icons/fa6";
@@ -11,11 +10,12 @@ import { FaHeart } from "react-icons/fa6";
 const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const SinglePageHeader = () => {
-    const navigate = useNavigate();
 
     const [listing, setListing] = useState(null);
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
+    const [showComment, setShowComment] = useState(false);
+    const commentSectionRef = useRef(null);
 
     const user = JSON.parse(localStorage.getItem('user'));
     const user_id = user ? user.username : null;
@@ -31,6 +31,12 @@ const SinglePageHeader = () => {
             setLoading(false);
         });
     }, [id]);
+    
+    useEffect(() => {
+        if (showComment && commentSectionRef.current) {
+            commentSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [showComment]);
 
     if (loading) {
         return <div>Loading...</div>
@@ -40,7 +46,10 @@ const SinglePageHeader = () => {
         return <div>Listing not found</div>
     }
 
-    // image zoom on hover
+    // buy now button
+    const handleBuyNow = () => {
+        setShowComment(true);
+    };
 
     return (
         <>
@@ -109,13 +118,18 @@ const SinglePageHeader = () => {
                                 </div>
                                 {/* buy button */}
                                 <div className='single-listing-button'>
-                                    <button className='primary-button buy-button'>Buy Now</button>
+                                    <button className='primary-button buy-button' onClick={handleBuyNow}>Buy Now</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {showComment && (
+                <div ref={commentSectionRef}>
+                    <ChatSection />
+                </div>
+            )}
         </>
     )
 }

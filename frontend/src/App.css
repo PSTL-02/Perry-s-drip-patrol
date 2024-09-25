@@ -1101,7 +1101,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 90vh;
+  height: 80vh;
   width: 100%;
   overflow-y: auto;
   background-color: white;
@@ -1142,6 +1142,16 @@ nav {
           border-radius: 50%;
           background-color: #C440B0;
         }
+
+        .profile-avatar {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 3rem;
+          width: 3rem;
+          border-radius: 50%;
+          background-color: #C440B0;
+        }
       }
 
       .comment-details {
@@ -1174,10 +1184,7 @@ nav {
 
       .comment-details {
         background-color: var(--accent-purple);
-        background:
-          linear-gradient(135deg, transparent 20px, var(--accent-purple) 20px) left no-repeat,
-          linear-gradient(-45deg, transparent 20px, var(--accent-purple) 20px) bottom right no-repeat;
-        background-size: 50% 100%;
+        border-radius: 0 2rem 0 2rem;
       }
     }
 
@@ -1193,10 +1200,7 @@ nav {
 
       .comment-details {
         background-color: var(--accent-blue);
-        background:
-          linear-gradient(45deg, transparent 20px, var(--accent-blue) 20px) left no-repeat,
-          linear-gradient(-135deg, transparent 20px, var(--accent-blue) 20px) top right no-repeat;
-        background-size: 51% 100%;
+        border-radius: 2rem 0 2rem 0;
 
         p {
           text-align: start;
@@ -1317,66 +1321,125 @@ footer {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
     }
-  }
 
-  .listings-page {
-    .search-create-listing {
-      .search-bar {
-        width: 57%;
+    .listings-page {
+      .search-create-listing {
+        .search-bar {
+          width: 57%;
+        }
+      }
+
+      .listing-form {
+
+        h3 {
+          font-size: 2rem;
+        }
+
+        .filter-form-container {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .form-buttons {
+
+          .cancel-button,
+          .post-button {
+            font-size: 1rem;
+          }
+        }
       }
     }
 
-    .listing-form {
-
-      h3 {
-        font-size: 2rem;
+      .listing-card-border {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .filter-form-container {
-        width: 100%;
+      .listings {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .small-shoes {
+        display: none;
+      }
+
+      .filter-bar {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
       }
 
-      .form-buttons {
+      .listings-page {
+        .listing-card-border {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
 
-        .cancel-button,
-        .post-button {
-          font-size: 1rem;
+        .listings {
+          grid-template-columns: repeat(1, 1fr);
         }
       }
     }
   }
 
-  .listing-card-border {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* singl page */
+  .navigation-buttons {
+    .help-bubble-open {
+        width: 373px;
+    }
+    .help-bubble-open::after {
+      left: 354px;
   }
+}
+  .singlepage-header-container {
+    flex-direction: column;
+    height: 120vh;
 
-  .listings {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .small-shoes {
-    display: none;
-  }
-
-  .filter-bar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .listings-page {
-    .listing-card-border {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .single-listing-image {
+      width: 100%;
+      height: 40%;
     }
 
-    .listings {
-      grid-template-columns: repeat(1, 1fr);
+    .single-listing-details-container {
+      height: 80%;
+      width: 100%;
+
+      .single-listing-title {
+        .listing-profile-buttons {
+          .listing-buttons-container {
+            .single-listing-button .buy-button {
+              padding: 15px 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .chat-section {
+    height: 70vh;
+
+    .add-comment {
+      input {
+        height: 8vh;
+      }
+
+      .submit-comment {
+        height: 5rem;
+        width: 6rem;
+      }
+    }
+
+    .comments {
+      .comment {
+        .comment-details {
+          min-width: 55%;
+          min-height: 8vh;
+        }
+      }
     }
   }
 
