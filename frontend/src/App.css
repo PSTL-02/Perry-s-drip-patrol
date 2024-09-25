@@ -94,8 +94,7 @@ nav {
   padding: 1rem 1rem 0 1rem;
   background-color: var(--background-color);
 
-  .search-create-listing,
-  .listing-buttons {
+  .search-create-listing {
     display: flex;
     justify-content: end;
     gap: 2%;
@@ -1324,7 +1323,6 @@ footer {
     }
 
     .listings-page {
-
       .search-create-listing {
         .search-bar {
           width: 57%;
@@ -1352,6 +1350,7 @@ footer {
           }
         }
       }
+    }
 
       .listing-card-border {
         display: flex;
@@ -1395,7 +1394,6 @@ footer {
       left: 354px;
   }
 }
-
   .singlepage-header-container {
     flex-direction: column;
     height: 120vh;
@@ -1444,6 +1442,7 @@ footer {
       }
     }
   }
+
 }
 
 /* RESPONSIVE END */
