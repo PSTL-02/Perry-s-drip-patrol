@@ -32,6 +32,7 @@ const ChatSection = () => {
     }
   }, [id]);
 
+  // comment id
   const handleAddComment = async () => {
     try {
       if (!listing?._id) {
@@ -71,6 +72,7 @@ const ChatSection = () => {
           {listing?.comments?.length > 0 ? (
             listing.comments.map((comment) => (
               <div className={`comment ${comment.user_id === listing.user_id ? 'seller' : 'buyer'}`} key={comment._id}>
+                {/* comment user details */}
                 <div className='comment-user-details'>
                   <div className='profile-avatar'>
                     <span>{comment.user_id.charAt(0).toUpperCase()}</span> 
@@ -80,6 +82,7 @@ const ChatSection = () => {
                     {comment.user_id === listing.user_id ? '(Seller)' : '(Buyer)'}
                   </p>
                 </div>
+                {/* comment text */}
                 <div className='comment-details'>
                   <p>{comment.text}</p>
                   <span className='comment-date'>

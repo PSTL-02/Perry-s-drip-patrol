@@ -3,9 +3,12 @@
 
 /* roots */
 :root {
+  /* colors */
   --background-color: #282828;
   --accent-purple: #C440B0;
   --accent-blue: #54D3DE;
+  /* values */
+  --primary-padding: 2rem;
 }
 
 * {
@@ -88,7 +91,7 @@ nav {
   }
 }
 
-/* LISTINGS START */
+/* listings starts */
 .listings-page {
   width: 100%;
   padding: 1rem 1rem 0 1rem;
@@ -217,7 +220,7 @@ nav {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 1rem;
   }
 
   .form-filter {
@@ -226,18 +229,18 @@ nav {
     width: 100%;
 
     .description {
-      height: 150px;
+      height: 10rem;
     }
 
     #imageFilter {
-      margin-top: 10px;
+      margin-top: 1rem;
       color: white;
     }
   }
 
   .size-filter {
     display: flex;
-    gap: 2px;
+    gap: .1rem;
 
     input {
       border-top-right-radius: 0;
@@ -253,9 +256,9 @@ nav {
   .form-filter label,
   input {
     width: 100%;
-    height: 30px;
-    padding: 2px;
-    font-size: 15px;
+    height: 2rem;
+    padding: .1rem;
+    font-size: 1rem;
     color: white;
   }
 
@@ -273,7 +276,7 @@ nav {
     margin-top: 1rem;
 
     .cancel-button {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       position: relative;
       padding: 5px 10px;
       background-color: var(--background-color);
@@ -310,7 +313,7 @@ nav {
     }
 
     .post-button {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       position: relative;
       padding: 5px 10px;
       background-color: var(--background-color);
@@ -357,7 +360,7 @@ nav {
 
     .delete-cancel-buttons {
       display: flex;
-      gap: 10px;
+      gap: .5rem;
 
       .delete-button {
         display: flex;
@@ -393,7 +396,7 @@ nav {
         bottom: 0;
         z-index: -1;
         border-radius: 5px;
-        padding: 2px;
+        padding: .1rem;
         background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
         -webkit-mask:
           linear-gradient(#fff 0 0) content-box,
@@ -433,7 +436,7 @@ nav {
         bottom: 0;
         z-index: -1;
         border-radius: 5px;
-        padding: 2px;
+        padding: .1rem;
         background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
         -webkit-mask:
           linear-gradient(#fff 0 0) content-box,
@@ -469,13 +472,13 @@ nav {
 
   .listing-card {
     display: flex;
-    height: 250px;
+    height: 16rem;
     background-color: white;
     border-radius: 20px;
 
     .listing-image img {
-      width: 250px;
-      height: 250px;
+      width: 16rem;
+      height: 16rem;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
       object-fit: cover;
@@ -485,8 +488,9 @@ nav {
     .shoe-price {
       position: absolute;
       padding: 5px 30px;
-      width: 100px;
-      height: 50px;
+      width: auto;
+      max-width: 34rem;
+      height: 3rem;
       background-color: var(--background-color);
       color: white;
       z-index: 1;
@@ -567,7 +571,7 @@ nav {
         bottom: 0;
         z-index: -1;
         border-radius: 5px;
-        padding: 2px;
+        padding: .1rem;
         background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
         -webkit-mask:
           linear-gradient(#fff 0 0) content-box,
@@ -586,7 +590,7 @@ nav {
       .edit-delete-button {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: .5rem;
         font-size: 1.5em;
         transition: 0.5s all ease;
 
@@ -606,7 +610,7 @@ nav {
   /* Listing Details - End */
 }
 
-/* LISTINGS END */
+/*listings end */
 
 /* home page landing Start */
 .home-outer {
@@ -743,7 +747,7 @@ nav {
 
 /* home page landing end */
 
-/* LOGIN/SIGNUP START  */
+/* login/signup starts */
 .user-form {
   display: flex;
   justify-content: center;
@@ -841,9 +845,9 @@ nav {
   color: red;
 }
 
-/* LOGIN/SIGNUP END  */
+/* login/signup ends */
 
-/* SINGLE PAGE */
+/* single page starts */
 .navigation-buttons {
   display: flex;
   align-items: center;
@@ -856,7 +860,7 @@ nav {
     gap: 5px;
   }
 
-  /* HELP BUBBLE STARTS */
+  /* help bubble starts */
   .help-bubble-container {
     position: sticky;
     width: 80px;
@@ -875,7 +879,7 @@ nav {
     width: 90%;
     height: 90%;
     color: #333;
-    font-size: 16px;
+    font-size: 1rem;
     -webkit-box-shadow: -5px 2px 15px 0px rgba(196, 64, 176, 1), 8px 5px 10px 2px rgba(84, 211, 222, 1);
     -moz-box-shadow: -5px 2px 15px 0px rgba(196, 64, 176, 1), 8px 5px 10px 2px rgba(84, 211, 222, 1);
     box-shadow: -5px 2px 15px 0px rgba(196, 64, 176, 1), 8px 5px 10px 2px rgba(84, 211, 222, 1);
@@ -919,7 +923,7 @@ nav {
     padding: 30px;
   }
 
-  /* HELP BUBBLE ENDS*/
+  /* help bubble ends */
 }
 
 
@@ -967,7 +971,7 @@ nav {
       right: 2rem;
       position: absolute;
       padding: 5px 30px;
-      width: 9rem;
+      width: auto;
       height: 5rem;
       background-color: var(--background-color);
       color: white;
@@ -1009,7 +1013,7 @@ nav {
       width: 100%;
       height: 100%;
       border-radius: 15px;
-      padding: 2rem;
+      padding: var(--primary-padding);
 
       .listing-title-icon {
         display: flex;
@@ -1096,7 +1100,7 @@ nav {
   }
 }
 
-/* COMMENT SECTION STARTS */
+/* comment section starts */
 .chat-section {
   display: flex;
   flex-direction: column;
@@ -1105,7 +1109,7 @@ nav {
   width: 100%;
   overflow-y: auto;
   background-color: white;
-  padding: 2rem;
+  padding: var(--primary-padding);
 
   h2 {
     text-align: center;
@@ -1172,7 +1176,7 @@ nav {
       }
     }
 
-    /* SELLER */
+    /* seller */
     .seller {
       justify-content: flex-start;
       align-items: flex-start;
@@ -1188,7 +1192,7 @@ nav {
       }
     }
 
-    /* BUYER */
+    /* buyer */
     .buyer {
       justify-content: flex-end;
       align-items: flex-end;
@@ -1209,7 +1213,7 @@ nav {
     }
   }
 
-  /* CREATE COMMENT FIELD */
+  /* create comment field */
   .add-comment {
     position: sticky;
     display: flex;
@@ -1245,9 +1249,9 @@ nav {
   }
 }
 
-/* COMMENT SECTION ENDS */
+/* comment section ends */
 
-/* FOOTER STARTS */
+/* footer starts */
 footer {
   display: flex;
   justify-content: space-between;
@@ -1293,10 +1297,10 @@ footer {
   }
 }
 
-/* FOOTER ENDS */
+/* footer ends */
 
 
-/* RESPONSIVE START */
+/* responesive starts */
 
 @media screen and (max-width: 600px) {
   .Landing-section {
@@ -1357,7 +1361,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    .listing-card{
+
+    .listing-card {
       width: 100%;
     }
   }
@@ -1447,4 +1452,5 @@ footer {
     }
   }
 }
-  /* RESPONSIVE END */
+
+/* responesive ends */

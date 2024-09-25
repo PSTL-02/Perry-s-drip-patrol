@@ -25,7 +25,6 @@ const App = () => {
           {/* single page */}
           <Route path='/:id' element={user ? <SingleListing/> : <Navigate to='/login'/>}/>
         </Routes>
-        {/* <HelpBubble/> */}
         <Footer/>
       </BrowserRouter>
     </>

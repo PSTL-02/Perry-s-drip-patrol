@@ -1,7 +1,7 @@
 const Comment = require('../models/commentModel');
 const Listing = require('../models/listingModel');
 
-// CREATE COMMENT
+// create comment
 const createComment = async (req, res) => {
     const {listingId} = req.params
 
@@ -23,7 +23,7 @@ const createComment = async (req, res) => {
     }
 }
 
-// EDIT COMMENT
+// edit comment
 const editComment = async (req, res) => {
     const {listingId, commentId} = req.params
 
@@ -48,7 +48,7 @@ const editComment = async (req, res) => {
     }
 }
 
-// DELETE COMMENT
+// delete comment
 const deleteComment = async (req, res) => {
     const {listingId, commentId} = req.params
     

@@ -7,7 +7,7 @@ import SinglePageHeader from '../components/SinglePageHeader';
 import HelpBubble from '../components/HelpBubble';
 
 const SingleListing = () => {
-  const navigate = useNavigate()
+    const navigate = useNavigate()
 
     // return to the top of the page
     useEffect(() => {

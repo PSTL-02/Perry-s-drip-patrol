@@ -47,5 +47,4 @@ router.delete('/:id', deleteListing);
 // Update Project
 router.patch('/:id', updateListing);
 
-
 module.exports = router;

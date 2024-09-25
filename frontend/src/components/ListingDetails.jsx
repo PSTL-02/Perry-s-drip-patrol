@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,7 +42,6 @@ const ListingDetails = ({listing}) => {
                 dispatch({type: 'DELETE_LISTING', payload: listing});
             }
         } catch (error) {
-            console.log('Error deleting listing', error);
         }
     };
 
@@ -91,11 +90,6 @@ const ListingDetails = ({listing}) => {
         setEditCategory(listing.gender_category)
         setIsEditing(false);
     }
-
-    // return to the top of the page
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     return (
         <div className='listing-details'>
@@ -169,7 +163,6 @@ const ListingDetails = ({listing}) => {
                                 <input
                                     type='text'
                                     value={editPrice}
-                                    maxLength={5}
                                     onChange={(e) => setEditPrice(e.target.value)}
                                 />
                             </div>

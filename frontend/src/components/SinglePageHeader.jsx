@@ -20,10 +20,10 @@ const SinglePageHeader = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const user_id = user ? user.username : null;
 
+    // listing
     useEffect(() => {
         axios.get(`${baseURL}/api/listings/${id}`)
         .then((res) => {
-            console.log(res.data);
             setListing(res.data);
             setLoading(false);
         })
@@ -32,6 +32,7 @@ const SinglePageHeader = () => {
         });
     }, [id]);
     
+    // comments
     useEffect(() => {
         if (showComment && commentSectionRef.current) {
             commentSectionRef.current.scrollIntoView({ behavior: 'smooth' });

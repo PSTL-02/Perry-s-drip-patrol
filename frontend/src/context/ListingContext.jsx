@@ -51,7 +51,6 @@ export const ListingsContextProvider = ({children}) => {
                 dispatch({type: 'SET_LISTINGS', payload: response.data})
             } catch (error) {
                 console.log('Error fetching listings:', error);
-                
             }
         };
         fetchListings();
