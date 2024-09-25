@@ -73,7 +73,7 @@ const ChatSection = () => {
               <div className={`comment ${comment.user_id === listing.user_id ? 'seller' : 'buyer'}`} key={comment._id}>
                 <div className='comment-user-details'>
                   <div className='profile-avatar'>
-                    <span>{listing.user_id.charAt(0).toUpperCase()}</span> 
+                    <span>{comment.user_id.charAt(0).toUpperCase()}</span> 
                   </div>
                   <p>{comment.user_id}</p>
                   <p className={`comment-title ${comment.user_id === listing.user_id ? 'seller' : 'buyer'}`} key={comment._id}>

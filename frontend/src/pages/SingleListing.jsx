@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 // components
 import SinglePageHeader from '../components/SinglePageHeader';
-import ChatSection from '../components/ChatSection';
 import HelpBubble from '../components/HelpBubble';
 
 const SingleListing = () => {
@@ -28,9 +27,6 @@ const SingleListing = () => {
 
       {/* single page header */}
       <SinglePageHeader />
-
-      {/* chat section */}
-      <ChatSection/>
     </>
   );
 };
