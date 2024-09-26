@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 // icons
-import { FaHeart } from "react-icons/fa6";
-import { FaTags } from "react-icons/fa";
+import { BiLogOut } from "react-icons/bi";
+import { FaRegListAlt } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({setShowForm}) => {
     const { logout } = useLogout();
     const { user } = useAuthContext();
 
@@ -28,9 +28,9 @@ const Navbar = () => {
                 {user ? (
                     <>
                         <span className='username'>{user.username}</span>
-                        <FaHeart className='nav-icons'/>
-                        <FaTags className='nav-icons'/>
-                        <button className='primary-button' onClick={handleClick}>Logout</button>
+                        <BiLogOut className='nav-icons' onClick={handleClick}/>
+                        <FaRegListAlt className='nav-icons'/>
+                        <button className='primary-button' onClick={() => setShowForm(showForm => !showForm)}>Create a listing</button>
                     </>
                 ) : (
                     <>

@@ -163,6 +163,7 @@ const ListingDetails = ({listing}) => {
                                 <input
                                     type='text'
                                     value={editPrice}
+                                    maxLength={15}
                                     onChange={(e) => setEditPrice(e.target.value)}
                                 />
                             </div>
@@ -223,7 +224,7 @@ const ListingDetails = ({listing}) => {
                                     </div>
 
                                     <div className='listing-card-buttons'>
-                                        <button className='view-button' onClick={handleNavigate}>view</button>
+                                        <button className='view-button' onClick={handleNavigate}>View</button>
                                         {listing.user_id === user_id && (
                                             <>
                                                 <div className='edit-delete-button'>

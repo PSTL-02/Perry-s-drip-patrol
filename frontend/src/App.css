@@ -58,6 +58,12 @@ nav {
     .nav-icons {
       font-size: 2rem;
       cursor: pointer;
+      transition: 0.5s all ease;
+
+      &:hover {
+        color: var(--accent-blue);
+        transition: 0.5s all ease;
+      }
     }
 
     .primary-button {
@@ -97,32 +103,6 @@ nav {
   padding: 1rem 1rem 0 1rem;
   background-color: var(--background-color);
 
-  .search-create-listing {
-    display: flex;
-    justify-content: end;
-    gap: 2%;
-    padding: 1rem;
-
-    .search-bar {
-      width: 17.5%;
-      display: inline-flex;
-      align-items: center;
-
-      input {
-        color: black;
-        border: none;
-        border-radius: 30px;
-        padding: 25px;
-
-        &:focus {
-          border: 2px solid var(--accent-blue);
-          outline: 2px solid white;
-        }
-      }
-    }
-  }
-
-
   .listing-buttons #allListings,
   #myListings {
     padding: 10px;
@@ -137,12 +117,32 @@ nav {
     }
   }
 
-  .listing-buttons #allListings {
-    background-color: var(--accent-blue);
+  /* Modal container */
+  .modal {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
   }
 
-  .listing-buttons #myListings {
-    background-color: var(--accent-purple);
+  /* Modal Content */
+  .modal-content {
+    background-image: linear-gradient(to bottom, var(--accent-purple), var(--accent-blue));
+    margin: auto;
+    padding: 0.4rem;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    position: relative;
   }
 
   .listings {
@@ -164,7 +164,6 @@ nav {
     z-index: 1;
   }
 
-  .listing-form-box::before,
   .edit-listing::before {
     content: "";
     position: absolute;
@@ -190,17 +189,22 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 15px;
-    padding: 15px;
+    padding: 1rem;
 
     input,
     select {
       border-radius: 4px;
       border: none;
+      padding: 2%;
     }
   }
 
+  .listing-form {
+    padding: 0;
+  }
+
   .listing-form h3 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--accent-purple);
   }
 
@@ -212,8 +216,8 @@ nav {
   .filter-form-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .edit-filter-form-container {
@@ -230,11 +234,14 @@ nav {
 
     .description {
       height: 10rem;
+      resize: none; 
+      padding: 0.5rem;
+      box-sizing: border-box;
     }
 
-    #imageFilter {
-      margin-top: 1rem;
+    #image {
       color: white;
+      padding: 0;
     }
   }
 
@@ -609,7 +616,6 @@ nav {
 
   /* Listing Details - End */
 }
-
 /*listings end */
 
 /* home page landing Start */
@@ -624,6 +630,25 @@ nav {
   align-items: center;
   padding-top: 30px;
   background-color: var(--background-color);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  input {
+    width: 70rem;
+    color: black;
+    border: 1px solid var(--background-color);
+    border-radius: 30px;
+    padding: 15px;
+
+    &:focus {
+      border: 2px solid var(--accent-blue);
+      outline: 1px solid transparent;
+    }
+  }
 }
 
 .buttons {
@@ -694,6 +719,11 @@ nav {
   -webkit-text-fill-color: transparent;
 }
 
+.Landing-text h2 {
+  font-size: 1.5rem;
+  color: var(--background-color);
+}
+
 .small-shoes {
   display: flex;
   flex-direction: column;
@@ -707,20 +737,33 @@ nav {
 .filter-bar {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
   display: flex;
-  padding: 10px 20px;
+  flex-direction: column;
+  padding: 1rem;
   width: 100%;
   gap: 10px;
   margin-top: 30px;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
+.filter-bar h2 {
+  font-size: 1.5rem;
+  margin-left: 14% ;
+  color: var(--background-color);
+}
+
+.filter-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .filter {
-  background: #ffffff;
-  color: black;
+  background: white;
+  color: var(--background-color);
   padding: 10px 20px;
-  border: none;
+  border: 4px solid transparent;
   border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
@@ -728,13 +771,12 @@ nav {
 }
 
 .filter-bar button.active {
-  background-color: var(--accent-blue);
-  border-color: var(--accent-blue);
+  background-color: var(--accent-purple);
+  color: white;
 }
 
 .filter:hover {
-  background-color: var(--accent-purple);
-  color: white;
+  border: 4px solid var(--accent-blue);
 }
 
 .no-listing {
@@ -1300,9 +1342,14 @@ footer {
 /* footer ends */
 
 
-/* responesive starts */
+/* responsive starts */
 
 @media screen and (max-width: 600px) {
+  .search-bar {
+    input {
+      width: 32rem;
+    }
+  }
   .Landing-section {
     flex-direction: column;
   }
@@ -1375,7 +1422,11 @@ footer {
     display: none;
   }
 
-  .filter-bar {
+  .filter-bar h2{
+    margin-left: 1%;
+  }
+
+  .filter-button-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1453,4 +1504,4 @@ footer {
   }
 }
 
-/* responesive ends */
+/* responsive ends */

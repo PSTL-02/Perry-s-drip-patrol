@@ -6,15 +6,14 @@ import { useListingContext } from '../hooks/useListingContext';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-const Home = () => {
+const Home = ({showForm, setShowForm}) => {
   const [shoes, setShoes] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState('All');
+  const [selectedBrand, setSelectedBrand] = useState('Shop All');
   const [searchTerm, setSearchTerm] = useState('');
   
   const { listings, dispatch } = useListingContext();
   const [myListings, setMyListings] = useState(false);
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const fetchShoes = async () => {
@@ -32,7 +31,7 @@ const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredShoes(selectedBrand === 'All'
+    setFilteredShoes(selectedBrand === 'Shop All'
         ? listings
         : listings.filter(shoe => shoe.shoe_brand === selectedBrand));
   }, [selectedBrand, listings]);
@@ -41,8 +40,8 @@ const Home = () => {
     setSelectedBrand(brand);
   };
 
-  const handleCreateListing = () => {
-    setShowForm(!showForm);
+  const handleCloseFormModal = () => {
+    setShowForm(false);
   };
 
   const handleSearch = (event) => {
@@ -81,10 +80,21 @@ const Home = () => {
   return (
     <div className="home-outer">
       <div className="home-container">
+        <div className='search-bar'>
+           <input
+            type='text'
+            name='search'
+            id='search'
+            placeholder='Search...'
+            value={searchTerm}
+            onChange={handleSearch}
+            />
+        </div>
         <div className="Landing-section">
           <div className="large-shoe">
             <div className="Landing-text">
               <h1>The Platypus shoe <br /> marketplace for <br /> Kiwis</h1>
+              <h2>Where you can buy & sell shoes</h2>
               <div className="buttons">
                 <button className="primary-button" onClick={() => window.scrollTo({ top: 652, behavior: "smooth" })} >Start browsing</button>
               </div>
@@ -99,37 +109,31 @@ const Home = () => {
 
         {/* Filter Bar */}
         <div className="filter-bar">
-          {['All', 'Adidas', 'Converse', 'Crocs', 'Jordan', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Timberland', 'Ugg', 'Vans'].map(brand => (
-            <button 
-              key={brand}
-              className={`filter ${selectedBrand === brand ? 'active' : ''}`} 
-              id={brand.toLowerCase().replace(' ', '-')}
-              onClick={() => handleBrandChange(brand)}
-            >
-              {brand}
-            </button>
-          ))}
+          <h2>Shop our range by brands</h2>
+          <div className='filter-button-wrapper'>
+            {['Shop All', 'Adidas', 'Converse', 'Crocs', 'Jordan', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Timberland', 'Ugg', 'Vans'].map(brand => (
+              <button 
+                key={brand}
+                className={`filter ${selectedBrand === brand ? 'active' : ''}`} 
+                id={brand.toLowerCase().replace(' ', '-')}
+                onClick={() => handleBrandChange(brand)}
+              >
+                {brand}
+              </button>
+            ))}
+          </div>
+          
         </div>
 
         <div className='listings-page'>
-          {/* Create Listing Button */}
-          <div className='search-create-listing'>
-            <div className='search-bar'>
-              <input
-                type='text'
-                name='search'
-                id='search'
-                placeholder='Search...'
-                value={searchTerm}
-                onChange={handleSearch}
-              />
+          {/* Form Modal */}
+          {showForm && (
+            <div className="modal">
+              <div className="modal-content">
+                <ListingForm closeMethod={handleCloseFormModal} />
+              </div>
             </div>
-            <button className='primary-button' onClick={handleCreateListing}>
-              Create a listing
-            </button>
-          </div>
-
-          {showForm && <ListingForm closeMethod={() => setShowForm(false)} />}
+          )}
 
           {/* Listings Display */}
           <div className='listings'>

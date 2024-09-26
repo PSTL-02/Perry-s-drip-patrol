@@ -84,6 +84,7 @@ const ListingForm = ({closeMethod}) => {
                     <div className='form-filter'>
                         <label htmlFor="title">Title:<span>*</span></label>
                         <input
+                            id='title'
                             type='text'
                             onChange={(e) => setTitle(e.target.value)}
                             value={title}
@@ -96,6 +97,7 @@ const ListingForm = ({closeMethod}) => {
                     <div className='form-filter'>
                         <label htmlFor="location">Location:<span>*</span></label>
                         <input
+                            id='location'
                             type='text'
                             onChange={(e) => setLocation(e.target.value)}
                             value={location}
@@ -108,7 +110,7 @@ const ListingForm = ({closeMethod}) => {
                     {/* Brand */}
                     <div className='form-filter'>
                         <label htmlFor="brand">Brand:<span>*</span></label>
-                        <select type='text' onChange={(e) => setBrand(e.target.value)} value={brand} required>
+                        <select id='brand' type='text' onChange={(e) => setBrand(e.target.value)} value={brand} required>
                             <option value=''>Please Select shoe Brand</option>
                             <option value='Adidas'>Adidas</option>
                             <option value='Converse'>Converse</option>
@@ -129,13 +131,14 @@ const ListingForm = ({closeMethod}) => {
                         <label htmlFor="size">Size:<span>*</span></label>
                         <div className='size-filter'>
                             <input
+                                id='size'
                                 type='text'
                                 onChange={(e) => setSize(e.target.value)}
                                 value={size}
                                 maxLength={3}
                                 required
                             />
-                            <select type='text' onChange={(e) => setCountrySize(e.target.value)} value={countrySize} required>
+                            <select id='countrySize' type='text' onChange={(e) => setCountrySize(e.target.value)} value={countrySize} required>
                                 <option value='US'>US</option>
                                 <option value='UK'>UK</option>
                                 <option value='EURO'>EURO</option>
@@ -147,10 +150,12 @@ const ListingForm = ({closeMethod}) => {
                     <div className='form-filter'>
                         <label htmlFor="price">Price:<span>*</span></label>
                         <input
+                            id='price'
                             type='text'
                             onChange={(e) => setPrice(e.target.value)}
                             value={price}
                             placeholder='00.00'
+                            maxLength={15}
                             required
                         />
                     </div>
@@ -158,7 +163,7 @@ const ListingForm = ({closeMethod}) => {
                     {/* Condition */}
                     <div className='form-filter'>
                         <label htmlFor="condition">Condition:<span>*</span></label>
-                        <select type='text' onChange={(e) => setCondition(e.target.value)} value={condition} required>
+                        <select id='condition' type='text' onChange={(e) => setCondition(e.target.value)} value={condition} required>
                             <option value=''>Please Select shoe condition</option>
                             <option value='new'>New</option>
                             <option value='used-like-new'>Used - Like New</option>
@@ -170,7 +175,8 @@ const ListingForm = ({closeMethod}) => {
                     {/* Description */}
                     <div className='form-filter'>
                         <label htmlFor="description">Description:<span>*</span></label>
-                        <input className='description'
+                        <textarea className='description'
+                            id='description'
                             type='text'
                             onChange={(e) => setDescription(e.target.value)}
                             value={description}
@@ -182,7 +188,7 @@ const ListingForm = ({closeMethod}) => {
                     {/* Category */}
                     <div className='form-filter'>
                         <label htmlFor="category">Category:<span>*</span></label>
-                        <select type='text' onChange={(e) => setCategory(e.target.value)} value={category} required>
+                        <select id='category' type='text' onChange={(e) => setCategory(e.target.value)} value={category} required>
                             <option value=''>Please Select Category</option>
                             <option value='Kids'>Kids</option>
                             <option value='Mens'>Mens</option>
@@ -191,17 +197,20 @@ const ListingForm = ({closeMethod}) => {
                         </select>
 
                         {/* Image */}
-                        <input id='imageFilter'
-                            type='file'
-                            accept='image/*'
-                            onChange={(e) => setListingImage(e.target.files[0])} required 
-                        />
+                        <div className='form-filter'>
+                            <label htmlFor="image">Image:<span>*</span></label>
+                            <input id='image'
+                                type='file'
+                                accept='image/*'
+                                onChange={(e) => setListingImage(e.target.files[0])} required 
+                            />
+                        </div>
                     </div>
 
                 </div>
 
                 <div className='form-buttons'>
-                    <button className='cancel-button' type='button' onClick={() => closeMethod()}>Cancel</button>
+                    <button className='cancel-button' type='button' onClick={closeMethod}>Cancel</button>
                     <button className='post-button' type='submit'>Post Item</button>
                 </div>
 
