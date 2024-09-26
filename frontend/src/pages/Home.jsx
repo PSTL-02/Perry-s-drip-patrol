@@ -9,7 +9,7 @@ const baseURL = import.meta.env.VITE_API_BASE_URL;
 const Home = ({showForm, setShowForm}) => {
   const [shoes, setShoes] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState('All');
+  const [selectedBrand, setSelectedBrand] = useState('Shop All');
   const [searchTerm, setSearchTerm] = useState('');
   
   const { listings, dispatch } = useListingContext();
@@ -109,7 +109,7 @@ const Home = ({showForm, setShowForm}) => {
 
         {/* Filter Bar */}
         <div className="filter-bar">
-          <h2>Shop our range by brands:</h2>
+          <h2>Shop our range by brands</h2>
           <div className='filter-button-wrapper'>
             {['Shop All', 'Adidas', 'Converse', 'Crocs', 'Jordan', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Timberland', 'Ugg', 'Vans'].map(brand => (
               <button 
@@ -126,23 +126,6 @@ const Home = ({showForm, setShowForm}) => {
         </div>
 
         <div className='listings-page'>
-          {/* Create Listing Button */}
-          {/* <div className='search-create-listing'>
-            <div className='search-bar'>
-              <input
-                type='text'
-                name='search'
-                id='search'
-                placeholder='Search...'
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-            </div>
-            <button className='primary-button' onClick={handleCreateListing}>
-              Create a listing
-            </button>
-          </div> */}
-
           {/* Form Modal */}
           {showForm && (
             <div className="modal">

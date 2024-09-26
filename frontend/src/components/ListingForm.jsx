@@ -175,7 +175,7 @@ const ListingForm = ({closeMethod}) => {
                     {/* Description */}
                     <div className='form-filter'>
                         <label htmlFor="description">Description:<span>*</span></label>
-                        <input className='description'
+                        <textarea className='description'
                             id='description'
                             type='text'
                             onChange={(e) => setDescription(e.target.value)}

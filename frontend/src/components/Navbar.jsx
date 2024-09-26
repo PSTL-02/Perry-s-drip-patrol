@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 // icons
-import { FaHeart } from "react-icons/fa6";
-import { FaTags } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { FaRegListAlt } from "react-icons/fa";
 
@@ -31,8 +29,6 @@ const Navbar = ({setShowForm}) => {
                     <>
                         <span className='username'>{user.username}</span>
                         <BiLogOut className='nav-icons' onClick={handleClick}/>
-                        {/* <FaHeart className='nav-icons'/> */}
-                        {/* <FaTags className='nav-icons'/> */}
                         <FaRegListAlt className='nav-icons'/>
                         <button className='primary-button' onClick={() => setShowForm(showForm => !showForm)}>Create a listing</button>
                     </>
