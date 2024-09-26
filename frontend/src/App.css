@@ -721,7 +721,7 @@ nav {
 
 .filter-bar h2 {
   font-size: 1.5rem;
-  margin-left: 16%;
+  margin-left: 13.4%;
   color: var(--background-color);
 }
 
@@ -734,10 +734,10 @@ nav {
 }
 
 .filter {
-  background: #ffffff;
-  color: black;
+  background: white;
+  color: var(--background-color);
   padding: 10px 20px;
-  border: none;
+  border: 4px solid transparent;
   border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
@@ -746,13 +746,11 @@ nav {
 
 .filter-bar button.active {
   background-color: var(--accent-purple);
-  border-color: var(--accent-blue);
   color: white;
 }
 
 .filter:hover {
-  background-color: var(--accent-blue);
-  color: white;
+  border: 4px solid var(--accent-blue);
 }
 
 .no-listing {
@@ -1394,7 +1392,7 @@ footer {
   }
 
   .filter-bar h2{
-    margin-left: 0;
+    margin-left: 1%;
   }
 
   .filter-button-wrapper {
