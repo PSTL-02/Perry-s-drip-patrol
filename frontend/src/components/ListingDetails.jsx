@@ -163,6 +163,7 @@ const ListingDetails = ({listing}) => {
                                 <input
                                     type='text'
                                     value={editPrice}
+                                    maxLength={15}
                                     onChange={(e) => setEditPrice(e.target.value)}
                                 />
                             </div>
