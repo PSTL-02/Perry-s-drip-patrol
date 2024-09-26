@@ -8,17 +8,24 @@ import SignUp from './pages/SignUp';
 import Footer from './components/Footer';
 import SingleListing from './pages/SingleListing';
 import Home from './pages/Home';
+import { useState } from 'react';
 
 const App = () => {
   const {user} = useAuthContext();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showForm, setShowForm] = useState(false);
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
   
   return (
     <>
       <BrowserRouter>
-        <Navbar/>
+        <Navbar setShowForm={setShowForm} searchTerm={searchTerm} handleSearch={handleSearch} />
         <Routes>
-          <Route exact path='/' element={<Home/>}/>
-          {/* login */}
+        <Route exact path='/' element={<Home showForm={showForm} setShowForm={setShowForm}/>}/>
+        {/* login */}
           <Route path='/login' element={!user ? <Login/> : <Navigate to='/'/>}/>
           {/* signup */}
           <Route path='/signup' element={!user ? <SignUp/> : <Navigate to='/'/>}/>
