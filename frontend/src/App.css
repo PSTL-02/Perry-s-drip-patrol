@@ -609,7 +609,6 @@ nav {
 
   /* Listing Details - End */
 }
-
 /*listings end */
 
 /* home page landing Start */
@@ -694,6 +693,11 @@ nav {
   -webkit-text-fill-color: transparent;
 }
 
+.Landing-text h2 {
+  font-size: 1.5rem;
+  color: var(--background-color);
+}
+
 .small-shoes {
   display: flex;
   flex-direction: column;
@@ -707,13 +711,26 @@ nav {
 .filter-bar {
   background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
   display: flex;
+  flex-direction: column;
   padding: 10px 20px;
   width: 100%;
   gap: 10px;
   margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-bar h2 {
+  font-size: 1.5rem;
+  margin-left: 16%;
+  color: var(--background-color);
+}
+
+.filter-button-wrapper {
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .filter {
@@ -728,12 +745,13 @@ nav {
 }
 
 .filter-bar button.active {
-  background-color: var(--accent-blue);
+  background-color: var(--accent-purple);
   border-color: var(--accent-blue);
+  color: white;
 }
 
 .filter:hover {
-  background-color: var(--accent-purple);
+  background-color: var(--accent-blue);
   color: white;
 }
 
@@ -1300,7 +1318,7 @@ footer {
 /* footer ends */
 
 
-/* responesive starts */
+/* responsive starts */
 
 @media screen and (max-width: 600px) {
   .Landing-section {
@@ -1375,7 +1393,11 @@ footer {
     display: none;
   }
 
-  .filter-bar {
+  .filter-bar h2{
+    margin-left: 0;
+  }
+
+  .filter-button-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1453,4 +1475,4 @@ footer {
   }
 }
 
-/* responesive ends */
+/* responsive ends */

@@ -32,7 +32,7 @@ const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredShoes(selectedBrand === 'All'
+    setFilteredShoes(selectedBrand === 'Shop All'
         ? listings
         : listings.filter(shoe => shoe.shoe_brand === selectedBrand));
   }, [selectedBrand, listings]);
@@ -85,6 +85,7 @@ const Home = () => {
           <div className="large-shoe">
             <div className="Landing-text">
               <h1>The Platypus shoe <br /> marketplace for <br /> Kiwis</h1>
+              <h2>Where you can buy & sell shoes</h2>
               <div className="buttons">
                 <button className="primary-button" onClick={() => window.scrollTo({ top: 652, behavior: "smooth" })} >Start browsing</button>
               </div>
@@ -99,16 +100,20 @@ const Home = () => {
 
         {/* Filter Bar */}
         <div className="filter-bar">
-          {['All', 'Adidas', 'Converse', 'Crocs', 'Jordan', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Timberland', 'Ugg', 'Vans'].map(brand => (
-            <button 
-              key={brand}
-              className={`filter ${selectedBrand === brand ? 'active' : ''}`} 
-              id={brand.toLowerCase().replace(' ', '-')}
-              onClick={() => handleBrandChange(brand)}
-            >
-              {brand}
-            </button>
-          ))}
+          <h2>Shop our range by brands:</h2>
+          <div className='filter-button-wrapper'>
+            {['Shop All', 'Adidas', 'Converse', 'Crocs', 'Jordan', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Timberland', 'Ugg', 'Vans'].map(brand => (
+              <button 
+                key={brand}
+                className={`filter ${selectedBrand === brand ? 'active' : ''}`} 
+                id={brand.toLowerCase().replace(' ', '-')}
+                onClick={() => handleBrandChange(brand)}
+              >
+                {brand}
+              </button>
+            ))}
+          </div>
+          
         </div>
 
         <div className='listings-page'>
